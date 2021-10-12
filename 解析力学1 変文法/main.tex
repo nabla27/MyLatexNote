@@ -1,0 +1,366 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+\usepackage{ascmac}
+\usepackage{bm}
+\usepackage{url}
+\newtheorem{df}{Def}[section]
+\newtheorem{thm}{Thm}[section]
+\newtheorem{lem}{補題}[section]
+\newtheorem{co}{系}[section]
+\newtheorem{pro}{問}[section]
+\newtheorem{ans}{解}[section]
+\newtheorem{pf}{proof}[section]
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+\hypersetup{% hyperrefオプションリスト
+setpagesize=false,
+ bookmarksnumbered=true,%
+ bookmarksopen=true,%
+ colorlinks=true,%
+ linkcolor=blue,
+ citecolor=red,
+}
+\title{解析力学1 　変分法}
+
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\noindent
+\section{変分法}
+\noindent
+\begin{itembox}[l]{オイラー・ラグランジュ方程式\((基本)\)}
+\(f\)を\(x,y(x),\frac{dy}{dx}\)の関数とする。積分汎関数
+\[I[y]=\int_{a}^{b}f(x,y,y^{\prime})dx\]
+が停留値をとるとき、関数\(f\)は微分方程式
+\[\frac{\partial f}{\partial y}-\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)=0\]
+を満たす。ただし、関数\(y\)の両端で境界条件\(y(x_{a})=y_{a},y(x_{b})=y_{b}\)を満たす。
+\end{itembox}
+停留値をもつ正解の関数を\(y_{0}(x)\)とする。次に以下の境界条件を守って任意微小関数\(\delta y(x)\)だけずれた関数
+\[\delta y(x_{a})=\delta y(x_{b})=0\]
+\[y=y_{0}(x)+\delta y(x)=y_{0}(x)+\varepsilon\eta(x)\]
+を考える。\(y=y_{0}(x)\)で作用\(I[y]\)を停留させるとは、その点で一次の変化がないことを意味する。これは
+\[\frac{dI}{d\varepsilon}\Big|_{\varepsilon=0}=\frac{d}{d\varepsilon}\int_{a}^{b}f(x,y,y^{\prime})dx\Big|_{\varepsilon=0}=0\]
+と同義である\((\)停留値をとる\(y\)で\(I[y]\)の微係数はゼロ\()\)。
+\[\frac{\partial y}{\partial \varepsilon}=\frac{\partial(y_{0}(x)+\varepsilon\eta(x))}{\partial \varepsilon}=\eta(x),\hspace{10mm}\frac{\partial y^{\prime}}{\partial \varepsilon}=\frac{\partial}{\partial\varepsilon}\left(\frac{d y_{0}(x)}{dx}+\frac{d\varepsilon\eta(x)}{dx}\right)=\frac{d\eta(x)}{dx}=\eta^{\prime}(x)\]
+であるので、
+\begin{align*}
+\frac{dI}{d\varepsilon}&=\int_{a}^{b}\left(\frac{\partial f}{\partial y}\frac{\partial y}{\partial\varepsilon}+\frac{\partial f}{\partial y^{\prime}}\frac{\partial y^{\prime}}{\partial\varepsilon}\right)dx=\int_{a}^{b}\left(\frac{\partial f}{\partial y}\eta(x)+\frac{\partial f}{\partial y^{\prime}}\eta^{\prime}(x)\right)dx\\
+&=\int_{a}^{b}\frac{\partial f}{\partial y}\eta(x)dx+\left[\frac{\partial f}{\partial y^{\prime}}\eta(x)\right]_{a}^{b}-\int_{a}^{b}\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)dx\\
+&=\int_{a}^{b}\left\{\frac{\partial f}{\partial y}-\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)\right\}\eta(x)dx
+\end{align*}
+\(1\)行目から\(2\)行目へは第二項目について部分積分を用いた。\(2\)行目から\(3\)行目へは境界条件を用いた。\\
+\(\displaystyle\frac{dI}{d\varepsilon}=0\)が任意の\(\eta(x)\)で成り立つためには
+\[\frac{\partial f}{\partial y}-\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)=0\]
+が条件である。\\
+上記の例では境界条件として、\(\eta(a)=\eta(b)=0\)を指定した。部分積分を行った項からこれと合わせて他に以下の境界条件が考えられる。
+\begin{align*}
+&固定端条件:\hspace{10mm}\eta(a)=\eta(b)=0\\
+&自然境界条件:\hspace{10mm}\frac{\partial f}{\partial y^{\prime}}\Big|_{x=a}=\frac{\partial f}{\partial y^{\prime}}\Big|_{x=b}=0\\
+&または固定端条件と自然境界条件の組み合わせ
+\end{align*}
+
+\begin{itembox}[l]{ベルトラミの公式}
+\(f\)を\(y,\frac{dy}{dx}\)の関数とする。積分汎関数
+\[I[y]=\int_{a}^{b}f(y,y^{\prime})dx\]
+が停留値をとるとき、関数\(f\)は微分方程式
+\[\frac{d}{dx}\left(f-y^{\prime}\frac{\partial f}{\partial y^{\prime}}\right)=0\]
+を満たす。
+\end{itembox}
+オイラー・ラグランジュ方程式から次のようにして得られる。
+\begin{align*}
+\frac{\partial f}{\partial y}-\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)=0\hspace{5mm}&\Longrightarrow y^{\prime}\left(\frac{\partial f}{\partial y}-\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)\right)=y^{\prime}\frac{\partial f}{\partial y}-y^{\prime}\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)=0\\
+&\Longrightarrow\left(\frac{\partial f}{\partial y^{\prime}}\frac{\partial y^{\prime}}{\partial x}-\frac{\partial y^{\prime}}{\partial x}\frac{\partial f}{\partial y^{\prime}}\right)+y^{\prime}\frac{\partial f}{\partial y}-y^{\prime}\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)=0\\
+&\Longrightarrow\frac{\partial f}{\partial y^{\prime}}\frac{\partial y^{\prime}}+\frac{\partial f}{\partial y}\frac{\partial y}{\partial x}-\left(\frac{\partial y^{\prime}}{\partial x}\frac{\partial f}{\partial y^{\prime}}+y^{\prime}\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)\right)=0\\
+&\Longrightarrow\frac{df}{dx}-\frac{d}{dx}\left(y^{\prime}\frac{\partial f}{\partial y^{\prime}}\right)=\frac{d}{dx}\left(f-y^{\prime}\frac{\partial f}{\partial y^{\prime}}\right)=0
+\end{align*}
+
+\begin{itembox}[l]{オイラー・ラグランジュ方程式\((複数個の関数)\)}
+\(f\)を\(x,u(x),\frac{\partial u(x)}{\partial x},v,\frac{\partial v(x)}{\partial x}\)の関数とする。積分汎関数
+\[I[u,v]=\int_{a}^{b}f(x,u(x),u^{\prime}(x),v(x),v^{\prime}(x))dx\]
+が停留値をとるとき、関数\(f\)は微分方程式
+\[\frac{\partial f}{\partial u}-\frac{d}{dx}\left(\frac{\partial f}{\partial u^{\prime}}\right)=0\]
+\[\frac{\partial f}{\partial v}-\frac{d}{dx}\left(\frac{\partial f}{\partial v^{\prime}}\right)=0\]
+を満たす。ただし、境界条件として固定端条件または自然境界条件に従う。
+\end{itembox}
+基本のオイラー・ラグランジュ方程式と同様にして考える。\\
+停留値をとる正解の関数を\(u_{0}(x),v_{0}(x)\)とする。それぞれに対して任意微小関数\(\varepsilon_{u}\eta_{u}(x),\varepsilon_{v}\eta_{v}(x)\)を考える。\\
+\(u=u_{0}(x)+\varepsilon_{u}\eta_{u}(x)\)と\(v=v_{0}(x)+\varepsilon_{v}\eta_{v}(x)\)に対し、
+\[\frac{dI}{d\varepsilon_{u}}\Big|_{\varepsilon_{u}=0}=0,\hspace{10mm}\frac{dI}{d\varepsilon_{v}}\Big|_{\varepsilon_{v}=0}=0\]
+となることが\(I[u,v]\)が停留値をとる必要十分条件である。
+\[\frac{\partial i}{\partial\varepsilon_{i}}=\frac{\partial(i_{0}(x)+\varepsilon_{i}\eta_{i}(x))}{\partial\varepsilon_{i}}=\eta_{i}(x),\hspace{10mm}\frac{\partial i^{\prime}}{\partial\varepsilon_{i}}=\frac{\partial}{\partial\varepsilon_{i}}\left(\frac{d i_{0}(x)}{dx}+\frac{d\varepsilon_{i}\eta_{i}}{dx}\right)=\frac{d\eta_{i}(x)}{dx}={\eta^{\prime}}_{i}(x)\]
+であるから
+\[\frac{dI}{d\varepsilon_{i}}=\int_{a}^{b}\left(\frac{\partial f}{\partial i}\frac{\partial i}{\partial\varepsilon_{i}}+\frac{\partial f}{\partial i^{\prime}}\frac{\partial i^{\prime}}{\partial\varepsilon_{i}}\right)dx=\int_{a}^{b}\left(\frac{\partial f}{\partial i}\eta_{i}(x)+\frac{\partial f}{\partial i^{\prime}}{\eta^{\prime}}_{i}(x)\right)dx\]
+第二項目を部分積分し、境界条件を用いると
+\begin{align*}
+\frac{dI}{d\varepsilon_{i}}&=\int_{a}^{b}\frac{\partial f}{\partial i}\eta_{i}(x)dx+\left[\frac{\partial f}{\partial i^{\prime}}\eta_{i}(x)\right]_{a}^{b}-\int_{a}^{b}\frac{d}{dx}\left(\frac{\partial f}{\partial i^{\prime}}\right)\eta_{i}(x)dx\\
+&=\int_{a}^{b}\left\{\frac{\partial f}{\partial i}-\frac{d}{dx}\left(\frac{\partial f}{\partial i^{\prime}}\right)\right\}\eta_{i}(x)dx
+\end{align*}
+任意の\(\eta_{i}(x)\)\((i=u,v)\)に対し、\(\frac{dI}{d\varepsilon_{i}}=0\)が成り立つ条件は
+\[\frac{\partial f}{\partial i}-\frac{d}{dx}\left(\frac{\partial f}{\partial i^{\prime}}\right)=0\]
+である。この結果は\(i\)が\(N\)個の関数の場合へ一般化できる。\\
+\(N\)個の\(x\)の関数\(f(x)=(f_{1}(x),\cdots,f_{N}(x))\)の汎関数
+\[I[f]=\int_{a}^{b}W(x,f(x),f^{\prime}(x))dx\]
+に停留値を与える\(f(x)\)は以下の微分方程式から求まる。
+\[\frac{\partial W}{\partial f_{i}}-\frac{d}{dx}\left(\frac{\partial W}{\partial {f_{i}}^{\prime}}\right)=0\hspace{15mm}(i=1,2,\cdots,N)\]
+
+
+
+\begin{itembox}[l]{オイラー・ラグランジュ方程式\((独立変数が2以上)\)}
+\(f\)を\(x,y,u(x,y),\frac{\partial u}{\partial x}=u_{x},\frac{\partial u}{\partial y}=u_{y}\)の関数とする。積分汎関数
+\[I[u]=\int_{a}^{b}f(x,y,u(x,y),u_{x},u_{y})dxdy\]
+が停留値をとるとき、関数\(f\)は微分方程式
+\[\frac{\partial f}{\partial u}-\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial u_{x}}\right)-\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial u_{y}}\right)=0\]
+を満たす。ただし境界条件\\
+固定端条件:\hspace{5mm}境界線\(C\)上で\(u(x,y)\)の値が指定される。\\
+自然境界条件:\hspace{5mm}境界線\(C\)上で\(\frac{\partial f}{\partial u_{x}}=\frac{\partial f}{\partial u_{y}}=0\)\\
+のどちらかを満たす。
+\end{itembox}
+基本のオイラー・ラグランジュ方程式と同様の方法で\(2\)変数で考える。\\
+停留値となる正解の関数を\(u_{0}(x,y)\)とする。また任意微小関数\(\delta u(x,y)=\varepsilon\eta(x,y)\)を考える。\\
+\(u=u_{0}(x,y)+\varepsilon\eta(x,y)\)に対し、
+\[\frac{dI}{d\varepsilon}\Big|_{\varepsilon=0}=0\]
+となることが、\(u=u_{0}(x,y)\)で作用\(I[u]\)が停留値をとる必要十分条件である。\\
+\[\frac{\partial u}{\partial\varepsilon}=\frac{\partial(u_{0}(x,y)+\varepsilon\eta(x,y))}{\partial\varepsilon}=\eta(x,y),\hspace{10mm}\frac{\partial u_{i}}{\partial\varepsilon}=\frac{\partial}{\partial\varepsilon}\left(\frac{\partial u_{0}(x,y)}{\partial i}+\frac{\partial\varepsilon\eta(x,y)}{\partial i}\right)=\frac{\partial\eta(x,y)}{\partial i}\]
+であるから
+\begin{align*}
+\frac{dI}{d\varepsilon}&=\iint_{S}\left(\frac{\partial f}{\partial u}\frac{\partial u}{\partial\varepsilon}+\frac{\partial f}{\partial u_{x}}\frac{\partial u_{x}}{\partial\varepsilon}+\frac{\partial f}{\partial u_{y}}\frac{\partial u_{y}}{\partial\varepsilon}\right)dxdy\\
+&=\iint_{S}\left(\frac{\partial f}{\partial u}\eta+\frac{\partial f}{\partial u_{x}}\frac{\partial\eta}{\partial x}+\frac{\partial f}{\partial u_{y}}\frac{\partial\eta}{\partial y}\right)dxdy
+\end{align*}
+ここでグリーンの定理
+\[\oint_{C}\left(Pdx+Qdy\right)=\iint_{D}\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dxdy\]
+から
+\begin{align*}
+\oint_{S}\left(-\frac{\partial f}{\partial u_{y}}\eta\right)dx+\oint_{S}\left(\frac{\partial f}{\partial u_{x}}\eta\right)dy&=\iint_{S}\left\{\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial u_{x}}\eta\right)+\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial u_{y}}\eta\right)\right\}dxdy\\
+&=\iint_{S}\left\{\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial u_{x}}\right)\eta+\frac{\partial f}{\partial u_{x}}\frac{\partial\eta}{\partial x}+\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial u_{y}}\right)\eta+\frac{\partial f}{\partial u_{y}}\frac{\partial\eta}{\partial y}\right\}dxdy\\
+\Longrightarrow\iint_{S}\left(\frac{\partial f}{\partial u_{x}}\frac{\partial\eta}{\partial x}+\frac{\partial f}{\partial u_{y}}\frac{\partial\eta}{\partial y}\right)dxdy&=\oint_{S}\left(-\frac{\partial f}{\partial u_{y}}\eta\right)dx+\oint_{S}\left(\frac{\partial f}{\partial u_{y}}\eta\right)dy-\iint_{S}\left\{\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial u_{x}}\right)+\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial u_{y}}\right)\right\}\eta dxdy
+\end{align*}
+なので、これを代入して
+\[\frac{dI}{d\varepsilon}=\oint_{S}\left(-\frac{\partial f}{\partial u_{y}}\eta\right)dx+\oint_{S}\left(\frac{\partial f}{\partial u_{x}}\eta\right)dy+\iint_{S}\left\{\frac{\partial f}{\partial u}-\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial u_{x}}\right)-\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial u_{y}}\right)\right\}\eta dxdy\]
+境界条件より最初の\(2\)項は\(0\)となる。任意の\(\eta(x,y)\)で\(\frac{dI}{d\varepsilon}=0\)となるのは
+\[\frac{\partial f}{\partial u}-\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial u_{x}}\right)-\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial u_{y}}\right)=0\]
+のときである。\\
+\\
+
+\begin{itembox}[l]{ラグランジュの未定乗数法}
+\(g(x,y,z)=c\)という条件のもとでの\(f(x,y,z)\)の極値は\(\lambda\)を定数として
+\[f(x,y,z)-\lambda g(x,y,z)\]
+の極値として求まる。
+\end{itembox}
+付加条件がない場合に\(f(x,y,z)\)の極値は
+\[\frac{\partial f(x,y,z)}{\partial x}=0,\hspace{10mm}\frac{\partial f(x,y,z)}{\partial y}=0,\hspace{10mm}\frac{\partial f(x,y,z)}{\partial z}=0\]
+を連立させて解くことができる。しかし、\(g(x,y,z)=c\)の条件下では、\(x,y,z\)が独立に変化しないためこの方法では解くことができない。\\
+\(f(x,y,z)\)が極値をとるという条件は
+\[df=\frac{\partial f}{\partial x}dx+\frac{\partial f}{\partial y}dy+\frac{\partial f}{\partial z}dz=0\]
+と表すことができる。これの意味するところは、関数\(f\)の極値点から\(x,y,z\)を任意の微小量\(dx,dy,dz\)だけ変化させても\(f\)の変化\(df\)は一次の範囲では\(0\)ということである。\\
+付加条件\(g(x,y,z)\)についても極値点では
+\[\frac{\partial g}{\partial x}dx+\frac{\partial g}{\partial y}dy+\frac{\partial g}{\partial z}dz=0\]
+である。\(dz\)について解けば
+\[dz=-\frac{\frac{\partial g}{\partial x}dx+\frac{\partial g}{\partial y}dy}{\frac{\partial
+ g}{\partial z}}\]
+であり\(dx,dy\)から\(dz\)は決定される。これを\(df=0\)の式に代入すると
+\begin{align*}
+df&=\frac{\partial f}{\partial x}dx+\frac{\partial f}{\partial y}dy-\frac{\partial f}{\partial z}\left(\frac{\frac{\partial g}{\partial x}dx+\frac{\partial g}{\partial y}dy}{\frac{\partial g}{\partial z}}\right)\\
+&=\left(\frac{\partial f}{\partial x}-\frac{\frac{\partial g}{\partial x}}{\frac{\partial g}{\partial z}}\frac{\partial f}{\partial z}\right)dx+\left(\frac{\partial f}{\partial y}-\frac{\frac{\partial g}{\partial y}}{\frac{\partial g}{\partial z}}\frac{\partial f}{\partial z}\right)dy=0
+\end{align*}
+ここで\(\lambda=\frac{\frac{\partial f}{\partial z}}{\frac{\partial g}{\partial z}}\)、つまり\(\frac{\partial f}{\partial z}-\lambda\frac{\partial g}{\partial z}=0\)と置けば、
+\[df=\left(\frac{\partial f}{\partial x}-\lambda\frac{\partial g}{\partial x}\right)dx+\left(\frac{\partial f}{\partial y}-\lambda\frac{\partial g}{\partial y}\right)dy=0\]
+\(dx,dy\)は独立に変化させられるので
+\[\frac{\partial f}{\partial x}-\lambda\frac{\partial g}{\partial x}=0,\hspace{10mm}\frac{\partial f}{\partial y}-\lambda\frac{\partial g}{\partial y}=0\]
+これらの方程式から付加条件\(g(x,y,z)=c\)のもとで\(f(x,y,z)\)の極値問題を解くことは、関数\(f-\lambda g\)の極値問題を解くことと同等である。\\
+\\
+\begin{itembox}[l]{オイラー・ラグランジュ方程式\((積分形の付加条件)\)}
+\(f\)と\(g\)を\(x,y(x),\frac{dy}{dx}\)の関数とする。条件
+\[J[y]=\int_{a}^{b}g(x,y,y^{\prime})dx=c\]
+のもとで、積分汎関数
+\[I[y]=\int_{a}^{b}f(x,y,y^{\prime})dx\]
+が停留値をとるとき、\(\lambda\)を定数として微分方程式
+\[\frac{\partial}{\partial y}(f-\lambda g)-\frac{d}{dx}\left(\frac{\partial}{\partial y^{\prime}}(f+\lambda g)\right)=0\]
+を満たす。ただし、境界条件として\(y(x)\)は固定端条件に従う。
+\end{itembox}
+停留値をもつ正解の関数を\(y_{0}(x)\)とする。また微分可能で両端で\(0\)となる任意微小関数\(\eta_{1}(x),\eta_{2}(x)\)を考える。\(I\)と\(J\)の\(y_{0}\)についてわずかに変化させたものを考えると
+\[I[\varepsilon_{1},\varepsilon_{2}]=\int_{a}^{b}f(x,y_{0}+\varepsilon_{1}\eta_{1}+\varepsilon_{2}\eta_{2},{y_{0}}^{\prime}+\varepsilon_{1}{\eta_{1}}^{\prime}+\varepsilon_{2}{\eta_{2}}^{\prime})dx\]
+\[J[\varepsilon_{1},\varepsilon_{2}]=\int_{a}^{b}g(x,y_{0}+\varepsilon_{1}\eta_{1}+\varepsilon_{2}\eta_{2},{y_{0}}^{\prime}+\varepsilon_{1}{\eta_{1}}^{\prime}+\varepsilon_{2}{\eta_{2}}^{\prime})dx\]
+求めることは\(J[\varepsilon_{1},\varepsilon_{2}]=c\)という条件下で\(I[\varepsilon_{1},\varepsilon_{2}]\)が停留値をとる関数\(y\)である。これはラグランジュの未定乗数法により\(I[\varepsilon_{1},\varepsilon_{2}]+\lambda J[\varepsilon_{1},\varepsilon_{2}]\)が\(\varepsilon_{1}=\varepsilon_{2}=0\)で停留値を与える\(y=y_{0}+\varepsilon_{1}\eta_{1}+\varepsilon_{2}\eta_{2}\)を求めるということである。
+\[\frac{\partial}{\partial\varepsilon_{i}}\left(I[\varepsilon_{1},\varepsilon_{2}]+\lambda J[\varepsilon_{1},\varepsilon_{2}]\right)\Big|_{\varepsilon_{1}=\varepsilon_{2}=0}=0\]
+が条件であり、これから\(F=f-\lambda g\)とおくと、微分方程式
+\[\frac{\partial F}{\partial y}-\frac{d}{dx}\left(\frac{\partial F}{\partial y^{\prime}}\right)=0\]
+が導かれる。具体的には次のように導かれる。
+\[\frac{\partial}{\partial\varepsilon_{i}}(I+\lambda J)=\int_{a}^{b}\left(\frac{\partial f}{\partial y}\frac{\partial y}{\partial\varepsilon_{i}}+\frac{\partial f}{\partial y^{\prime}}\frac{\partial y^{\prime}}{\partial\varepsilon_{i}}\right)dx+\lambda\int_{a}^{b}\left(\frac{\partial g}{\partial y}\frac{\partial
+ y}{\partial\varepsilon_{i}}+\frac{\partial g}{\partial y^{\prime}}\frac{\partial y^{\prime}}{\partial\varepsilon_{i}}\right)dx\]
+であり、ここで
+ \[\frac{\partial y}{\partial\varepsilon_{i}}=\frac{\partial(y_{0}+\varepsilon_{1}\eta_{1}+\varepsilon_{2}\eta_{2})}{\partial\varepsilon_{i}}=\eta_{i},\hspace{10mm}\frac{\partial y^{\prime}}{\partial\varepsilon_{i}}=\frac{\partial}{\partial\varepsilon_{i}}\left(\frac{dy_{0}}{dx}+\frac{d\varepsilon_{1}\eta_{1}}{dx}+\frac{d\varepsilon_{2}\eta_{2}}{dx}\right)={\eta_{i}}^{\prime}\]
+ であるから
+ \begin{align*}
+ \frac{\partial y}{\partial\varepsilon_{i}}(I+\lambda J)&=\int_{a}^{b}\left(\eta_{i}\frac{\partial f}{\partial y}+{\eta_{i}}^{\prime}\frac{\partial f}{\partial y^{\prime}}\right)dx+\lambda\int_{a}^{b}\left(\eta_{i}\frac{\partial g}{\partial y}+{\eta_{i}}^{\prime}\frac{\partial g}{\partial y^{\prime}}\right)dx\\
+&=\int_{a}^{b}\eta_{i}\frac{\partial}{\partial y}(f+\lambda g)dx+\int_{a}^{b}{\eta_{i}}^{\prime}\frac{\partial}{\partial y^{\prime}}(f+\lambda g)dx
+\end{align*}
+\(2\)項目を部分積分して、境界条件を用いると
+\begin{align*}
+\frac{\partial}{\partial\varepsilon_{i}}(I+\lambda J)&=\int_{a}^{b}\eta_{i}\frac{\partial}{\partial y}(f+\lambda g)dx+\left[\eta_{i}\frac{\partial}{\partial y}(f+\lambda g)\right]_{a}^{b}-\int_{a}^{b}\eta_{i}\frac{d}{dx}\left(\frac{\partial}{\partial y^{\prime}}(f+\lambda g)\right)dx\\
+&=\int_{a}^{b}\eta_{i}\left\{\frac{\partial}{\partial y}(f+\lambda g)-\frac{d}{dx}\left(\frac{\partial}{\partial y^{\prime}}(f+\lambda g)\right)\right\}dx
+\end{align*}
+任意の\(\eta_{i}(x)\)で\(\frac{\partial}{\partial\varepsilon_{i}}(I+\lambda J)=0\)が成り立つためには
+\[\frac{\partial}{\partial y}(f+\lambda g)-\frac{d}{dx}\left(\frac{\partial}{\partial y^{\prime}}(f+\lambda g)\right)=0\]
+これは\(f+\lambda g\)に対してオイラー・ラグランジュ方程式を用いれば良いことを示している。\\
+\\
+
+\begin{itembox}[l]{オイラー・ラグランジュ方程式\((積分形以外の付加条件)\)}
+\(f\)を\(x,y(x),y^{\prime}(x),z(x),z^{\prime}(x)\)の関数とする。条件
+\[g(x,y,z)=c\]
+のもとで積分汎関数
+\[I[y,z]=\int_{a}^{b}f(x,y,y^{\prime},z,z^{\prime})dx\]
+の停留値を求める問題は
+\[H=f(x,y,y^{\prime},z,z^{\prime})-\lambda(x)g(x,y,z)\]
+を被積分関数とする汎関数積分が停留値をもつ問題に帰着される。すなわち
+\[\frac{d}{dx}\left(\frac{\partial H}{\partial y^{\prime}}\right)-\frac{\partial H}{\partial y}=0,\hspace{10mm}\frac{d}{dx}\left(\frac{\partial H}{\partial z^{\prime}}\right)-\frac{\partial H}{\partial z}=0\]
+が条件となる。
+\end{itembox}
+まず
+\[g(x,y,z)=c\hspace{5mm}\Rightarrow\hspace{5mm}z=G(x,y)\]
+と変形する。関数\(f\)は
+\[f\left(x,y,y^{\prime},G(x,y),G(x,y^{\prime})\right)=f\left(x,y,y^{\prime},G(x,y),\frac{\partial G}{\partial x}+y^{\prime}\frac{\partial G}{\partial y}\right)\]
+と書ける。これより合成関数の微分法則を駆使して
+\begin{align*}
+\frac{\partial f}{\partial y}&=\frac{\partial f}{\partial x}\frac{\partial x}{\partial y}+\frac{\partial f}{\partial y}\frac{\partial y}{\partial y}+\frac{\partial f}{\partial y^{\prime}}\frac{\partial y^{\prime}}{\partial y}+\frac{\partial f}{\partial G}\frac{\partial G}{\partial y}+\frac{\partial f}{\partial z^{\prime}}\frac{\partial z^{\prime}}{\partial y}\\
+&=\frac{\partial f}{\partial y}+\frac{\partial f}{\partial G}\frac{\partial G}{\partial y}+\frac{\partial f}{\partial z^{\prime}}\frac{\partial z^{\prime}}{\partial y}\\
+&=\frac{\partial f}{\partial y}+\frac{\partial f}{\partial G}\frac{\partial G}{\partial y}+\frac{\partial f}{\partial z^{\prime}}\frac{\partial}{\partial y}\left(\frac{\partial G}{\partial x}+y^{\prime}\frac{\partial G}{\partial y}\right)\\
+&=\frac{\partial f}{\partial y}+\frac{\partial f}{\partial z}\frac{\partial G}{\partial y}+\frac{\partial f}{\partial z^{\prime}}\frac{\partial^{2}G(x,y)}{\partial x\partial y}+\frac{\partial f}{\partial z^{\prime}}\frac{\partial^{2}G(x,y)}{\partial y^{2}}y^{\prime}
+\end{align*}
+\begin{align*}
+\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)&=\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}+\frac{\partial f}{\partial z^{\prime}}\frac{\partial z^{\prime}}{\partial y^{\prime}}\right)=\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}+\frac{\partial f}{\partial z^{\prime}}\frac{\partial G}{\partial y}\right)\\
+&=\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)+\frac{\partial G}{\partial y}\frac{d}{dx}\left(\frac{\partial f}{\partial z^{\prime}}\right)+\frac{\partial f}{\partial z^{\prime}}\frac{d}{dx}\left(\frac{\partial G}{\partial y}\right)\\
+&=\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)+\frac{\partial G}{\partial y}\frac{d}{dx}\left(\frac{\partial f}{\partial z^{\prime}}\right)+\frac{\partial f}{\partial z^{\prime}}\left(\frac{\partial}{\partial x}\left(\frac{\partial G}{\partial y}\right)+\frac{\partial}{\partial y}\left(\frac{\partial G}{\partial y}\right)\frac{\partial y}{\partial x}\right)\\
+&=\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)+\frac{\partial G}{\partial y}\frac{d}{dx}\left(\frac{\partial f}{\partial z^{\prime}}\right)+\frac{\partial f}{\partial z^{\prime}}\frac{\partial^{2}G(x,y)}{\partial x\partial y}+\frac{\partial f}{\partial z^{\prime}}\frac{\partial^{2}G(x,y)}{\partial y^{2}}
+\end{align*}
+である。\(f\)は\(x,y,y^{\prime}\)の関数なので、これをオイラー・ラグランジュ方程式
+\[\frac{\partial f}{\partial y}-\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)=0\]
+に代入して
+\[\frac{\partial f}{\partial y}+\frac{\partial f}{\partial z}\frac{\partial G}{\partial y}-\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)-\frac{\partial G}{\partial y}\frac{d}{dx}\left(\frac{\partial f}{\partial z^{\prime}}\right)=0\]
+これを\(\partial G/\partial y\)について解くと
+\[\frac{\partial G}{\partial y}=-\frac{\frac{\partial f}{\partial y}-\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)}{\frac{\partial f}{\partial z}-\frac{d}{dx}\left(\frac{\partial f}{\partial z^{\prime}}\right)}\]
+また\(\displaystyle\frac{dg(x,y,z)}{dy}=\frac{\partial g}{\partial y}+\frac{\partial g}{\partial z}\frac{\partial z}{\partial y}=\frac{\partial g}{\partial y}+\frac{\partial g}{\partial z}\frac{\partial G}{\partial y}=0\)であるから
+\[\frac{\partial G}{\partial y}=-\frac{\frac{\partial g}{\partial y}}{\frac{\partial g}{\partial z}}\]
+が成り立つので
+\begin{align*}
+\frac{\partial G(x,y)}{\partial y}&=-\frac{\frac{\partial g}{\partial y}}{\frac{\partial g}{\partial z}}=-\frac{\frac{\partial f}{\partial y}-\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)}{\frac{\partial f}{\partial z}-\frac{d}{dx}\left(\frac{\partial f}{\partial z^{\prime}}\right)}\\
+&\Longrightarrow\frac{\frac{\partial f}{\partial z}-\frac{d}{dx}\left(\frac{\partial f}{\partial z^{\prime}}\right)}{\frac{\partial g}{\partial z}}=\frac{\frac{\partial f}{\partial y}-\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)}{\frac{\partial g}{\partial y}}
+\end{align*}
+これは\(y=y(x),z=z(x)\)であったため、\(x\)についての式\(\lambda(x)\)となる。以上により
+\[\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)-\left(\frac{\partial f}{\partial y}-\lambda(x)\frac{\partial g}{\partial y}\right)=\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)-\frac{\partial}{\partial y}(f-\lambda g)=0\]
+\[\frac{d}{dx}\left(\frac{\partial f}{\partial z^{\prime}}\right)-\left(\frac{\partial f}{\partial z}-\lambda(x)\frac{\partial g}{\partial z}\right)=\frac{d}{dx}\left(\frac{\partial f}{\partial z^{\prime}}\right)-\frac{\partial}{\partial z}(f-\lambda g)=0\]
+結局、\(H=f(x,y,y^{\prime},z,z^{\prime})-\lambda(x)g(x,y,z)\)と置けば
+\[\frac{d}{dx}\left(\frac{\partial H}{\partial y^{\prime}}\right)-\frac{\partial H}{\partial y}=0,\hspace{10mm}\frac{d}{dx}\left(\frac{\partial H}{\partial z^{\prime}}\right)-\frac{\partial H}{\partial z}=0\]
+\\
+\\
+\newpage
+\begin{pro}~\\
+\(\displaystyle f=A\left(\frac{\partial u}{\partial x}\right)^{2}-B\left(\frac{\partial u}{\partial y}\right)^{2}\hspace{2mm}(A,B>0)\)のとき、\(\displaystyle I[u]=\int_{a}^{b}fdxdy\)が停留値をもつ\(u\)が従う微分方程式を答えよ。
+\end{pro}
+
+\begin{pro}~\\
+高次導関数を含む被積分関数\(f\)の積分汎関数
+\[I[y]=\int_{a}^{b}f(x,y,y^{\prime},\cdots,y^{(n)})dx\]
+が停留値を与える\(y\)について、オイラー・ラグランジュ方程式は
+\[\frac{\partial f}{\partial y}-\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)+\frac{d^{2}}{dx^{2}}\left(\frac{\partial f}{\partial y^{\prime\prime}}\right)-\cdots+(-1)^{n}\frac{d^{n}}{dx^{n}}\left(\frac{\partial f}{\partial y^{(n)}}\right)\]
+となることを導け。ただし\(y(x)\)は固定端条件に従う。
+\end{pro}
+
+\begin{pro}~\\
+楕円\(\displaystyle\frac{x^{2}}{a^{2}}+\frac{y^{2}}{b^{2}}=1\)に内接する四角形の面積の最大値を求めよ。
+\end{pro}
+
+\begin{pro}~\\
+楕円体\(\displaystyle\frac{x^{2}}{a^{2}}+\frac{y^{2}}{b^{2}}+\frac{z^{2}}{c^{2}}=1\)に内接する直方体の体積の最大値を求めよ。
+\end{pro}
+
+\begin{pro}~\\
+積分汎関数\(\displaystyle I[y]=\int_{0}^{1}{y^{\prime}}^{2}dx\)について、停留値を与える関数\(y(x)\)を求めよ。\\
+ただし\(y(x)\)は\(\displaystyle y(0)=y(1)=0,\int_{0}^{1}y^{2}dx=1\)を満たすとする。
+\end{pro}
+
+\begin{pro}~\\
+\(\displaystyle I[y]=\int_{a}^{b}\sqrt{1+{y^{\prime}}^{2}+{z^{\prime}}^{2}}dx\)に対して、極小値を与える\(y(x),z(x)\)を求めよ。ただし、同時に\(x+2y+2z=8\)を満たし、境界条件として、\(x=-2\)のとき\(y=3,z=2\)、\(x=4\)のとき\(y=1,z=1\)を満たすものとする。
+\end{pro}
+
+\begin{pro}~\\
+\(y(0)=0,y(1)=1\)を満たす\(\displaystyle I[y]=\int_{0}^{1}(y^{2}+{y^{\prime}}^{2})dx\)を最小にする関数\(y(x)\)とこの時の\(I\)を求めよ。
+\end{pro}
+
+\begin{pro}~\\
+境界条件\(y(0)=1,y(1)=0\)の下で積分汎関数
+\(\displaystyle I[y]=\int_{0}^{1}({y^{\prime}}^{2}-4y)dx\)の最小値を求めよ。
+\end{pro}
+
+\begin{pro}~\\
+\(xyz\)空間中の\(2\)点間\((x_{0},y_{0},z_{0}),(x_{1},y_{1},z_{1})\)を一定速度\(v\)で移動するときの最短時間経路を求めよ。
+\end{pro}
+
+\begin{pro}~\\
+周が一定の長さ\(L\)の領域で面積が最大となるのはどのような形か。
+\end{pro}
+
+\begin{pro}~\\
+球面上の\(2\)点を最短距離で結ぶ曲線を求めよ。
+\end{pro}
+
+\begin{pro}~\\
+屈折率\(n\)が座標\(y\)だけに依存するような媒質中を、点\(O\)から出発して\(P\)に至る光線の経路が満たす微分方程式を求めよ。また屈折率が\(n(y)=ky\)で与えられたとき、光線の経路を求めよ。
+\end{pro}
+
+\begin{pro}~\\
+ひもの両端を固定してぶら下げた時、ひもはどのような曲線を描くか求めよ。
+\end{pro}
+
+\begin{pro}~\\
+・地点\(A,B\)を結ぶ曲線のうちで、質点がこの曲線に沿って重力の作用のもとで摩擦なく滑り落ちるとき、要する時間が最小となるものは微分方程式
+\[\frac{dy}{dx}=\sqrt{\frac{2C-y}{y}}\]
+で与えられることを導け。\\
+・\(y=A(1-\cos\theta)\)と置き、\(y^{\prime}\)と\(dy\)を\(A,\theta\)を用いて表せ。\\
+・曲線の座標\(x,y\)をパラメータ\(\theta\)を用いて答えよ。
+\end{pro}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

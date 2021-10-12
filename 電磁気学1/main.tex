@@ -1,0 +1,652 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{url}
+\newtheorem{df}{Def}[section]
+\newtheorem{thm}{Thm}[section]
+\newtheorem{lem}{補題}[section]
+\newtheorem{co}{系}[section]
+\newtheorem{pro}{問}[section]
+\newtheorem{ans}{解}[section]
+\newtheorem{pf}{proof}[section]
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+\hypersetup{% hyperrefオプションリスト
+setpagesize=false,
+ bookmarksnumbered=true,%
+ bookmarksopen=true,%
+ colorlinks=true,%
+ linkcolor=blue,
+ citecolor=red,
+}
+\title{電磁気学1章}
+
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\noindent
+\section{クーロンの法則}
+\noindent
+\begin{pro}~\\
+位置\(\bm{r}\)にある電荷\(Q\)が位置\(\bm{r}_{0}\)にある電荷\(q\)に作用する力をベクトル形式で与えよ。
+\end{pro}
+
+\begin{pro}~\\
+\(n\)個の点電荷\(Q_{1},Q_{2},Q_{3},\cdots\)がそれぞれ\(\bm{r}_{1},\bm{r}_{2},\bm{r}_{3},\cdots\)の位置にあるとき、これらが点電荷\(q\)に作用する力をベクトル形式で与えよ。
+\end{pro}
+
+\begin{pro}~\\
+定数である真空の誘電率\(\varepsilon_{0}\)の単位\(SI\)を示せ。
+\end{pro}
+
+\section{遠隔作用と近接作用}
+\noindent
+\begin{pro}~\\
+位置\(\bm{r}\)にある電荷\(Q\)のつくる位置\(\bm{r}_{0}\)での電場をベクトル形式で与えよ。\\
+またそれを用いてクーロンの法則を書け。
+\end{pro}
+
+\begin{pro}~\\
+電荷\(Q_{1},Q_{2},\cdots,Q_{n}\)がそれぞれ位置\(\bm{r}_{1},\bm{r}_{2},\cdots,\bm{r}_{n}\)にあるとき、位置\(\bm{r}_{0}\)につくる電場をベクトル形式で与えよ。
+\end{pro}
+
+\begin{pro}~\\
+空間を微小な領域に分割して考える。その微小領域の全電荷\(Q_{i}\)を電荷密度\(\rho(\bm{r}_{i})\)と体積要素を用いて表せ。
+\end{pro}
+
+\begin{pro}~\\
+前問の結果を用いて領域全体で足し合わし、位置\(\bm{r}_{0}\)での電場を離散系と積分形で与えよ。
+\end{pro}
+
+次の性質を持つようなデルタ関数を導入する。
+\[\delta(x-\xi)=\begin{cases}
+\infty, & x=\xi\\
+0, & x\ne\xi\end{cases}, \hspace{10mm}\delta(x)=\delta(-x)\]
+\[\int_{-\infty}^{\infty}\delta(x-\xi)dx=1,\hspace{10mm}\int_{-\infty}^{\infty}f(x)\delta(x-\xi)dx=f(\xi)\]
+
+\begin{pro}~\\
+位置\(\bm{r}\)にある点電荷\(Q\)の場所\(\bm{r}_{0}\)における電荷密度をデルタ関数を用いて表せ。
+\end{pro}
+
+\begin{pro}~\\
+前問の式を全領域で積分せよ。
+\end{pro}
+
+\begin{pro}~\\
+位置\(\bm{r}_{1},\bm{r}_{2},\cdots,\bm{r}_{n}\)に点電荷\(Q_{1},Q_{2},\cdots,Q_{n}\)があるとき、位置\(\bm{r}_{0}\)での電荷密度をデルタ関数を用いて表せ。またそれを全領域で積分せよ。
+\end{pro}
+
+\begin{pro}~\\
+位置\(\bm{r}_{1},\bm{r}_{2},\cdots,\bm{r}_{n}\)に点電荷\(Q_{1},Q_{2},\cdots,Q_{n}\)があるとき、位置\(\bm{r}_{0}\)での電場をデルタ関数を用いて表し、計算せよ。
+\end{pro}
+~\\
+~\\
+無限に長い直線状の細い針金を一様に帯電させたとき、そのまわりにできる電場を求める。針金を\(z\)軸に選び、その太さは無視する。
+\begin{pro}~\\
+針金の電荷の線密度を\(\lambda\)とし、位置\(\bm{r}^{\prime}\)での電荷密度をデルタ関数を用いて表せ。
+\end{pro}
+
+\begin{pro}~\\
+観測点\(\bm{r}=(x,y,z)\)での電場の成分がそれぞれ
+\[E_{x}(\bm{r})=\frac{\lambda x}{4\pi\varepsilon_{0}}\int_{-\infty}^{\infty}\frac{1}{\left(x^{2}+y^{2}+(z-z^{\prime})\right)^{\frac{3}{2}}}dz^{\prime}\]
+\[E_{y}(\bm{r})=\frac{\lambda y}{4\pi\varepsilon_{0}}\int_{-\infty}^{\infty}\frac{1}{\left(x^{2}+y^{2}+(z-z^{\prime})\right)^{\frac{3}{2}}}dz^{\prime}\]
+\[E_{z}(\bm{r})=\frac{\lambda}{4\pi\varepsilon_{0}}\int_{-\infty}^{\infty}\frac{z-z^{\prime}}{\left(x^{2}+y^{2}+(z-z^{\prime})\right)^{\frac{3}{2}}}dz^{\prime}\]
+で与えられることを確認せよ。
+\end{pro}
+
+\begin{pro}~\\
+今観測点\(P\)を\(\bm{r}=(R,0,0)\)にとり、点\(P\)での電場の各成分を求めよ。
+\end{pro}
+
+\begin{pro}~\\
+針金の微小部分\(dz^{\prime}\)がそこから距離\(r\)の\(x\)軸上\((R,0,0)\)に及ぼす電場\(\Delta E\)を求めよ。
+\end{pro}
+
+\begin{pro}~\\
+前問において、\(x\)成分の微小電場を求めよ。\(\bm{E}\)と\(z\)軸のなす角を\(\theta\)とする。
+\end{pro}
+
+\begin{pro}~\\
+前問において\(r\)と\(dz^{\prime}\)を\(R,\theta\)で表し、針金全体を足し合わせることにより、電場\(\bm{E}(R,0,0)\)を求めよ。
+\end{pro}
+
+\section{ガウスの法則}
+\noindent
+\begin{pro}1\\
+点電荷\(Q\)を囲む任意の閉曲面\(S\)を考える。単位法線方向の電場ベクトルの成分を求めよ。単位法線ベクトルと電場\(\bm{E}\)のなす角を\(\theta\)とする。
+\end{pro}
+
+\begin{pro}1\\
+閉曲面S上の微小面\(dS\)を点電荷\(Q\)から見た立体角\(d\Omega\)を求めよ。
+\end{pro}
+
+\begin{pro}1\\
+微小面\(dS\)での電場\(dE\)を立体角\(d\Omega\)を用いて表せ。
+\end{pro}
+\begin{pro}1\\
+閉曲面全域での電場の大きさを求めよ。
+\end{pro}
+
+\begin{pro}2\\
+点電荷\(Q\)を内部に含まない閉曲面\(S\)を考える。外部に点電荷\(Q\)があるとき、これの微小面への寄与を立体角を用いて考えることにより
+\[\int_{S}\bm{E}(\bm{r})\cdot\bm{n}(\bm{r})dS=0\]
+を示せ。
+\end{pro}
+
+\begin{pro}3\\
+無限に長い一様な直線状の電荷のつくる静電場を求めよ。線密度を\(\lambda\)とする。
+\end{pro}
+
+\begin{pro}4\\
+半径\(a\)の球内に全電荷\(Q\)が一様に分布しているときの静電場を求めよ。
+\end{pro}
+
+\begin{pro}5\\
+全微分\(df\)について
+\[df(\bm{r})=\nabla f\cdot d\bm{r}\]
+となることを示せ。また\(\nabla f\)は\(f=const\)の面に垂直であるつまり
+\[\nabla f\cdot d\bm{r}=0\]
+であることを示せ。
+\end{pro}
+
+\begin{pro}6\\
+体積が\(dV=dxdydz\)の微小な箱を考える。電場についてこの表面\(S\)での面積分は
+\[\int_{S}\bm{E}\cdot\bm{n}dS=\mathrm{div}\bm{E}(\bm{r})dV\]
+で与えられることを示せ。
+\end{pro}
+
+\begin{pro}6\\
+前問を利用して任意の閉曲面\(S\)とそれに囲まれた領域\(V\)で、ガウスの定理
+\[\int_{S}\bm{E}(\bm{r})\cdot\bm{n}(\bm{r})dS=\int_{V}\mathrm{div}\bm{E}(\bm{r})dV\]
+が成り立つことを導け。
+\end{pro}
+
+\begin{pro}6\\
+ガウスの定理を積分を用いない微分形に書き換えよ。
+\end{pro}
+
+
+
+
+
+\section{静電ポテンシャル}
+\noindent
+\begin{pro}1\\
+ある空間に正電荷\(Q\)が一つある。この付近で電荷\(q\)をもつ点電荷を位置\(A\)からある曲線\(C\)に沿って位置\(B\)まで移動させるのに必要な外力の仕事量を積分の形で与えよ。
+\end{pro}
+
+\begin{pro}2\\
+\(2\)次元の平面領域を考える。ここで任意のベクトル場\(\bm{A}(x,y)\)が与えられている。左下の頂点が\((x,y)\)で長さが\(\Delta x,\Delta y\)の長方形を曲線\(C\)にとる。これについて
+\[\left(\frac{\partial A_{y}(x,y)}{\partial x}-\frac{\partial A_{x}(x,y)}{\partial y}\right)=\frac{1}{\Delta x\Delta y}\int_{C}\bm{A}(x,y)\cdot d\bm{r}\]
+が成り立つことを導け。
+\end{pro}
+
+\begin{pro}2\\
+前問を利用して、任意の平面曲線\(C\)とその平面領域\(S\)について
+\[\int_{C}\bm{A}(x,y)\cdot d\bm{r}=\int_{S}\left[\mathrm{rot}\bm{A}(x,y)\right]_{z}dS\]
+が成り立つことを導け。
+\end{pro}
+
+\begin{pro}3\\
+任意の閉曲線\(C\)に対して\(\displaystyle\oint_{C}\bm{A}\cdot d\bm{r}=0\)、すなわち線積分の値がその経路によらないとき、そのための必要十分条件は恒等的に\(\mathrm{rot}\bm{A}=0\)であることを示せ。
+\end{pro}
+
+\begin{pro}4\\
+静電場\(\bm{E}(\bm{r})\)について
+\[\mathrm{rot}\bm{E}(\bm{r})=0\]
+となること、つまり静電場についてその線積分は経路に依らないことを示せ。
+\end{pro}
+
+\begin{pro}5\\
+静電場\(\bm{E}(\bm{r})\)はある関数\(\phi(\bm{r})\)の勾配として
+\[\bm{E}(\bm{r})=-\mathrm{grad}\phi(\bm{r})\]
+と表せることを説明せよ。
+\end{pro}
+
+
+
+
+
+
+
+\section{静電場の基本法則}
+\noindent
+
+
+\begin{pro}1\\
+設置した平面状の導体の前の点\(Q(+a,0,0)\)に点電荷\(q\)を置く。導体は\(y\)軸上に置く。この時、点\(\bm{r}(x,y,z)(x>0)\)での静電ポテンシャルを求めよ。
+\end{pro}
+
+\begin{pro}1\\
+点\(\bm{r}(x>0)\)での電場の各成分を求めよ。また、導体平面上\((x=0)\)での電場を求めよ。
+\end{pro}
+
+\begin{pro}1\\
+導体表面に誘導されている電荷の面密度\(\omega_{e}(y,z)\)を求めよ。
+\end{pro}
+
+\begin{pro}1\\
+導体表面に誘導されている全誘導電荷量を求め、このときの静電誘導が完全誘導となっていることを確認せよ。
+\end{pro}
+
+\begin{pro}2\\
+半径\(a\)の導体球を接地し、球の中心\(O\)から距離\(d\)の球外\((d>a)\)の一点\(P\)に点電荷\(q\)を置いた。このとき位置\(\bm{r}(r,\theta)\)での静電ポテンシャルを求めよ。
+\end{pro}
+
+\begin{pro}2\\
+導体球上の誘導電荷の面密度を求めよ。
+\end{pro}
+
+\begin{pro}2\\
+導体球上に誘導されている全誘導電荷を求め、このときの静電誘導が不完全誘導となっていることを確認せよ。
+\end{pro}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\setcounter{section}{0}
+\section{クーロンの法則(解答)}
+\noindent
+\begin{ans}~\\
+\[\bm{F}(\bm{r}_{0})=\frac{q}{4\pi\varepsilon_{0}}\frac{Q(\bm{r}_{0}-\bm{r})}{\left|\bm{r}_{0}-\bm{r}\right|^{3}}\]
+\end{ans}
+
+\begin{ans}~\\
+\[\bm{F}(\bm{r}_{0})=\frac{q}{4\pi\varepsilon_{0}}\sum_{i=1}^{n}\frac{Q_{i}(\bm{r}_{0}-\bm{r}_{i})}{\left|\bm{r}_{0}-\bm{r}_{i}\right|^{3}}\]
+\end{ans}
+
+\begin{ans}~\\
+\[\varepsilon_{0}=\frac{10^{7}}{4\pi(2.9998\times10^{8})^{2}}=8.854\times10^{-12}A^2\cdot s^{2}\cdot N^{-1}\cdot m^{-2}=C^{2}\cdot N^{-1}\cdot m^{-2}=F\cdot m^{-1}\]
+\end{ans}
+\section{遠隔作用と近接作用}
+\noindent
+\begin{ans}~\\
+\[\bm{E}(\bm{r}_{0})=\frac{Q}{4\pi\varepsilon_{0}}\frac{\bm{r}_{0}-\bm{r}}{\left|\bm{r}_{0}-\bm{r}\right|^{3}}\]
+\[\bm{F}(\bm{r_{0}})=q\bm{E}(\bm{r}_{0})\]
+\end{ans}
+
+\begin{ans}~\\
+\[\bm{E}(\bm{r}_{0})=\frac{1}{4\pi\varepsilon_{0}}\sum_{i=1}^{n}\frac{Q_{i}(\bm{r}_{0}-\bm{r}_{i})}{\left|\bm{r}_{0}-\bm{r}_{i}\right|^{3}}\]
+\end{ans}
+
+\begin{ans}~\\
+\[Q_{i}=\rho(\bm{r}_{i})\Delta x_{i}\Delta y_{i}\Delta z_{i}\]
+\end{ans}
+
+\begin{ans}~\\
+\[\bm{E}(\bm{r}_{0})=\frac{1}{4\pi\varepsilon_{0}}\sum_{i}\frac{Q_{i}(\bm{r}_{0}-\bm{r}_{i})}{\left|\bm{r}_{0}-\bm{r}_{i}\right|^{3}}=\frac{1}{4\pi\varepsilon_{0}}\sum_{i=1}\frac{(\bm{r}_{0}-\bm{r}_{i})\rho(\bm{r}_{i})}{\left|\bm{r}_{0}-\bm{r}_{i}\right|^{3}}\Delta x_{i}\Delta y_{i}\Delta z_{i}\]
+\[\bm{E}(\bm{r}_{0})=\frac{1}{4\pi\varepsilon_{0}}\int_{-\infty}^{\infty}\frac{(\bm{r}_{0}-\bm{r}^{\prime})\rho(\bm{r}^{\prime})}{\left|\bm{r}_{0}-\bm{r}^{\prime}\right|^{3}}dV^{\prime}\]
+\end{ans}
+
+\begin{ans}~\\
+\[\rho(\bm{r}_{0})=Q\delta^{3}(\bm{r_{0}-\bm{r}})\]
+位置\(\bm{r}_{0}=\bm{r}\)では電荷密度が無限大になり、その他の点で0となる。
+\end{ans}
+
+\begin{ans}~\\
+\[\int_{-\infty}^{\infty}\rho(\bm{r}_{0})dV=Q\int_{-\infty}^{\infty}\delta^{3}(\bm{r}_{0}-\bm{r})dV=Q\]
+\end{ans}
+
+\begin{ans}~\\
+\[\rho(\bm{r}_{0})=\sum_{i=1}^{n}Q_{i}\delta^{3}(\bm{r}_{0}-\bm{r}_{i})\]
+\[\int_{-\infty}^{\infty}\rho(\bm{r}_{0})dV=\sum_{i=1}^{n}\left(Q_{i}\int_{-\infty}^{\infty}\delta^{3}(\bm{r}_{0}-\bm{r}_{i})dV\right)=\sum_{i=1}^{n}Q_{i}\]
+\end{ans}
+
+\begin{ans}~\\
+\begin{align*}
+\bm{E}(\bm{r}_{0})&=\frac{1}{4\pi\varepsilon_{0}}\int_{-\infty}^{\infty}\frac{\rho(\bm{r})(\bm{r}_{0}-\bm{r})}{\left|\bm{r}_{0}-\bm{r}\right|^{3}}dV=\frac{1}{4\pi\varepsilon_{0}}\int_{-\infty}^{\infty}\sum_{i=1}^{n}Q_{i}\delta^{3}(\bm{r}-\bm{r}_{i})\frac{\bm{r}_{0}-\bm{r}}{\left|\bm{r}_{0}-\bm{r}\right|^{3}}dV\\
+&=\frac{1}{4\pi\varepsilon_{0}}\sum_{i=1}^{n}Q_{i}\int_{-\infty}^{\infty}\delta^{3}(\bm{r}-\bm{r}_{i})\frac{\bm{r}_{0}-\bm{r}}{\left|\bm{r}_{0}-\bm{r}\right|^{3}}dV\\
+&=\frac{1}{4\pi\varepsilon_{0}}\sum_{i=1}^{n}Q_{i}\frac{\bm{r}-\bm{r}_{i}}{\left|\bm{r}_{0}-\bm{r}_{i}\right|^{3}}
+\end{align*}
+\(1\)行目では、\(\rho(\bm{r})=\sum_{i=1}^{n}Q_{i}\delta^{3}(\bm{r}-\bm{r}_{i})\)であること、\(2\)行目から\(3\)行目ではデルタ関数の性質
+\[\int_{-\infty}^{\infty}f(x)\delta(x-\xi)dx=f(\xi)\]
+であることを用いた。
+\end{ans}
+
+\begin{ans}~\\
+\[\rho(\bm{r}^{\prime})=\lambda\delta(x^{\prime})\delta(y^{\prime})\]
+\(x^{\prime}=0,y^{\prime}=0\)のみ、つまり\(z\)軸にのみ電荷密度が存在する。
+\end{ans}
+
+\begin{ans}~\\
+\begin{align*}
+E_{x}(\bm{r})&=\frac{1}{4\pi\varepsilon_{0}}\int_{-\infty}^{\infty}\frac{\rho(\bm{r}^{\prime})(x-x^{\prime})}{\left|\bm{r}-\bm{r}^{\prime}\right|^{3}}dV=\frac{\lambda}{4\pi\varepsilon_{0}}\int_{-\infty}^{\infty}\frac{\delta(x^{\prime})\delta(y^{\prime})(x-x^{\prime})}{\left|\bm{r}-\bm{r}^{\prime}\right|^{3}}dV\\
+&=\frac{\lambda}{4\pi\varepsilon_{0}}\int\int\int_{-\infty}^{\infty}\frac{\delta(y^{\prime})(x-x^{\prime})}{\left|\bm{r}-\bm{r}^{\prime}\right|^{3}}\delta(x^{\prime})dx^{\prime}dy^{\prime}dz^{\prime}=\frac{\lambda}{4\pi\varepsilon_{0}}\int\int_{-\infty}^{\infty}\frac{\delta(y^{\prime})(x-x^{\prime})}{\left|\bm{r}-\bm{r}^{\prime}\right|^{3}}\Bigg|_{x^{\prime}=0}dy^{\prime}dz^{\prime}\\
+&=\frac{\lambda x}{4\pi\varepsilon_{0}}\int\int_{-\infty}^{\infty}\frac{\delta(y^{\prime})}{\left|\bm{r}-\bm{r}^{\prime}\right|^{3}}dy^{\prime}dz^{\prime}=\frac{\lambda x}{4\pi\varepsilon_{0}}\int_{-\infty}^{\infty}\frac{1}{\left|\bm{r}-\bm{r}^{\prime}(0,0,z^{\prime})\right|^{3}}dz^{\prime}\\
+&=\frac{\lambda x}{4\pi\varepsilon_{0}}\int_{-\infty}^{\infty}\frac{1}{\left(x^{2}+y^{2}+(z-z^{\prime})\right)^{\frac{3}{2}}}dz^{\prime}
+\end{align*}
+同様にして
+\[E_{y}(\bm{r})=\frac{\lambda y}{4\pi\varepsilon_{0}}\int_{-\infty}^{\infty}\frac{1}{\left(x^{2}+y^{2}+(z-z^{\prime})\right)^{\frac{3}{2}}}\]
+\begin{align*}
+E_{z}(\bm{r})&=\frac{1}{4\pi\varepsilon_{0}}\int_{-\infty}^{\infty}\frac{\rho(\bm{r}^{\prime})(z-z^{\prime})}{\left|\bm{r}-\bm{r}^{\prime}\right|^{3}}dV=\frac{\lambda}{4\pi\varepsilon_{0}}\int_{-\infty}^{\infty}\frac{\delta(x^{\prime})\delta(y^{\prime})(z-z^{\prime})}{\left|\bm{r}-\bm{r}^{\prime}\right|^{3}}dV\\
+&=\frac{\lambda}{4\pi\varepsilon_{0}}\int_{-\infty}^{\infty}\frac{z-z^{\prime}}{\left|\bm{r}-\bm{r}^{\prime}\right|^{3}}dz^{\prime}\Bigg|_{x^{\prime}=0,y^{\prime}=0}\\
+&=\frac{\lambda}{4\pi\varepsilon_{0}}\int_{-\infty}^{\infty}\frac{z-z^{\prime}}{\left(x^{2}+y^{2}+(z-z^{\prime})\right)^{\frac{3}{2}}}dz^{\prime}
+\end{align*}
+\end{ans}
+
+\begin{ans}~\\
+まず\(x\)成分について。途中、\(z^{\prime}=R\tan\theta\)と置き、\(dz^{\prime}=\frac{R}{\cos^{2}\theta}d\theta\)と変数変換することで、\((z^{\prime}:-\infty\to\infty),(\theta:-\pi/2\to\pi/2)\)であるから
+\begin{align*}
+E_{x}(R,0,0)&=\frac{\lambda R}{4\pi\varepsilon_{0}}\int_{-\infty}^{\infty}\frac{1}{\left(R^{2}+{z^{\prime}}^{2}\right)^{\frac{3}{2}}}dz^{\prime}\\
+&=\frac{\lambda R}{4\pi\varepsilon_{0}}\int_{-\pi/2}^{\pi/2}\frac{1}{\left(R^{2}+R^{2}\tan^{2}\theta\right)^{\frac{3}{2}}}\frac{R}{\cos^{2}\theta}d\theta=\frac{\lambda R}{4\pi\varepsilon_{0}}R^{-2}\int_{-\pi/2}^{\pi/2}\cos^{3}\theta\cdot\frac{1}{\cos^{2}\theta}d\theta\\
+&=\frac{\lambda}{4\pi\varepsilon_{0}}\frac{1}{R}\int_{-\pi/2}^{\pi/2}\cos\theta d\theta=\frac{\lambda}{4\pi\varepsilon_{0}}\frac{1}{R}\Big[\sin\theta\Big]_{-\pi/2}^{\pi/2}=\frac{\lambda}{2\pi\varepsilon_{0}}\frac{1}{R}\\
+E_{y}(R,0,0)&=0\\
+E_{z}(R,0,0)&=\frac{\lambda}{4\pi\varepsilon_{0}}\int_{-\infty}^{\infty}\frac{z^{\prime}}{\left(R^{2}+{z^{\prime}}^{2}\right)^{\frac{3}{2}}}dz^{\prime}=\frac{\lambda}{4\pi\varepsilon_{0}}\left[-\frac{1}{\sqrt{R^{2}+{z^{\prime}}^{2}}}\right]_{-\infty}^{\infty}=0
+\end{align*}
+よって
+\[\bm{E}(\bm{r})=(E_{x},E_{y},E_{z})=\left(\frac{\lambda}{2\pi\varepsilon_{0}}\frac{1}{R},0,0\right)\]
+であり、電場は針金に垂直に放射状に広がり、その大きさは針金からの距離\(R\)に逆比例する。
+\end{ans}
+
+\begin{ans}~\\
+\[\Delta E=\frac{1}{4\pi\varepsilon_{0}}\frac{\lambda dz^{\prime}}{r^{2}}\]
+\end{ans}
+
+\begin{ans}~\\
+\[\Delta E_{x}=\Delta E\sin\theta=\frac{\lambda}{4\pi\varepsilon_{0}}\frac{\sin\theta}{r^{2}}dz^{\prime}\]
+\end{ans}
+
+\begin{ans}~\\
+\[r\sin\theta=R,\hspace{10mm}r=\frac{R}{\sin\theta}\]
+\[\tan\theta=\frac{R}{-z^{\prime}}\]
+\[dz^{\prime}=R\left(\frac{\cos\theta}{\sin\theta}\right)^{\prime}=\frac{R}{\sin^{2}\theta}d\theta\]
+\[\Delta E_{x}=\frac{\lambda}{4\pi\varepsilon_{0}}\frac{\sin\theta}{\left(\frac{R}{\sin\theta}\right)^{2}}\cdot\frac{R}{\sin^{2}\theta}d\theta=\frac{\lambda}{4\pi\varepsilon_{0}}\frac{\sin\theta}{R}d\theta\]
+\((z^{\prime}:-\infty\to\infty),(\theta:0\to\pi)\)であるから
+\[E_{x}=\int\Delta E_{x}=\frac{\lambda}{4\pi\varepsilon_{0}}\frac{1}{R}\int_{0}^{\pi}\sin\theta d\theta=\frac{\lambda}{4\pi\varepsilon_{0}}\frac{1}{R}\Big[-\cos\theta\Big]_{0}^{\pi}=\frac{\lambda}{2\pi\varepsilon_{0}}\frac{1}{R}\]
+\end{ans}
+
+\section{ガウスの法則}
+\noindent
+\begin{ans}~\\
+電荷\(Q\)から対象とする閉曲面上の点までの位置ベクトルを\(\bm{r}\)、距離を\(r\)とすると、
+\[\bm{E}(\bm{r})\cdot\bm{n}(\bm{r})=\frac{1}{4\pi\varepsilon_{0}}\frac{Q}{r^{2}}\frac{\bm{r}}{r}\cdot\bm{n}(\bm{r})=\frac{Q}{4\pi\varepsilon_{0}r^{2}}\cos\theta\]
+\end{ans}
+
+\begin{ans}~\\
+\[d\Omega=\frac{dS}{r^{2}}\cos\theta\]
+\end{ans}
+
+\begin{ans}~\\
+\begin{align*}
+dE&=\bm{E}(\bm{r})\cdot\bm{n}(\bm{r})dS=\frac{Q}{4\pi\varepsilon_{0}r^{2}}\cos\theta dS\\
+&=\frac{Q}{4\pi\varepsilon_{0}r^{2}}\cdot r^{2}d\Omega=\frac{Q}{4\pi\varepsilon_{0}}d\Omega
+\end{align*}
+\end{ans}
+
+\begin{ans}~\\
+電荷\(Q\)から同一立体角内の\(2\)つの微小面\(dS,dS^{\prime}\)への寄与が相殺されることを見る\((2以上の場合も同様)\)。\\
+まず立体角について
+\[d\Omega=\frac{dS}{r^{2}}\cos\theta=\frac{dS^{\prime}}{{r^{\prime}}^{2}}\cos\theta^{\prime}\]
+閉曲面外部から内部方向への寄与\(dSについて\)
+\[\bm{E}(\bm{r})\cdot\bm{n}(\bm{r})dS=\frac{1}{4\pi\varepsilon_{0}}\frac{Q}{r^{2}}\frac{\bm{r}}{r}\cdot\bm{n}(\bm{r})dS=-\frac{Q}{4\pi\varepsilon_{0}r^{2}}\cos\theta dS=-\frac{Q}{4\pi\varepsilon_{0}}d\Omega\]
+閉曲面内部から外部方向への寄与\(dS^{\prime}について\)
+\[\bm{E}(\bm{r}^{\prime})\cdot\bm{n}(\bm{r}^{\prime})dS^{\prime}=\frac{1}{4\pi\varepsilon_{0}}\frac{Q}{{r^{\prime}}^{2}}\frac{\bm{r}^{\prime}}{r^{\prime}}\cdot\bm{n}(\bm{r}^{\prime})dS^{\prime}=\frac{Q}{4\pi\varepsilon_{0}{r^{\prime}}^{2}}\cos\theta^{\prime}dS^{\prime}=\frac{Q}{4\pi\varepsilon_{0}}d\Omega\]
+以上より同一微小立体角上の微小面における電場は相殺されることが示された。ゆえに曲面\(S\)全体の面積分も\(0\)となる。
+\end{ans}
+
+\begin{ans}~\\
+空間対称性から電場は針金を中心軸として放射状になっている。\\
+針金を中心とする半径\(r\)、長さ\(l\)の円柱を閉曲面にとり、ガウスの法則を用いると、
+\[\int_{S}\bm{E}(r)\cdot\bm{n}dS=\frac{Q_{in}}{\varepsilon_{0}}=\frac{\lambda l}{\varepsilon_{0}}\]
+\[E\cdot2\pi rl=\frac{\lambda l}{\varepsilon_{0}},\hspace{10mm}E(r)=\frac{\lambda}{2\pi\varepsilon_{0}}\frac{1}{r}\]
+\end{ans}
+
+\begin{ans}~\\
+空間対称性から電場は球の中心から対象になっている。\\
+まず距離\(r>a\)での電場を考える。半径\(r\)の球を閉曲面としてガウスの法則を用いると
+\[\int_{S}\bm{E}(r)\cdot\bm{n}dS=\frac{Q}{\varepsilon_{0}}\]
+\[E\cdot4\pi r^{2}=\frac{Q}{\varepsilon_{0}},\hspace{10mm}E_{r>a}=\frac{Q}{4\pi\varepsilon_{0}}\frac{1}{r}\]
+次に距離\(r<a\)の点での電場を考える。同様にしてガウスの法則を用いると
+\[\int_{S}\bm{E}(r)\cdot\bm{n}dS=\frac{Q}{\varepsilon_{0}}\cdot\frac{r^{3}}{a^{3}}\]
+\[E\cdot4\pi r^{2}=\frac{Q}{\varepsilon_{0}}\cdot\frac{r^{3}}{a^{3}},\hspace{10mm}E_{r<a}=\frac{Q}{4\pi\varepsilon_{0}a^{3}}r\]
+\end{ans}
+
+\begin{ans}~\\
+\begin{align*}
+df&=f(x+dx,y+dy,z+dz)-f(x,y,z)\\
+&=\frac{f(x+dx,y+dy,z+dz)-f(x,y+dy,z+dz)}{dx}dx+\frac{f(x,y+dy,z+dz)-f(x,y,z+dz)}{dy}dy+\cdots\\
+&=\frac{\partial f(x,y+dy,z+dz)}{\partial x}dx+\frac{\partial f(x,y,z+dz)}{\partial y}{dy}+\frac{\partial f(x,y,z)}{\partial z}dz\\
+&=\frac{\partial f}{\partial x}dx+\frac{\partial f}{\partial y}dy+\frac{\partial f}{\partial z}dz=\left(\frac{\partial f}{\partial x},\frac{\partial f}{\partial y},\frac{\partial f}{\partial z}\right)\cdot(dx,dy,dz)=\nabla f\cdot d\bm{r}
+\end{align*}　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
+
+\(3\)行目から\(4\)行目の式変形では、第一項と第二項についてテイラー展開し、\(2\)次以上の微小量を無視した。\\
+\(f(x,y,z)=c\)であるとき、これは曲面\(S\)を与える。\(\bm{r}+d\bm{r}\)もこの曲面上にとると、\(f(x+dx,y+dy,z+dz)=c\)となるので
+\[f(x+dx,y+dy,z+dz)-f(x,y,z)=df=0\]
+すなわち
+\[\nabla f\cdot d\bm{r}=0\]
+\end{ans}
+
+\begin{ans}~\\
+微小体積の最も原点に近い頂点の座標を\(x,y,z\)とする。\\
+\(x\)軸に垂直な面\(A,A^{\prime}\)について考える。それぞれの面での電場の面積分は
+\[\int_{A}\bm{E}\cdot\bm{n}dS=-E_{x}(x,y,z)dydz\]
+\[\int_{A^{\prime}}\bm{E}\cdot\bm{n}dS=E_{x}(x+dx,y,z)dydz\]
+合わせると
+\[\int_{A+A^{\prime}}\bm{E}\cdot\bm{n}dS=\frac{E_{x}(x+dx,y,z)-E_{x}(x,y,z)}{dx}dxdydz=\frac{\partial E_{x}}{\partial x}dV\]
+同様にして\(y\)軸、\(z\)軸に垂直な面は
+\[\int_{B+B^{\prime}}\bm{E}\cdot\bm{n}dS=\frac{\partial E_{y}}{\partial y}dV,\hspace{10mm}\int_{C+C^{\prime}}\bm{E}\cdot\bm{n}dS=\frac{\partial E_{z}}{\partial z}dV\]
+以上より微小領域\(V\)の表面積分は
+\[\int_{S}\bm{E}\cdot\bm{n}dS=\left(\frac{\partial E_{x}}{\partial x}+\frac{\partial E_{y}}{\partial y}+\frac{\partial E_{z}}{\partial z}\right)=\nabla\cdot\bm{E}(\bm{r})dV=\mathrm{div}\bm{E}(\bm{r})dV\]
+\end{ans}
+
+\begin{ans}~\\
+前問の微小体積\(V\)とその表面\(S\)について
+\[\int_{S}\bm{E}\cdot\bm{n}dS=\mathrm{div}\bm{E}(\bm{r})dV\]
+であった。任意の領域\(V^{\prime}\)とその曲面\(S^{\prime}\)について、この微小体積を足し合わせることにより
+\[\sum\left(\int_{S}\bm{E}\cdot\bm{n}dS\right)=\sum\mathrm{div}\bm{E}(\bm{r})dV\]
+左辺については、隣接する微小体積面での面積分はその単位法線ベクトルの向きが逆向きで相殺しあう。結局、全体の体積\(V^{\prime}\)の表面だけを考えればよい。よって
+\[\sum\left(\int_{S}\bm{E}\cdot\bm{n}dS\right)=\int_{S^{\prime}}\bm{E}\cdot\bm{n}dS=\int_{V^{\prime}}\mathrm{div}\bm{E}(\bm{r})dV\]
+\end{ans}
+
+\begin{ans}~\\
+前問に関して、領域\(V\)内での電荷密度分布を\(\rho(\bm{r})\)としてガウスの法則を用いると
+\[\int_{S}\bm{E}\cdot\bm{n}dS=\frac{1}{\varepsilon_{0}}\int_{V}\rho(\bm{r})dV=\int_{V}\mathrm{div}\bm{E}(\bm{r})dV\]
+である。したがって任意の場所で
+\[\mathrm{div}\bm{E}(\bm{r})=\frac{\rho(\bm{r})}{\varepsilon_{0}}\]
+が成り立つ。
+\end{ans}
+
+\section{静電ポテンシャル}
+\noindent
+\begin{ans}~\\
+電荷\(q\)は\(\bm{F}=q\bm{E}(\bm{r})\)の力を受ける。よって外力として\(\bm{F}^{\prime}=-q\bm{E}(\bm{r})\)を与えればよい。微小距離\(d\bm{r}\)動かすのに必要な仕事量は
+\[dW=\bm{F}^{\prime}\cdot d\bm{r}=-q\bm{E}(\bm{r})\cdot d\bm{r}\]
+したがって\(A\)から\(B\)に移動させるのに必要な仕事量は
+\[W=-q\int_{A}^{B}\bm{E}(\bm{r})\cdot d\bm{r}\]
+\end{ans}
+
+\begin{ans}~\\
+曲線\(C\)を左下の頂点から反時計回りに直線\(C_{1},C_{2},C_{2},C_{4}\)に区切って線積分を行うと、
+\begin{align*}
+\int_{C}\bm{A}(x,y)\cdot d\bm{r}&=\int_{C_{1}}(A_{x},A_{y})\cdot(dx,0)+\int_{C_{2}}(A_{x},A_{y})\cdot(0,dy)+\cdots\\
+&=\int_{x}^{x+\Delta x}A_{x}(x,y)dx+\int_{y}^{y+\Delta y}A_{y}(x+\Delta x,y)dy+\int_{x+\Delta x}^{x}A_{x}(x,y+\Delta y)dx+\int_{y+\Delta y}^{y}A_{y}(x,y)dy\\
+&\simeq A_{x}(x,y)\Delta x+A_{y}(x+\Delta x,y)\Delta y-A_{x}(x,y+\Delta y)\Delta x-A_{y}(x,y)\Delta y\\
+&=\frac{A_{y}(x+\Delta x,y)-A_{y}(x,y)}{\Delta x}\Delta x\Delta y-\frac{A_{x}(x,y+\Delta y)-A_{x}(x,y)}{\Delta y}\Delta y\Delta x\\
+&\simeq\left(\frac{\partial A_{y}}{\partial x}-\frac{\partial A_{x}}{\partial y}\right)\Delta x\Delta y
+\end{align*}
+以上で移行すれば問題の式が導かれる。
+\end{ans}
+
+\begin{ans}~\\
+前問で考えた微小領域を足し合わせた任意の平面領域\(S^{\prime}\)とその曲線\(C^{\prime}\)を考える。\\
+前問で得た式
+\[\left(\frac{\partial A_{y}}{\partial x}-\frac{\partial A_{x}}{\partial y}\right)\Delta x\Delta y=\int_{C}\bm{A}(x,y)\cdot d\bm{r}\]
+を領域\(S^{\prime}\)で足し合わせて
+\[\sum\left(\frac{\partial A_{y}}{\partial x}-\frac{\partial A_{x}}{\partial y}\right)\Delta x\Delta y=\sum\int_{C}\bm{A}(x,y)\cdot d\bm{r}\]
+ここで右辺に関して、隣接する微小領域の各辺でその線積分の方向は逆であるから相殺し合う。したがって外側の曲面\(C^{\prime}\)のみを考えればよくて
+\[\sum\int_{C}\bm{A}(x,y)\cdot d\bm{r}=\int_{C^{\prime}}\bm{A}(x,y)\cdot d\bm{r}\]
+ゆえに
+\[\sum\left(\frac{\partial A_{y}}{\partial x}-\frac{\partial A_{x}}{\partial y}\right)\Delta x\Delta y=\int_{S^{\prime}}\left(\frac{\partial A_{y}}{\partial x}-\frac{\partial A_{x}}{\partial y}\right)dS=\int_{C^{\prime}}\bm{A}(x,y)\cdot d\bm{r}\]
+これより問題の式が導かれた。
+\end{ans}
+
+\begin{ans}~\\
+\[\oint_{C}\bm{A}\cdot d\bm{r}=0\hspace{5mm}\Longleftrightarrow\hspace{5mm}\mathrm{rot}\bm{A}=0\]
+十分条件\(:\)\\
+\(\displaystyle\mathrm{rot}\bm{A}=0\)のとき、ストークスの定理より
+\[\oint_{C}\bm{A}\cdot d\bm{r}=\int_{S}\mathrm{rot}\bm{A}\cdot\bm{n}dS=0\]
+必要条件\(:\)\\
+任意の閉曲面に対して、\(\displaystyle\oint_{C}\bm{A}\cdot d\bm{r}=0\)であるとする。ある点で\(\mathrm{rot}\bm{A}\ne0\)の点が存在すると仮定する。その点の近傍領域内で、単位法線ベクトル\(\bm{n}\)が\(\mathrm{rot}\bm{A}\)と同じ向きをもつ曲面\(S\)をとり、その周を\(S\)とする。\(S\)上では\(\mathrm{rot}\bm{A}=a\bm{n}(>0)\)となるからストークスの定理より
+\[\oint_{C}\bm{A}\cdot d\bm{r}=\int_{S}\mathrm{rot}\bm{A}\cdot\bm{n}dS=a\int_{S}\bm{n}\cdot\bm{n}dS>0\]
+これは仮定\(\oint\bm{A}\cdot d\bm{r}=0\)に反する。したがって恒等的に\(\mathrm{rot}\bm{A}=0\)が成り立つ。
+\end{ans}
+
+\begin{ans}~\\
+\(x\)成分
+\[\left[\mathrm{rot}\bm{E}(\bm{r})\right]_{x}=\frac{\partial E_{z}}{\partial y}-\frac{\partial E_{y}}{\partial z}\]
+について考える。静電場\(\bm{E}(\bm{r})\)は
+\[\bm{E}(\bm{r})=\int_{-\infty}^{\infty}\frac{\rho({\bm{r}}^{\prime})}{\left|\bm{r}-{\bm{r}}^{\prime}\right|^{2}}\cdot\frac{(\bm{r}-{\bm{r}}^{\prime})}{\left|\bm{r}-{\bm{r}}^{\prime}\right|}dV\]
+で与えられ、
+\begin{align*}
+\frac{\partial E_{z}}{\partial y}&=\int_{-\infty}^{\infty}\rho({\bm{r}}^{\prime})(z-z^{\prime})\frac{\partial}{\partial y}\left(\frac{1}{\left|\bm{r}-{\bm{r}}^{\prime}\right|^{3}}\right)dV\\
+&=\int_{-\infty}^{\infty}\rho({\bm{r}}^{\prime})(z-z^{\prime})\cdot-\frac{3}{2}\frac{2(y-y^{\prime})}{\left|\bm{r}-{\bm{r}}^{\prime}\right|^{5}}dV\\
+\frac{\partial E_{y}}{\partial z}&=\int_{-\infty}^{\infty}\rho({\bm{r}}^{\prime})(y-y^{\prime})\cdot-\frac{3}{2}\frac{2(z-z^{\prime})}{\left|\bm{r}-{\bm{r}}^{\prime}\right|^{5}}dV
+\end{align*}
+とそれぞれ等しくなるので
+\[\left[\mathrm{rot}\bm{E}(\bm{r})\right]_{x}=\frac{\partial E_{z}}{\partial y}-\frac{\partial E_{y}}{\partial z}=0\]
+\(y,z\)成分も同様にして\(0\)となるので問題の式が示される。
+\end{ans}
+
+\begin{ans}~\\
+静電場について
+\[\mathrm{rot}\bm{E}(\bm{r})=0\]
+であった。一方、任意のスカラー関数\(\phi(\bm{r})\)について
+\[\mathrm{rot}\cdot\mathrm{grad}\phi(\bm{r})\]
+が成り立つ。それは
+\[\left[\mathrm{rot}\cdot\mathrm{grad}\phi\right]_{x}=\frac{\partial}{\partial y}\left[\mathrm{grad}\phi\right]_{x}-\frac{\partial}{\partial z}\left[\mathrm{grad}\phi\right]_{y}=\frac{\partial^{2}\phi}{\partial y\partial z}-\frac{\partial^{2}\phi}{\partial z\partial y}=0\]
+と成分計算するとわかる。
+\end{ans}
+
+
+
+
+\section{静電場の基本法則}
+\noindent
+
+
+
+\begin{ans}~\\
+鏡像法により、位置\(Q^{\prime}(-a, 0, 0)\)に点電荷\(-q\)を置き、導体を取り除いて考える。\\
+\(2\)電荷の作る静電ポテンシャルは
+\[\phi(\bm{r})=\frac{1}{4\pi\varepsilon_{0}}\left[\frac{q}{\sqrt{(x-a)^{2}+y^{2}+z^{2}}}+\frac{-q}{\sqrt{(x+a)^{2}+y^{2}+z^{2}}}\right]\]
+\end{ans}
+
+\begin{ans}~\\
+\(\bm{E}(\bm{r})=-\mathrm{grad}\phi(\bm{r})\)より電場の各成分は
+\begin{align*}
+E_{x}(\bm{r})=-\frac{\partial\phi}{\partial x}&=\frac{q}{4\pi\varepsilon_{0}}\left[\frac{x-a}{((x-a)^{2}+R^2)^{3/2}}-\frac{x+a}{((x+a)^{2}+R^2)^{3/2}}\right]\\
+E_{y}(\bm{r})=-\frac{\partial\phi}{\partial y}&=\frac{qy}{4\pi\varepsilon_{0}}\left[\frac{1}{((x-a)^2+R^2)^{3/2}}-\frac{1}{((x+a)^{2}+R^2)^{3/2}}\right]\\
+E_{z}(\bm{r})=-\frac{\partial\phi}{\partial z}&=\frac{qy}{4\pi\varepsilon_{0}}\left[\frac{1}{((x-a)^2+R^2)^{3/2}}-\frac{1}{((x+a)^{2}+R^2)^{3/2}}\right]
+\end{align*}
+導体表面上では
+\[E_{x}(0,y,z)=-\frac{qa}{2\pi\varepsilon_{0}}\frac{1}{(a^2+R^2)^{3/2}}\]
+\[E_{y}(0,y,z)=E_{z}(0,y,z)=0\]
+\end{ans}
+
+\begin{ans}~\\
+導体表面上の局所電場\(E_{n}\)はその点での表面電荷密度\(\omega_{e}\)を用いて
+\[E_{n}=\frac{\omega_{e}}{\varepsilon_{0}}\]
+であるので、誘導される面電荷密度は
+\[\omega_{e}=-\frac{qa}{2\pi}\frac{1}{(a^2+R^2)^{3/2}}\]
+\end{ans}
+
+\begin{ans}~\\
+全誘導電荷は導体平面全域を足し合わせて
+\begin{align*}
+\int_{0}^{\infty}\int_{0}^{2\pi}\omega_{e}(R)R\cdot d\theta dR&=-\frac{qa}{2\pi}\int_{0}^{\infty}\int_{0}^{2\pi}\frac{1}{(a^2+R^2)^{3/2}}R\cdot d\theta dR\\
+&=-qa\int_{0}^{\infty}\frac{R}{(a^2+R^2)^{3/2}}dR=-qa\left[\frac{1}{(a^2+R^2)^{1/2}}\right]_{0}^{\infty}\\
+&=-q
+\end{align*}
+\end{ans}
+
+\begin{ans}~\\
+鏡像法により、静電ポテンシャルが\(0\)となるのが球面となるような映像電荷の位置を考える。\\
+電荷\(q,q^{\prime}\)から距離\(r_{1},r_{2}\)離れた位置\(P\)における静電ポテンシャルは
+\[\frac{q}{r_{1}}+\frac{q^{\prime}}{r_{2}}\]
+に比例するので、静電ポテンシャルが\(0\)となるのは
+\[\frac{q^{\prime}}{r_{2}}=-\frac{q}{r_{1}},\hspace{10mm}\frac{r_{2}}{r_{1}}=-\frac{q^{\prime}}{q}\]
+が成り立つ点である。これらの点\(Q\)が円\((\)アポロニウスの円\()\)を描くのは
+\[\frac{r_{2}}{r_{1}}=(一定)\]
+のときである。以上の条件より\(\triangle{Oq^{\prime}Q}\equiv\triangle{OQq}\)となっていることが分かる。\\
+このとき、
+\[Oq^{\prime}:OQ=q^{\prime}Q:Qq=QO:qO\]
+\[\Longrightarrow Oq^{\prime}:a:d,\hspace{10mm}r_{2}:r_{1}=a:d\]
+\[\Longrightarrow Oq^{\prime}=\frac{a^{2}}{d},\hspace{10mm}q^{\prime}=-\frac{a}{d}q\]
+したがって、球の中心\(O\)から距離\(\frac{a^2}{d}\)に電荷量\(-\frac{a}{d}q\)の映像電荷を置けばよいことが分かった。鏡像法により、点電荷\(q,q^{\prime}\)による点\(P(r,\theta)\)における静電ポテンシャルは
+\[\phi(r,\theta)=\frac{1}{4\pi\varepsilon_{0}}\left(\frac{q}{r_{1}}+\frac{q^{\prime}}{r_{2}}\right)=\frac{q}{4\pi\varepsilon_{0}}\left(\frac{1}{r_{1}}-\frac{a}{dr_{2}}\right)\]
+となる。ここで\(\angle qOQ=\theta\)と置き、
+\[r_{1}=\sqrt{r^{2}+d^{2}-2rd\cos\theta},\hspace{10mm}r_{2}=\sqrt{r^{2}+{d^{\prime}}^{2}-2rd^{\prime}\cos\theta},\hspace{10mm}(d^{\prime}=Oq^{\prime}=\frac{a^2}{d})\]
+とした。
+\end{ans}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

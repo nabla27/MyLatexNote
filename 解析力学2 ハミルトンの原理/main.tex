@@ -1,0 +1,306 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+\usepackage{ascmac}
+\usepackage{bm}
+\usepackage{url}
+\newtheorem{df}{Def}[section]
+\newtheorem{thm}{Thm}[section]
+\newtheorem{lem}{補題}[section]
+\newtheorem{co}{系}[section]
+\newtheorem{pro}{問}[section]
+\newtheorem{ans}{解}[section]
+\newtheorem{pf}{proof}[section]
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+\hypersetup{% hyperrefオプションリスト
+setpagesize=false,
+ bookmarksnumbered=true,%
+ bookmarksopen=true,%
+ colorlinks=true,%
+ linkcolor=blue,
+ citecolor=red,
+}
+\title{解析力学2 　ハミルトンの原理}
+
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\noindent
+\section{ハミルトンの原理}
+\noindent
+\begin{itembox}[l]{仮想仕事の原理}
+ある質点系があって、\(i\)番目の質点に作用するすべての力を\(\bm{F}_{i}\)とする。この系が釣り合いの状態となる必要十分条件は、各質点に任意の仮想的変位\(\delta\bm{r}_{i}\)を与えたときに、それらの力のする仕事の総和がゼロになることである。つまり
+\[\sum_{i}\bm{F}_{i}\cdot\delta\bm{r}_{i}=0\]
+\end{itembox}
+上の仮想的変位\(\delta\bm{r}\)とは束縛条件に矛盾しないような微小変位である。\\
+この原理は静止している物体はポテンシャルエネルギーが最小であるということから導き出される関係式である。物体は静止しているとき、運動エネルギーを考える必要はなく
+\[W_{ab}=\int_{a}^{b}\bm{F}(\bm{r})\cdot d\bm{r}\hspace{5mm}より\hspace{5mm}\delta U=U(\bm{r}+\delta\bm{r})-U(\bm{r})=-\bm{F}(\bm{r})\cdot d\bm{r}\]
+なので、複数の力が物体にかかっている時には
+\[\delta U=\sum_{i}\delta U_{i}=-\sum_{i}\bm{F}_{i}\cdot\delta\bm{r}_{i}=0\]
+これより仮想仕事の原理が導き出される。\\
+束縛力\(\bm{S}\)も含めた一般形で書くと
+\[\sum_{i}(\bm{F}_{i}+\bm{S}_{i})\cdot\delta\bm{r}_{i}=0\]
+\\
+\begin{itembox}[l]{ダランベールの原理}
+ある質点系があって、\(i\)番目の質点に作用するすべての力を\(\bm{F}_{i}\)とする。各質点が静力学的状態であれば、もちろん
+\[\bm{F}_{i}=0\]
+であるが、動力学的状態であれば
+\[\bm{F}_{i}=m_{i}\ddot{\bm{r}}_{i}\]
+と運動方程式が立てられる。これを移行することで
+\[\bm{F}_{i}+(-m_{i}\ddot{\bm{r}}_{i})=0\]
+と変形できる。このようにして慣性力\(-m_{i}\ddot{\bm{r}}_{i}\)を考えることにより、動力学的状態を作用するすべての力と慣性力とが釣り合った静力学的状態と考えることができる。
+\end{itembox}
+これにより、動力学的状態も仮想仕事の原理を用いて
+\[\sum_{i}(\bm{F}_{i}-m_{i}\ddot{\bm{r}}_{i})\cdot\delta\bm{r}_{i}=0\]
+と表される。\\
+\\
+\begin{itembox}[l]{ラグランジュの第一種運動方程式}
+座標について\((x_{1},y_{1},z_{1},x_{2},\cdots,x_{n},y_{n},z_{n})\rightarrow(x_{1},x_{2},\cdots,x_{N=3n})\)とする。\\
+\(h\)個の束縛条件\(f_{l}(x_{1},x_{2},\cdots,x_{N},t)=0\)とそれぞれの未定定数\(\lambda_{l}\)を用いると、全ての\(i(i=1,2,\cdots,N)\)について
+\[F_{i}-m_{i}\ddot{x_{i}}+\sum_{l=1}^{h}\lambda_{l}\frac{\partial f_{l}}{\partial x_{i}}=0\]
+が成り立つ。
+\end{itembox}
+ダランベールの原理を座標\(x_{1},x_{2},\cdots,x_{N}\)に改めれば
+\[\sum_{i=1}^{N}(F_{i}-m_{i}\ddot{x_{i}})\cdot\delta x_{i}=0\]
+\(h\)個の束縛条件\(f_{l}(x_{1},x_{2},\cdots,x_{N},t)=0(l=1,2,\cdots,h)\)が与えられているとする。この束縛条件を全微分の形で表せば
+\[\delta f_{l}(x_{1},x_{2},\cdots,x_{N},t)=\sum_{i=1}^{N}\frac{\partial f_{l}}{\partial x_{i}}\delta x_{i}=0\]
+\(\delta x_{i}\)は実際運動の変位でなくていいから\(t\)の変分はとらなくても良い。ここで\(h\)個の束縛条件は\(N\)個の\(\delta x_{i}\)に課される条件であるが、これにより\(\delta x_{i}\)は次の\(2\)種類に分けて考えられる。
+\begin{align*}
+&(A)\hspace{3mm}独立に決めることのできる(N-h)個の\delta x_{i}\\
+&(B)\hspace{3mm}(A)の決定によりh個の方程式を連立して求められるh個の\delta x_{i}
+\end{align*}
+\((B)\)の\(\delta x_{i}\)を\(i=1,2,\cdots,h\)番目に、\(A\)の\(\delta x_{i}\)を\(i=h+1,\cdots,N\)番目に割り当てる。先の束縛条件の全微分形に未定の定数\(\lambda_{l}\)を掛けて足し合わせると
+\[\sum_{l=1}^{h}\lambda_{l}\delta f_{l}(x_{1},x_{2},\cdots,x_{N},t)=\sum_{l=1}^{h}\left(\lambda_{l}\sum_{i=1}^{N}\frac{\partial f_{l}}{\partial x_{i}}\delta x_{i}\right)=0\]
+これとダランベールの原理の式を組み合わせると
+\[\sum_{i=1}^{N}\left(F_{i}-m_{i}\ddot{x}_{i}+\sum_{l=1}^{h}\lambda_{l}\frac{\partial f_{l}}{\partial x_{i}}\right)\cdot\delta x_{i}=0\]
+を得る。ここで\(h\)個の未定の定数\(\lambda_{l}\)を決定するための条件として
+\[F_{i}-m_{i}\ddot{x}_{i}+\sum_{l=1}^{h}\lambda_{l}\frac{\partial f_{l}}{\partial x_{i}}=0\hspace{10mm}(i=1,2,\cdots,h)\]
+を課す。こうすると
+\begin{align*}
+&\sum_{i=1}^{N}\left(F_{i}-m_{i}\ddot{x}_{i}+\sum_{l=1}^{h}\lambda_{l}\frac{\partial f_{l}}{x_{i}}\right)\cdot\delta x_{i}=0\\
+&\Longrightarrow0=\sum_{j=1}^{h}\left(F_{j}-m_{j}\ddot{x}_{j}+\sum_{l=1}^{h}\lambda_{l}\frac{\partial f_{l}}{x_{j}}\right)\cdot\delta x_{j}+\sum_{i=h+1}^{N}\left(F_{i}-m_{i}\ddot{x}_{i}+\sum_{l=1}^{h}\lambda_{l}\frac{\partial f_{l}}{x_{i}}\right)\cdot\delta x_{i}\\
+&\Longrightarrow0=0+\sum_{i=h+1}^{N}\left(F_{i}-m_{i}\ddot{x}_{i}+\sum_{l=1}^{h}\lambda_{l}\frac{\partial f_{l}}{x_{i}}\right)\cdot\delta x_{i}
+\end{align*}
+\(i=h+1,\cdots,N\)の\(\delta x_{i}\)は独立に決められる量なので、各\(i=h+1,\cdots,N\)について
+\[F_{i}-m_{i}\ddot{x}_{i}+\sum_{l=1}^{h}\lambda_{l}\frac{\partial f_{l}}{\partial x_{i}}=0\hspace{10mm}(i=h+1,\cdots,N)\]
+が成り立たなければならない。以上より\(i=1,2,\cdots,N\)の全てについて
+\[F_{i}-m_{i}\ddot{x}_{i}+\sum_{l=1}^{h}\lambda_{l}\frac{\partial f_{l}}{\partial x_{i}}=0\]
+が成り立つ。束縛力を考慮したダランベールの原理
+\[\sum_{i}(\bm{F}_{i}+\bm{S}_{i}-m_{i}\ddot{\bm{r}}_{i})\cdot\delta\bm{r}_{i}=0\]
+と比較すると、束縛力\(\bm{S}_{i}\)と未定定数の項\(\displaystyle\sum_{l=1}^{h}\lambda_{l}\frac{\partial f_{l}}{\partial x_{i}}\)が対応していることが分かる。\\
+\\
+\begin{itembox}[l]{ラグランジュの第二種運動方程式}
+\(N\)個の独立な一般化座標\(q_{i}(t)(i=1,2,\cdots,N)\)で記述される\(N\)自由度系を考える。\\
+今\(h\)個の束縛条件\(g_{l}(q_{1},q_{2},\cdots,q_{N},t)=0\)が課されている。\\
+この系固有のラグランジアン\(L(q_{i},\dot{q}_{i},t)\)を用いて
+\[-\frac{d}{dt}\left(\frac{\partial L}{\partial\dot{q}_{i}}\right)+\frac{\partial L}{\partial q_{i}}+\sum_{l=1}^{h}\lambda_{l}\frac{\partial g_{l}}{\partial q_{i}}=0\]
+が成り立つ。
+\end{itembox}
+ラグランジュの第一種運動方程式の導出過程で得られた式
+\[\sum_{i=1}^{N}\left(F_{i}-m_{i}\ddot{x}_{i}+\sum_{l=1}^{h}\lambda_{l}\frac{\partial f_{l}}{\partial x_{i}}\right)\cdot\delta x_{i}=0\]
+を一般化座標を使った形に書き換える。\\
+\\
+第一項目について、\(\delta x_{i}\)は一般化座標を用いれば
+\[x_{i}=x_{i}(q_{1},q_{2},\cdots,q_{N},t)\longrightarrow\delta x_{i}=\sum_{j=1}^{N}\frac{\partial x_{i}}{\partial q_{j}}\delta q_{j}\hspace{10mm}(i=1,2,\cdots,N)\]
+であるので
+\begin{align*}
+\sum_{i=1}^{N}F_{i}\delta x_{i}&=\sum_{i=1}^{N}F_{i}\left(\sum_{j=1}^{N}\frac{\partial x_{i}}{\partial q_{j}}\delta q_{j}\right)=\sum_{j=1}^{N}\left(\sum_{i=1}^{N}F_{i}\frac{\partial x_{i}}{\partial q_{j}}\right)\delta q_{j}\\
+&=\sum_{j=1}^{N}\left(-\sum_{i=1}^{N}\frac{\partial U}{\partial x_{i}}\frac{\partial x_{i}}{\partial q_{j}}\right)\delta q_{j}=-\sum_{j=1}^{N}\frac{\partial U}{\partial q_{j}}\delta q_{j}
+\end{align*}
+ここで\(\displaystyle Q_{j}\equiv\sum_{i=1}^{N}F_{i}\frac{\partial x_{i}}{\partial q_{j}}\)を一般化された力と呼ぶ。\\
+\\
+第三項目について、束縛条件の全微分\(\delta g_{l}\)を一般化座標を用いれば
+\begin{align*}
+g_{l}(q_{1},q_{2},\cdots,q_{N},t)=0&\longrightarrow\delta g_{l}(q_{1},q_{2},\cdots,q_{N},t)=\sum_{i=1}^{N}\frac{\partial g_{l}}{\partial q_{i}}\delta q_{i}=0\\
+&\longrightarrow\sum_{l=1}^{h}\left({\lambda_{l}}^{\prime}\sum_{i=1}^{N}\frac{\partial g_{l}}{\partial q_{i}}\delta q_{i}\right)=0
+\end{align*}
+であるので
+\[\sum_{i=1}^{N}\sum_{l=1}^{h}\lambda_{l}\frac{\partial f_{l}}{\partial x_{i}}\delta x_{i}=0\longrightarrow\sum_{l=1}^{h}\left({\lambda_{l}}^{\prime}\sum_{i=1}^{N}\frac{\partial g_{l}}{\partial q_{i}}\delta q_{i}\right)=0\]
+第二項目について考える。まず
+\[\sum_{i=1}^{N}m_{i}\ddot{x}_{i}\delta x_{i}=\sum_{i=1}^{N}m_{i}\ddot{x}_{i}\left(\sum_{j=1}^{N}\frac{\partial x_{i}}{\partial q_{j}}\delta q_{j}\right)=\sum_{i=1}^{N}m_{i}\left(\sum_{j=1}^{N}\ddot{x}_{i}\frac{\partial x_{i}}{\partial q_{j}}\delta q_{j}\right)\]
+ここで
+\[\dot{x}_{i}=\frac{d x_{i}}{dt}=\sum_{j=1}^{N}\frac{\partial x_{i}}{\partial q_{j}}\frac{\partial q_{j}}{\partial t}+\frac{\partial x_{i}}{\partial t}=\sum_{j=1}^{N}\frac{\partial x_{i}}{\partial q_{j}}\dot{q}_{j}+\frac{\partial x_{i}}{\partial t}\Longrightarrow\frac{\partial \dot{x}_{i}}{\partial \dot{q}_{j}}=\frac{\partial x_{i}}{\partial q_{j}}\]
+を利用して
+\[\frac{\partial(\dot{x}_{i})^{2}}{\partial\dot{q}_{j}}=2\dot{x}_{i}\frac{\partial\dot{x}_{i}}{\partial\dot{q}_{j}}\]
+\[\frac{d}{dt}\left(\dot{x}_{i}\frac{\partial\dot{x}_{i}}{\partial\dot{q}_{j}}\right)=\ddot{x}_{i}\frac{\partial\dot{x}_{i}}{\partial\dot{q}_{j}}+\dot{x}_{i}\frac{d}{dt}\left(\frac{\partial\dot{x}_{i}}{\partial\dot{q}_{j}}\right)=\ddot{x}_{i}\frac{\partial x_{i}}{\partial q_{j}}+\dot{x}_{i}\frac{d}{dt}\left(\frac{\partial x_{i}}{\partial q_{j}}\right)=\ddot{x}_{i}\frac{\partial x_{i}}{\partial q_{j}}+\dot{x}_{i}\frac{\partial\dot{x}_{i}}{\partial q_{j}}=\ddot{x}_{i}\frac{\partial x_{i}}{\partial q_{j}}+\frac{1}{2}\frac{\partial(\dot{x}_{i})^{2}}{\partial q_{j}}\]
+から
+\[\frac{1}{2}\frac{d}{dt}\left(\frac{\partial(\dot{x}_{i})^{2}}{\partial\dot{q}_{j}}\right)=\ddot{x}_{i}\frac{\partial x_{i}}{\partial q_{j}}+\frac{1}{2}\frac{\partial(\dot{x}_{i})^{2}}{\partial q_{j}}\]
+が成り立つ。これを用いれば
+\begin{align*}
+\sum_{i=1}^{N}m_{i}\ddot{x}_{i}\delta x_{i}&=\sum_{i=1}^{N}m_{i}\left(\sum_{j=1}^{N}\ddot{x}_{i}\frac{\partial x_{i}}{\partial q_{j}}\delta q_{j}\right)=\sum_{i=1}^{N}m_{i}\sum_{j=1}^{N}\left(\frac{1}{2}\frac{d}{dt}\left(\frac{\partial(\dot{x}_{i})^{2}}{\partial\dot{q}_{j}}\right)-\frac{1}{2}\frac{\partial(\dot{x}_{i})^{2}}{\partial q_{j}}\right)\delta q_{j}\\
+&=\sum_{i=1}^{N}\sum_{j=1}^{N}\left\{\frac{d}{dt}\frac{\partial}{\partial\dot{q}_{j}}\left(\frac{1}{2}m_{i}(\dot{x}_{i})^{2}\right)-\frac{\partial}{\partial q_{j}}\left(\frac{1}{2}m_{i}(\dot{x}_{i})^{2}\right)\right\}\delta q_{j}=\sum_{j=1}^{N}\left\{\frac{d}{dt}\left(\frac{\partial K}{\partial\dot{q}_{j}}\right)-\frac{\partial K}{\partial q_{j}}\right\}\delta q_{j}
+\end{align*}
+ここで
+\[K\equiv\sum_{i=1}^{N}\left(\frac{1}{2}m_{i}(\dot{x}_{i})^{2}\right)\]
+と置いた。\\
+以上を用いて第一種運動方程式を一般化座標を用いて書き換えると
+\begin{align*}
+&\sum_{i=1}^{N}\left(F_{i}-m_{i}\ddot{x}_{i}+\sum_{l=1}^{h}\lambda_{l}\frac{\partial f_{l}}{\partial x_{i}}\right)\cdot\delta x_{i}=0\\
+&\Longrightarrow-\sum_{j=1}^{N}\frac{\partial U}{\partial q_{j}}\delta q_{j}-\sum_{j=1}^{N}\left\{\frac{d}{dt}\left(\frac{\partial K}{\partial\dot{q}_{j}}\right)-\frac{\partial K}{\partial q_{j}}\right\}\delta q_{j}+\sum_{l=1}^{h}\left({\lambda_{l}}^{\prime}\sum_{i=1}^{N}\frac{\partial g_{l}}{\partial q_{j}}\delta q_{j}\right)=0\\
+&\Longrightarrow\sum_{j=1}^{N}\left\{-\frac{\partial U}{\partial q_{j}}-\frac{d}{dt}\left(\frac{\partial K}{\partial\dot{q}_{j}}\right)+\frac{\partial K}{\partial q_{j}}+\sum_{l=1}^{h}{\lambda_{l}}^{\prime}\frac{\partial g_{l}}{\partial q_{j}}\right\}\delta q_{j}=0
+\end{align*}
+ポテンシャルエネルギーは物体の速度に依存しないとすると
+\[\frac{\partial K}{\partial\dot{q}_{j}}=\frac{\partial(K-U)}{\partial\dot{q}_{j}}\]
+であり、\(L\equiv K-U\)と置くと
+\[\sum_{j=1}^{N}\left\{-\frac{d}{dt}\left(\frac{\partial L}{\partial\dot{q}_{j}}\right)+\frac{\partial L}{\partial q_{j}}+\sum_{l=1}^{h}{\lambda_{l}}^{\prime}\frac{\partial g_{l}}{\partial q_{j}}\right\}\delta q_{j}=0\]
+\(q_{j}(j=1,2,\cdots,N)\)について、第一種運動方程式での独立変数の議論を繰り返せば
+\[-\frac{d}{dt}\left(\frac{\partial L}{\partial\dot{q}_{j}}\right)+\frac{\partial L}{\partial q_{j}}+\sum_{l=1}^{h}\lambda_{l}\frac{\partial g_{l}}{\partial q_{j}}=0\]
+を得る。最後に\({\lambda_{l}}^{\prime}\)を\(\lambda_{l}\)としたが、第一種運動方程式のそれとは異なることに注意する。\\
+こうして極値条件としての条件付き変分問題のオイラー・ラグランジュ方程式と同じ形の方程式が得られた。\\
+これはすなわち、系の運動方程式は束縛条件\(g_{l}(q_{1},q_{2},\cdots,q_{N},t)=0\)の下で
+\[\delta\int_{t_{1}}^{t_{2}}L(q(t),\dot{q}(t),t)dt\]
+が停留値を取るという条件から得られることを示している。\\
+\\
+\begin{itembox}[l]{ハミルトンの最小作用の原理}
+二つの時刻\(t=t_{1},t=t_{2}(t_{1}<t_{2})\)における\(q\)の値
+\[q(t_{1})=q^{(1)},\hspace{5mm}q(t_{2})=q^{(2)}\]
+を指定した時、\(t_{1}<t<t_{2}\)における系の運動、すなわち時間の関数\(q(t)\)は作用
+\[I[q]=\int_{t_{1}}^{t_{2}}L(q(t),\dot{q}(t),t)~dt\]
+が停留値をとるように決まる。
+\end{itembox}
+ラグランジアンを被積分関数とする汎関数積分の停留値をとる条件として、今までの変分問題と同様にオイラー・ラグランジュ方程式が得られる。\\
+\\
+\begin{itembox}[l]{ラグランジュの運動方程式}
+\(h\)個の束縛条件
+\[f_{l}(q(t))=0\hspace{10mm}(l=1,2,\cdots,h)\]
+の付いた\(N\)個の力学変数\(q_{i}(t)\)を用いてラグランジアン\(L(q,\dot{q},t)\)が与えられた系の運動は、\(q_{i}(t)\)および未定定数\(\lambda_{l}(t)\)に関する方程式
+\[\frac{\partial L}{\partial q_{i}}-\frac{d}{dt}\frac{\partial L}{\partial\dot{q}_{i}}+\lambda_{l}\frac{\partial f_{l}}{\partial q_{i}}=0\hspace{10mm}(i=1,2,\cdots,N)\]
+および束縛条件\(f_{l}=0\)を解いて得られる。\\
+特に束縛条件が課されていない系では
+\[\frac{\partial L}{\partial q_{i}}-\frac{d}{dt}\frac{\partial L}{\partial\dot{q}_{i}}=0\hspace{10mm}(i=1,2,\cdots,N)\]
+\end{itembox}
+保存力下の\(1\)質点系を考える。この系のラグラジアンは
+\[L(\bm{x}(t),\dot{\bm{x}}(t))=\frac{1}{2}m\dot{x}_{i}(t)^{2}-U(\bm{x}(t))\hspace{10mm}\left(\dot{x}_{i}(t)=\sum_{i=1}^{3}\dot{x}_{i}(t)\right)\]
+ラグランジュ方程式は
+\[\frac{d}{dt}\frac{\partial L}{\partial\dot{\bm{x}}}=\frac{\partial L}{\partial\dot{x}}\]
+左辺は
+\[\frac{d}{dt}\frac{\partial L}{\partial\dot{x}}=\frac{d}{dt}m\dot{\bm{x}}(t)=m\ddot{\bm{x}}(t)\]
+右辺は
+\[\frac{\partial L}{\partial\bm{x}}=-\frac{\partial U}{\partial\bm{x}}=\bm{F}(\bm{x})\]
+これよりラグランジュ方程式はニュートンの運動方程式と一致することが確かめられる。\(N\)質点系の場合も
+\[L=\sum_{n=1}^{N}\frac{1}{2}m_{n}{\dot{x}_{n}}^{2}-U(\bm{x}_{1},\cdots,\bm{x}_{N})\]
+ととれば、同様にニュートンの運動方程式が導かれる。
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\begin{pro}~\\
+振動面を\(xy\)面、\(x\)を鉛直下向きとする。ひもの長さ\(l\)の単振り子の運動を考える。\\
+・束縛条件を\(f_{l}=0\)の形で表せ。\\
+・ラグランジュの第二種運動方程式を立てろ。\\
+・運動方程式を解け。また束縛力を考察せよ。
+\end{pro}
+
+\begin{pro}~\\
+半径\(a\)の球面上\(x^{2}+y^{2}+z^{2}=a^{2}\)に束縛された重力を受けている質点の釣り合いの位置を、仮想仕事の原理を用いて求めよ。
+\end{pro}
+
+\begin{pro}~\\
+\(z\)軸が鉛直方向を向いた回転放物面\(z=(x-a)^{2}+y^{2}\)に束縛された、重力を受けている質点の釣り合いの位置を、仮想仕事の原理を用いて求めよ。
+\end{pro}
+
+\begin{pro}~\\
+\(3\)次元極座標の一般化力を導出せよ。
+\end{pro}
+
+\begin{pro}~\\
+(1)三次元極座標のパラメータを用いて\(\dot{x}^{2}+\dot{y}^{2}+\dot{z}^{2}\)に相当する式を答えよ。\\
+(2)(1)の結果を用いて、\(-z\)方向を向いた重力中を運動する質量\(m\)の物体\(A\)の運動を記述するラグランジアン\(L\)を答えよ。\\
+(3)物体\(A\)が伸び縮みしない長さ\(l\)の糸で原点と結ばれ、原点からの距離を一定値\(l\)に保って運動するとき、この束縛条件を極座標のパラメータを使った数式\(f=0\)の形で書け。\\
+(4)(2)と(3)で得た結果を用いた\(L^{\prime}=L-\lambda f\)が満たすべき変分条件より、物体\(A\)が従うラグランジュの第二種運動方程式を答えよ。ただし、答えは\(\lambda\)を含んだ形でよく、(3)の束縛条件を適用する前の形でよい。\\
+(5)(4)の結果から、この運動の保存量を答えよ。また、この量を説明せよ。\\
+(6)物体\(A\)が、(3)の束縛条件に加えて、\(\theta=\theta_{0}\)の一定値\(\pi>\theta_{0}>\pi/2\)をとって運動するとき、質点は球面の下半分の水平面内で、半径\(l\sin(\pi-\theta)\)の等速円運動を行うことを示せ。\\
+(7)(4)で答えた方程式のうち、(5)で用いた方程式以外が、どの方向の力の釣り合いを記述しているのか答えよ。\\
+(8)(6)の等速円運動の角速度を\(\omega\)とする時、物体\(A\)を原点から\(l\)の距離に束縛している糸の張力を答えよ。
+\end{pro}
+
+\begin{pro}~\\
+軸を水平にしておかれた半径\(a\)の滑らかな中空円筒の最下点で、質量\(m\)の物体に、円筒軸に垂直かつ水平方向に初速度\(v_{0}\)を与えて円筒内を運動させた。物体は初速度\(v_{0}\)によって、下半分で振動したり、上半分のどこかで円筒壁から離脱したり、全円回転したりした。物体を質点と考え、重力加速度を\(g\)として、以下の問いに答えよ。\\
+(1)二次元極座標を用いて、この系の束縛条件を課していない重力ポテンシャルのみを考慮したラグランジアン\(L\)と、これに束縛条件を含んだラグランジアン\(L^{\prime}(\lambda)\)を答えよ。ただし、\(\theta\)パラメータは、鉛直下方向を\(0\)にとるものとする。また、\(\lambda\)はラグランジアンに束縛条件を導入するときの未定乗数である。\\
+(2)\(L^{\prime}\)にオイラー・ラグランジュ方式を適用して、\(r,\theta\)についての運動方程式を導出せよ。\\
+(3)束縛条件をオイラー・ラグランジュ方程式から得られた\(2\)式と組み合わせ、式の数を\(2\)式にして、これを答えよ。\\
+(4)(3)で得た式のうち、\(\lambda\)を含まない式から、この系のエネルギー保存則に相当する式を導出せよ。途中、積分が必要になることに注意せよ。\\
+(5)壁面から離脱するときの\(\theta_{off}\)を求めよ。\\
+(6)物体が壁面から離れる場合の初速の範囲を答えよ。
+\end{pro}
+
+\begin{pro}~\\
+\(y\)軸を鉛直上向きとする鉛直\((x,y)\)面内で振動する質量\(m\)、長さ\(l\)の単振り子を考える。\\
+・この系の自由度はいくつか。\\
+・ラグランジアンを求めよ。\\
+・ラグランジュ方程式から運動方程式を求めよ。
+\end{pro}
+
+\begin{pro}~\\
+次式のラグランジアンで記述される、力学変数\(q\)をもった\(1\)自由度系のオイラー・ラグランジュ方程式を求めよ。
+\[L(q,\dot{q})=\frac{1}{2}f(q){\dot{q}}^{2}-U(q)\]
+\end{pro}
+
+\begin{pro}~\\
+一様な重力中で、滑車に繋がった長さ一定のひもの両端に質量が\(m{1},m_{2}\)のおもりが付いた系を考える。初期条件を\(x(0)=x_{0},\dot{x}(0)=0\)とする。\\
+・ラグラジアンを求めよ。\\
+・束縛条件を\(f=0\)の形で求めよ。\\
+・オイラー・ラグランジュ方程式から運動方程式を立てろ。\\
+・運動方程式から\(x(t),y(t)\)を求めよ。\\
+・束縛条件の未定定数\(\lambda(t)\)を求めろ。
+\end{pro}
+
+\begin{pro}~\\
+傾き角\(\beta\)の斜面を、半径\(a\)で質量\(M\)の車輪が、滑ることなく転がり落ちる過程を考える。\(x\)を斜面上の固定点\(P\)から車輪と斜面の接点までの距離、\(\theta\)を車輪上の固定点\(Q\)と車輪と斜面の接点の間の角度とする。時刻\(t=0\)では点\(P\)と\(Q\)は一致しており、\(x(0)=\dot{x}(0)=\theta(0)=\dot{\theta}(0)=0\)とする。\\
+・この系のラグランジアンを求めよ。\\
+・束縛条件を\(f=0\)の形で表せ。\\
+・ラグランジュ方程式から運動方程式を立てろ。\\
+・運動方程式から\(x(t),\theta(t)\)を求めよ。\\
+・束縛条件の未定定数\(\lambda\)を求め、それが何を表すのかを考察せよ。
+\end{pro}
+
+\begin{pro}~\\
+鉛直平面内に置かれた半径\(a\)の輪の上を摩擦なく運動する質点\((質量m)\)を考える。質点が輪の頂上\((0,a)\)から初速ゼロで転がり始めるとして、質点が輪から離れる点の\(y\)座標をラグランジュ方程式を用いることで求めよ。
+\end{pro}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

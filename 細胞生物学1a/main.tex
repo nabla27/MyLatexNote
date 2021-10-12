@@ -1,0 +1,420 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+\usepackage{ascmac}
+\usepackage{bm}
+\usepackage{url}
+\newtheorem{df}{Def}[section]
+\newtheorem{thm}{Thm}[section]
+\newtheorem{lem}{補題}[section]
+\newtheorem{co}{系}[section]
+\newtheorem{pro}{問}[section]
+\newtheorem{ans}{解}[section]
+\newtheorem{law}{Law}[section]
+\newtheorem{pf}{proof}[section]
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+\hypersetup{% hyperrefオプションリスト
+setpagesize=false,
+ bookmarksnumbered=true,%
+ bookmarksopen=true,%
+ colorlinks=true,%
+ linkcolor=blue,
+ citecolor=red,
+}
+
+\title{細胞生物学1a}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\section{第一回 10/5}
+\noindent
+\begin{pro}~\\
+    細胞がもつ最低限の特徴4つ。
+\end{pro}
+\begin{ans}~\\
+    細胞膜、ゲノム、遺伝情報の発現・伝達、エネルギーの利用
+\end{ans}
+
+\begin{pro}~\\
+    細胞膜のはたらきを4つ。
+\end{pro}
+\begin{ans}~\\
+    ・細胞内の環境を一定に保つ(ホメオスタシス)\\
+    ・細胞間の情報伝達\\
+    ・細胞間の結合・接着\\
+    ・外界との間で物質の選択的な透過を制御する
+\end{ans}
+
+\begin{pro}~\\
+    細胞内の物質の移動距離と時間の関係。
+\end{pro}
+\begin{ans}~\\
+    \[r^{2}=CDt\hspace{10mm}(r:出発点からの広がり距離,C:定数,D:拡散定数,t:時間)\]
+\end{ans}
+
+\begin{pro}~\\
+    細菌の細胞の特徴的な構造物を8つ。
+\end{pro}
+\begin{ans}~\\
+    細胞質、内膜、外壁、核様体、リボソーム、プラスミド、鞭毛、線毛
+\end{ans}
+
+\begin{pro}~\\
+    細胞骨格の役割。
+\end{pro}
+\begin{ans}~\\
+    細胞の形の維持
+\end{ans}
+
+\begin{pro}~\\
+    細胞骨格の種類3つ。
+\end{pro}
+\begin{ans}~\\
+微小管、アクチンフィラメント、中間径フィラメント
+\end{ans}
+
+\begin{pro}~\\
+    微小管によって運ばれるモータータンパク質を2つ。またそれぞれどの方向に運ばれるか。
+\end{pro}
+\begin{ans}~\\
+    ダイニン(マイナス端)、キネシン(プラス端)
+\end{ans}
+
+\begin{pro}~\\
+    ウーズらによる3ドメイン説によって生物は何に分けられるか。
+\end{pro}
+\begin{ans}~\\
+    バクテリアドメイン(細菌)、アーキドメイン(古細菌)、ユーカリアドメイン(真核生物)
+\end{ans}
+
+\begin{pro}~\\
+    細菌細胞の基本形態6つ。
+\end{pro}
+\begin{ans}~\\
+    球菌、桿菌(かんきん)、球桿菌、ビブリオ(コンマ型)、らせん菌、スピロヘータ
+\end{ans}
+
+\begin{pro}~\\
+    細菌を2つのグループに分ける染色方法。
+\end{pro}
+\begin{ans}~\\
+    グラム染色法
+\end{ans}
+
+\begin{pro}~\\
+    グラム染色性の違いはどのような特徴に対応するか。3つ。
+\end{pro}
+\begin{ans}~\\
+    抗生物質感受性、細胞外への分泌機構、毒素の性質
+\end{ans}
+
+\begin{pro}~\\
+    グラム染色法の3手順とそれぞれの目的。
+\end{pro}
+\begin{ans}~\\
+    1.クリスタル紫とヨウ素の処理(細胞内に沈着させる)\\
+    2.アルコールまたはアセトン処理(陰性菌の透過性による脱色処理)\\
+    3.塩基性フクシンによる対比染色(陰性菌にも着色)
+\end{ans}
+
+\begin{pro}~\\
+    グラム陽性細菌と陰性細菌の細胞膜と細胞壁についての違い。
+\end{pro}
+\begin{ans}~\\
+    細胞膜:陰性菌は内膜と外膜をもつが、陽性菌は内膜だけをもつ。\\
+    細胞壁:陰性菌は薄いのに対し、陽性菌は厚い細胞壁をもつ。
+\end{ans}
+
+\begin{pro}~\\
+    細菌染色体(核様体)について、環状DNAがDNA結合性たんぱく質によって結びつき、それぞれのループ状のDNAが
+    変形して何と呼ばれるものになるか。
+\end{pro}
+\begin{ans}~\\
+    スーパーコイル
+\end{ans}
+
+\begin{pro}~\\
+    細菌の鞭毛のつきかた4種類。
+\end{pro}
+\begin{ans}~\\
+    短毛(極毛)、束毛、双毛、周毛
+\end{ans}
+
+\begin{pro}~\\
+    細菌の線毛について、役割2つ。
+\end{pro}
+\begin{ans}
+基質表面への接着。接合とDNAの伝達。
+\end{ans}
+
+\begin{pro}~\\
+    細菌の鞭毛と線毛の違いを形態・機能・成分の3つの観点から。
+\end{pro}
+\begin{ans}~\\
+    (鞭毛)\\
+    形態:長くて細いらせん状\\
+    機能:回転して最近に運動性を与える\\
+    成分:フラジェリン\\
+    (線毛)\\
+    形態:まっすぐで鞭毛より短い\\
+    機能:前問参照\\
+    成分:ピリン
+\end{ans}
+
+\begin{pro}~\\
+    細菌の細胞質分裂の種類2
+\end{pro}
+\begin{ans}~\\
+    狭窄(きょうさく)、隔壁
+\end{ans}
+
+\begin{pro}~\\
+    細菌は(\hspace{5mm})の繊維からなる(\hspace{5mm})により分裂する。
+\end{pro}
+\begin{ans}~\\
+FtsZタンパク質、Z-リング
+\end{ans}
+
+\begin{pro}~\\
+    Z-リングは(\hspace{5mm})により、(\hspace{5mm})しながら(\hspace{5mm})の合成方向を制御する。
+\end{pro}
+\begin{ans}~\\
+    トレッドミル、回転、ペプチドグリカン
+\end{ans}
+
+\begin{pro}~\\
+    細菌、古細菌、真核生物について核膜・膜で覆われた細胞小器官・細胞壁のペプチドグリカン・RNAポリメラーゼ・
+    イントロン・DNA結合ヒストン・環状染色体について答えよ。
+\end{pro}
+\begin{ans}~\\
+    (核膜)\\
+    なし、なし、あり\\
+    (膜で覆われた細胞小器官)\\
+    なし、なし、あり\\
+    (細胞壁のペプチドグリカン)\\
+    あり、なし、なし\\
+    (RNAポリメラーゼ)\\
+    1種類、数種類、数種類\\
+    (イントロン)\\
+    きわめてまれ、一部の遺伝子にあり、多くの遺伝子にあり\\
+    (DNA結合ヒストン)\\
+    なし、いくつかの種にあり、あり\\
+    (環状染色体)\\
+    あり、あり、なし\\
+\end{ans}
+
+
+\newpage
+\noindent
+\section{第二回 10/12}
+\noindent
+\begin{pro}~\\
+    \(N_{A},N_{B}\)を菌株\(A,B\)のオリゴマー数、\(N_{AB}\)を菌株\(A,B\)の共通するオリゴマー数としたとき、
+    相対的類似度\(S_{AB}\)を求めよ。
+\end{pro}
+\begin{ans}~\\
+    \[S_{AB}=\frac{2N_{AB}}{N_{A}+N_{B}}\]
+\end{ans}
+
+\begin{pro}~\\
+    アーキアと真核生物の類似性について、\\
+    ・RNAポリメラーゼで(\hspace{5mm})と(\hspace{5mm})構成が真核生物と同じ。\\
+    ・DNAポリメラーゼで(\hspace{5mm})感受性が真核生物と同じ。\\
+    ・(\hspace{5mm})66個の半分は全ての生物に共通しており、残りの半分はアーキアと真核生物で同じである。\\
+    ・リボソームと結合して翻訳を制御する(\hspace{5mm})は真核生物とアーキアで共通するものが多い。
+\end{pro}
+\begin{ans}~\\
+    (酵素活性)、(サブユニット)構成、\\
+    (アフィディリン)感受性\\
+    (リボソームタンパク質)\\
+    (翻訳因子)\\
+\end{ans}
+
+\begin{pro}~\\
+    アーキアと細菌・真核生物の脂質の違いについて、グリセロールリン酸、炭化水素鎖、結合の観点から述べよ。
+\end{pro}
+\begin{ans}~\\
+    グリセロールリン酸\(\longrightarrow\)sn-グリセロール-1-リン酸、sn-グリセロール-3-リン酸\\
+    炭化水素機鎖\(\longrightarrow\)イソプレノイド(透過障害高い)、脂肪酸\\
+    結合\(\longrightarrow\)エーテル結合、エステル結合
+\end{ans}
+
+\begin{pro}~\\
+    それぞれ以下の特徴をもつようなアーキアの種類名を答えよ。\\
+    ・絶対嫌気性、メタン生成過程でエネルギーを得る、糖・タンパク質・脂質を分解してメタンを得る、動物の腸・土壌などに生息。\\
+    ・増殖最適NaCl濃度がある、塩湖・塩田などに生息。\\
+    ・至適生育温度は40度の中度から80度以上の超好熱菌まで、温泉・熱水噴出口などに生息、硫黄・硫酸還元性、硝酸還元性、メタン生成、好気性。\\
+    ・地球で最も多いアーキア。\\
+    ・深海底・陸上地下・温泉などに生息、炭素代謝・エネルギー生産系が多様。\\
+    ・真核生物にもっとも近縁。\\
+    ・ゲノムサイズが小さい複数の門からなるスーパーグループ、海底沈殿物・土壌など多様な場所に生息。
+\end{pro}
+\begin{ans}~\\
+    ・メタン生成アーキア\\
+    ・好塩性アーキア\\
+    ・好熱性アーキア\\
+    ・タウムアーキオータ\\
+    ・ユーリアーキオータ\\
+    ・Asgard arhaea\\
+    ・DPANNグループ
+\end{ans}
+
+\begin{pro}~\\
+    細菌・古細菌・菌類・植物・動物を原核生物と真核生物とに分類せよ。
+\end{pro}
+\begin{ans}~\\
+    原核生物\(\longrightarrow\)細菌、古細菌\\
+    真核生物\(\longrightarrow\)植物、菌類、動物
+\end{ans}
+
+\begin{pro}~\\
+    代表的な菌類を4つ挙げよ。
+\end{pro}
+\begin{ans}~\\
+    ツボカビ、接合菌、子嚢菌、担子菌
+\end{ans}
+
+\begin{pro}~\\
+    菌類(糸状菌)の細胞の先には(\hspace{5mm})と呼ばれる構造がある。
+\end{pro}
+\begin{ans}~\\
+    先端小体
+\end{ans}
+
+\begin{pro}~\\
+    菌類の細胞壁は内側から(\hspace{5mm})、2層の(\hspace{5mm})、(\hspace{5mm})の4層から成っている。
+\end{pro}
+\begin{ans}~\\
+    キチン、糖たんぱく質、グルカン
+\end{ans}
+
+\begin{pro}~\\
+    菌類の細胞壁の成分であるキチンは(\hspace{5mm})がつながった構造であり、グルカンは(\hspace{5mm})を多重結合した
+    構造である。
+\end{pro}
+\begin{ans}~\\
+    アセチルグルコサミン、グルコース
+\end{ans}
+
+\begin{pro}~\\
+    動物細胞の内側と外側で以下の各イオン濃度はどちらで高いかを答えよ。\\
+    \(Na^{+},K^{+},Ca^{2+},Cl^{-}\)
+\end{pro}
+\begin{ans}~\\
+    内側：\(K^{+}\)\\
+    外側: \(Na^{+},Ca^{2+},Cl^{-}\)
+\end{ans}
+
+\begin{pro}~\\
+    動物細胞内では区画によって\(Ca^{2+}\)の濃度が異なるが、ミトコンドリア・細胞質ゾル・核のそれぞれでは
+    高いか低いか。
+\end{pro}
+\begin{ans}~\\
+    ミトコンドリア(高)、細胞質ゾル(低)、核(高)
+\end{ans}
+
+\begin{pro}~\\
+    真核生物の細胞内の各区画にpHについて、初期エンドソームが(\hspace{5mm})になるにつれpHは(\hspace{5mm})なる。
+    また細胞質と核でのpHは7よりも(\hspace{5mm})、トランスゴルジ網のpHは7よりも(\hspace{5mm})。
+\end{pro}
+\begin{ans}~\\
+    (リソソーム),(低くく),(高く),(低い)
+\end{ans}
+
+\begin{pro}~\\
+    全ての細胞膜は(\hspace{5mm})の(\hspace{2mm})層構造である。
+\end{pro}
+\begin{ans}~\\
+    (リン脂質),(2)
+\end{ans}
+
+\begin{pro}~\\
+    生体膜のリン脂質の構造で、頭部の極性基の(\hspace{5mm})は(\hspace{5mm})性であるのに対し、間の(\hspace{5mm})は
+    (\hspace{5mm})性である。また途中で(\hspace{5mm})により、飽和脂肪酸と不飽和脂肪酸に分かれている。\\
+    原形質膜(細胞膜)の外皮にはリン脂質の他に(\hspace{5mm})や(\hspace{5mm})がある。外側のリン脂質頭部は極性が
+    (\hspace{5mm})であるのに対し、内側では極性が(\hspace{5mm})である。
+\end{pro}
+\begin{ans}~\\
+    (リン酸),(親水)性,(脂肪酸),(疎水)性,(二重結合)\\
+    (糖たんぱく質),(糖脂質),(少ない、中性),(酸性)
+\end{ans}
+
+\begin{pro}~\\
+    コレステロールは極性の頭部、柔軟性にとぼしい(\hspace{5mm})、(\hspace{5mm})からなる非極性の尾部からなる。
+\end{pro}~\\
+\begin{ans}~\\
+    (ステロイド環構造),(炭化水素)
+\end{ans}
+
+\begin{pro}~\\
+    細胞膜は(\hspace{5mm})により硬さをもっていたり、二重鎖結合の(\hspace{5mm})型(\hspace{5mm})により
+    流動性が(\hspace{5mm})。
+\end{pro}
+\begin{ans}~\\
+    (コレステロール),(シス)型(不飽和脂肪酸),(増す)
+\end{ans}
+
+\begin{pro}~\\
+    (\hspace{5mm})は細胞内の情報伝達や小胞輸送、膜の区画化の役割をもつ。
+\end{pro}
+\begin{ans}~\\
+    イノシトールリン酸
+\end{ans}
+
+\begin{pro}~\\
+    (\hspace{5mm})はペプチドを切断し、タンパク質を細胞外へ呈示する役割をもつ。
+\end{pro}
+\begin{ans}~\\
+    GPI(glycosyl phosphatidyl inositol)アンカータンパク質
+\end{ans}
+
+\begin{pro}~\\
+    (\hspace{5mm})は赤血球の形・強度を保つ役割をしている。交差するところには(\hspace{5mm})繊維が存在。
+\end{pro}
+\begin{ans}~\\
+    (スペクトリン),(アクチン)
+\end{ans}
+
+\begin{pro}~\\
+    細胞同士が付着を(\hspace{5mm})といい、一部が(\hspace{5mm})結合により結合している。
+\end{pro}
+\begin{ans}~\\
+    (細胞接着),(密着)結合
+\end{ans}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

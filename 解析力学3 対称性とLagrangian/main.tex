@@ -1,0 +1,431 @@
+%\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+\usepackage{ascmac}
+\usepackage{bm}
+\usepackage{url}
+\newtheorem{df}{Def}[section]
+\newtheorem{thm}{Thm}[section]
+\newtheorem{lem}{補題}[section]
+\newtheorem{co}{系}[section]
+\newtheorem{pro}{問}[section]
+\newtheorem{ans}{解}[section]
+\newtheorem{pf}{proof}[section]
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+\hypersetup{% hyperrefオプションリスト
+setpagesize=false,
+ bookmarksnumbered=true,%
+ bookmarksopen=true,%
+ colorlinks=true,%
+ linkcolor=blue,
+ citecolor=red,
+}
+\title{解析力学3 　対称性とLagrangian}
+
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\noindent
+\section{対称性とLagrangian}
+\noindent
+\begin{itembox}[l]{ラグラジアンの不定性}
+ラグラジアン\(L(q(t),\dot{q}(t),t)\)に対して、任意関数\(G(q(t),t)\)の時間\(t\)についての全微分項を加えた新しいラグラジアン
+\[\widetilde{L}(q(t),\dot{q}(t),t)=L(q(t),\dot{q}(t),t)+\frac{d}{dt}G(q(t),t)\]
+を考えると、\(\widetilde{L}\)のE-L方程式は\(L\)のそれと同じである。すなわち、\(2\)つの\(L\)と\(\widetilde{L}\)は等価である。
+\end{itembox}
+\(L\)と\(\widetilde{L}\)の作用積分\(I[q]\)と\(\widetilde{I}[q]\)の間に
+\[\widetilde{I}[q]=I[q]+\int_{t_{1}}^{t_{2}}\frac{d}{dt}G(q(t),t)=I[q]+G(q^{(2)},t_{1})-G(q^{(1)},t_{1})\]
+の関係があることが分かる。これより\(I[q]\)と\(\widetilde{I}[q]\)の差は\(t_{1}<t<t_{2}\)での\(q(t)\)には依存しない。したがって、\(2\)つの作用の変分は同一であり、\(\delta\widetilde{I}[q]=\delta I[q]\)である。すなわち\(2\)つのE-L方程式は同一である。\\
+\\
+次に\(L\)と\(\widetilde{L}\)のE-L方程式が同じであることを直接的に導いてみる。それは\(L\)と\(\widetilde{L}\)の差
+\[\Delta L(q,\dot{q},t)=\frac{d}{dt}G(q(t),t)\]
+がオイラー・ラグランジュ方程式を満たすこと
+\[\frac{\partial\Delta L}{\partial q_{i}}-\frac{d}{dt}\frac{\partial\Delta L}{\partial\dot{q}_{i}}=0\]
+を任意の\(G(q(t),t)\)に対して示せば良い。左辺の一項目について、
+\begin{align*}
+\frac{\partial\Delta L}{\partial q_{i}}&=\frac{\partial}{\partial q_{i}}\left(\frac{d}{dt}G(q(t),t)\right)\\
+&=\frac{\partial}{\partial q_{i}}\left(\sum_{j}\frac{\partial G}{\partial q_{j}}\frac{\partial q_{j}}{\partial t}+\frac{\partial G}{\partial t}\right)\\
+&=\sum_{j}\frac{\partial^{2}G}{\partial q_{i}\partial q_{j}}\dot{q}_{j}+\frac{\partial^{2}G}{\partial q_{i}\partial t}=\frac{d}{dt}\frac{\partial G}{\partial q_{i}}
+\end{align*}
+左辺二項目について、
+\begin{align*}
+-\frac{d}{dt}\frac{\partial\Delta L}{\partial\dot{q}_{i}}&=-\frac{d}{dt}\frac{\partial}{\partial\dot{q}_{i}}\left(\frac{d}{dt}G(q(t),t)\right)\\
+&=-\frac{d}{dt}\frac{\partial}{\partial\dot{q}_{i}}\left(\sum_{j}\frac{\partial G}{\partial q_{j}}\dot{q}_{j}+\frac{\partial G}{\partial t}\right)=-\frac{d}{dt}\frac{\partial G}{\partial\dot{q}_{i}}
+\end{align*}
+以上より\(\Delta L\)がE-L方程式を満たすことが示された。\\
+\\
+\begin{itembox}[l]{時間並進の対称性}
+\(q_{i}(t)\)がE-L方程式の解であるならば、任意の定数\(a_{0}\)に対して\(q_{i}(t+a_{0})\)もまた解である。
+\end{itembox}
+Lagrangianが陽な時間依存性を持つ場合、どの時刻で考えるかによって運動の様子が変わるので、時間並進の対称性はない。\\
+\\
+力学変数\(q_{i}(t)\)を持った一般の\(N\)自由度系で、陽な時間依存性をもたないLagrangian\(~L(q(t),\dot{q}(t))\)を考える。今\(q(t)\)がE-L方程式
+\[\frac{d}{dt}\frac{\partial L(q(t),\dot{q}(t))}{\partial\dot{q}_{i}(t)}=\frac{\partial L(q(t),\dot{q}(t))}{\partial q_{i}(t)}\]
+を満たすとする。これに対して\(t\to t+a_{0}\)の変換を行うと
+\[\frac{d}{d(t+a_{0})}\frac{\partial L(q(t+a_{0}),\dot{q}(t+a_{0}))}{\partial\dot{q}_{i}(t+a_{0})}=\frac{\partial L(q(t+a_{0}),\dot{q}(t+a_{0}))}{\partial{q}_{i}(t+a_{0})}\]
+ここで
+\[\frac{d}{d(t+a_{0})}=\frac{d}{dt}\hspace{10mm}であるから\]
+\[\frac{d}{dt}\frac{\partial L(q(t+a_{0}),\dot{q}(t+a_{0}))}{\partial\dot{q}_{i}(t+a_{0})}=\frac{\partial L(q(t+a_{0}),\dot{q}(t+a_{0}))}{\partial{q}_{i}(t+a_{0})}\]
+となり、\(q(t+a_{0})\)がE-L方程式の解になっていることが分かる。\\
+\\
+例えば\(1\)次元調和振動子のE-L方程式の解は
+\[q(t)=A\sin(\omega t+\alpha)\]
+で表されるが、\(t\to t+a_{0}\)とした
+\[q(t+a_{0})=A\sin(\omega t+\alpha+\omega a_{0})\]
+もまた解である。\\
+\\
+\begin{itembox}[l]{空間並進の対称性}
+質点系が空間並進の対称をもつとは、任意の並進ベクトル\(\bm{a}\)に対して、Lagrangian\(~L(\bm{x}_{n}(t),\dot{\bm{x}}_{n}(t),t)\)が次の性質を持つことである。
+\[L(\bm{x}_{n}(t)+\bm{a},\dot{\bm{x}}_{n}(t),t)=L(\bm{x}_{n}(t),\dot{\bm{x}}_{n}(t),t)+\frac{d}{dt}G(\bm{x}_{n}(t),t;\bm{a})\]
+また上式が成り立つならばE-L方程式の任意の解\(\bm{x}_{n}(t)\)に対して\(\bm{x}_{n}(t)+\bm{a}\)もまた解である。
+\end{itembox}
+\(3\)次元空間で\(N\)質点系の各質点の位置ベクトル\(\bm{x}_{n}(t)(n=1,\cdots,N)\)を考える。空間並進とは空間座標を一様にずらすことである。すなわち
+\begin{align*}
+&\bm{x}_{n}(t)\to\bm{x}_{n}(t)+\bm{a}\\
+&\dot{\bm{x}}_{n}(t)\to\frac{d}{dt}(\bm{x}_{n}(t)+\bm{a})=\dot{\bm{x}}_{n}(t)
+\end{align*}
+系が空間並進の対称性をもつとは、上記の変換に対して物理が変わらないことであり、これは空間のどの点も特別な意味をもたず、空間が一様であることを意味する。\\
+\\
+今、\(\bm{x}_{n}(t)\)がE-L方程式の解であるとする。すると
+\[\frac{d}{dt}\frac{\partial L(\bm{x}_{n},\dot{\bm{x}}_{n},t)}{\partial\dot{\bm{x}}_{m}}=\frac{\partial L(\bm{x}_{n},\dot{\bm{x}}_{n},t)}{\partial\bm{x}_{m}}\]
+が成り立っている。\(\bm{x}_{n}\to\bm{x}+\bm{a}\)と変換すると
+\[\frac{d}{dt}\frac{\partial L(\bm{x}_{n}+\bm{a},\dot{\bm{x}}_{n},t)}{\partial\dot{\bm{x}}_{m}}=\frac{\partial L(\bm{x}_{n}+\bm{a},\dot{\bm{x}}_{n},t)}{\partial\bm{x}_{m}}\]
+ここで
+\[\frac{\partial}{\partial\bm{x}}=\frac{\partial}{\partial(\bm{x}+\bm{a})}\]
+であるので
+\[\frac{d}{dt}\frac{\partial L(\bm{x}_{n}+\bm{a},\dot{\bm{x}}_{n},t)}{\partial\dot{\bm{x}}_{m}}=\frac{\partial L(\bm{x}_{n}+\bm{a},\dot{\bm{x}}_{n},t)}{\partial(\bm{x}_{m}+\bm{a})}\]
+これは\(\bm{x}_{n}+\bm{a}\)もまたE-L方程式を満たすということを示している。\\
+\\
+例1.\\
+\(1\)質点系のLagrangian
+\[L=L(\dot{\bm{x}},t)\]
+は完全な空間並進の対称性を持ち、\(G=0\)とした空間並進の条件式を満たす。具体的には時間の関数\(m_{ij}(t)\)を用いた
+\[L=\frac{1}{2}\sum_{i,j}^{3}m_{ij}(t)\dot{x}_{i}\dot{x}_{j}\]
+が挙げられる。\\
+\\
+\\
+例2.\\
+多質点系の場合には、位置ベクトルに依ってもよいが、異なる質点の位置ベクトルの差を通じてのみ依存するようなラグランジアン
+\[L=L(\bm{x}_{n}-\bm{x}_{m},\dot{\bm{x}}_{n},t)\]
+は空間並進対称性をもち、\(G=0\)とした空間並進の条件式を満たす。\\
+\\
+例3.\\
+非自明に\(G\ne0\)である場合には、\(x(t)\)に依存するが、部分的な空間並進の対称性をもつような例が考えられる。具体的には、一様な重力場中の\(1\)質点系で第\(3\)成分方向を鉛直上向きにとって
+\[L(\bm{x},\dot{\bm{x}})=\frac{1}{2}m{\dot{\bm{x}}}^{2}-mgx_{3}\]
+で与えられるLagrangianは空間並進の対称性をもつ。ただし、\(x_{3}\)に陽に依存するため、\(3\)軸方向に対しては空間並進の対称性をもたない。\\
+任意の定数ベクトル\(\bm{a}=(a_{1},a_{2},a_{3})\)の空間並進に対してLagrangianの変化分は\(-mga_{3}\)であるから、
+\[G(\bm{x},t;\bm{a})=-mga_{3}t\]
+とすれば、空間並進対称性の条件式を満たす。実際に\(L=\frac{1}{2}m\dot{\bm{x}}^{2}-mgx_{3}\)、\(G=-mga_{3}t\)とすると空間並進対称性の条件式は
+\begin{align*}
+&(左辺)=L(\bm{x}_{n}+\bm{a},\dot{\bm{x}}_{n},t)=\frac{1}{2}m\dot{\bm{x}}^{2}-mg(x_{3}+a_{3})\\
+&(右辺)=L+G=\frac{1}{2}m\dot{\bm{x}}^{2}-mgx_{3}-mga_{3}
+\end{align*}
+と確かめられる。\\
+\\
+例4.\\
+ある限られた方向の\(\bm{a}\)に対してのみ空間並進の対称性をもつようなLagrangianとして、\(3\)次元調和振動子
+\[L(\bm{x},\dot{\bm{x}})=\frac{1}{2}m\dot{\bm{x}}^{2}-\frac{1}{2}\left(k_{1}{x_{1}}^{2}+k_{2}{x_{2}}^{2}+k_{3}{x_{3}}^{2}\right)\]
+が考えられる。全ての\(k_{i}(i=1,2,3)\)に対し、\(k_{i}\ne0\)の場合、空間並進対称性を全く持たないが、ある\(k_{i}\)がゼロならば、\(i\)方向の空間並進対称性をもつ。\\
+例えば、\(k_{1}=k_{2}=0\)のとき、\(\bm{a}=(a_{1},a_{2},0)\)の空間並進に対して
+\[L(\bm{x}+\bm{a},\dot{\bm{x}})=L(\bm{x},\dot{\bm{x}})=\frac{1}{2}m\dot{\bm{x}}^{2}-\frac{1}{2}k_{3}{x_{3}}^{2}\]
+であり、第\(3\)軸方向を除く空間並進対称性をもっていることが確かめられる。\\
+\\
+\begin{itembox}[l]{空間回転の対称性}
+質点系が空間回転の対称性をもつとは、任意の空間回転行列\(R\)に対してLagrangianが次の条件を満たすことである。
+\[L(R\bm{x}_{n}(t),R\dot{\bm{x}}_{n}(t),t)=L(\bm{x}_{n}(t),\dot{\bm{x}}_{n}(t),t)+\frac{d}{dt}G(\bm{x}_{n}(t),t;R)\]
+また上式が成り立つならば、E-L方程式の任意の解\(\bm{x}_{n}(t)\)に対して、\(R\bm{x}_{n}(t)\)もまた解である。
+\end{itembox}
+
+一般に原点を中心とした空間回転のもとでの位置ベクトル\(\bm{x}\)の変換は
+\[\bm{x}\to R\bm{x}\]
+と表せられる。例えば、第\(3\)軸周りの角度\(\phi\)の回転は
+\[\bm{x}\to\left(\begin{array}{ccc}
+\cos\phi & -\sin\phi & 0\\
+\sin\phi & \cos\phi & 0\\
+0 & 0 & 1
+\end{array}\right)\left(\begin{array}{ccc}
+x_{1}\\
+x_{2}\\
+x_{3}
+\end{array}\right)\]
+一般の空間回転は\(R=R(\phi,\theta,\psi)\)の\(3\)つの角度を用いて表せられる。成分表示では
+\[x_{i}\to\sum_{j}R_{ij}x_{j}\]
+また、\(R\)は直交行列であるから
+\[R^{T}R=RR^{T}=1,\hspace{10mm}\sum_{k}R_{ik}R_{jk}=\sum_{k}R_{ki}R_{kj}=\delta_{ij}=\begin{cases}
+1 & (i=j)\\
+0 & (i\ne j)\end{cases}\]
+\\
+今、\(\bm{x}_{n}(t)\)がE-L方程式の解であるとする。
+\[\frac{d}{dt}\frac{\partial L(\bm{x}_{n},\dot{\bm{x}}_{n},t)}{\partial\dot{\bm{x}}_{m}}=\frac{\partial L(\bm{x}_{n},\dot{\bm{x}}_{n},t)}{\partial\bm{x}_{m}}\]
+\(\bm{x}_{n}\to R\bm{x}_{n}\)と変換すると
+\[\frac{d}{dt}\frac{\partial L(R\bm{x}_{n},R\dot{\bm{x}}_{n},t)}{\partial\dot{\bm{x}}_{m}}=\frac{\partial L(R\bm{x}_{n},R\dot{\bm{x}}_{n},t)}{\partial\bm{x}_{m}}\]
+ここで、
+\[\frac{\partial}{\partial x_{i}}=\frac{\partial x_{j}}{\partial x_{i}}\frac{\partial}{\partial x_{j}}=\frac{\partial\sum_{i}R_{ji}x_{i}}{\partial x_{i}}\frac{\partial}{\partial\sum_{i}R_{ji}x_{i}}=R_{ji}\frac{\partial}{\partial\sum_{i}R_{ji}x_{i}}\]
+すなわち
+\[\frac{\partial}{\partial\bm{x}}=R^{T}\frac{\partial}{\partial R\bm{x}},\hspace{10mm}\frac{\partial}{\partial\dot{\bm{x}}}=R^{T}\frac{\partial}{\partial R\dot{\bm{x}}}\]
+であるから
+\[R^{T}\frac{d}{dt}\frac{\partial L(R\bm{x}_{n},R\dot{\bm{x}}_{n},t)}{\partial R\dot{\bm{x}}_{m}}=R^{T}
+\frac{\partial L(R\bm{x}_{n},R\dot{\bm{x}}_{n},t)}{\partial R\bm{x}_{m}}\]
+両辺に左からRを掛けることで
+\[\frac{d}{dt}\frac{\partial L(R\bm{x}_{n},R\dot{\bm{x}}_{n},t)}{\partial R\dot{\bm{x}}_{m}}=
+\frac{\partial L(R\bm{x}_{n},R\dot{\bm{x}}_{n},t)}{\partial R\bm{x}_{m}}\]
+これより任意の解\(\bm{x}_{n}(t)\)に対して\(R\bm{x}_{n}(t)\)もまた解であることが分かる。\\
+\\
+例1.\\
+空間回転対称性を満たすLagrangianとして、回転不変量のみを用いた
+\[L=L(\bm{x}_{n}\cdot\bm{x}_{m},\dot{\bm{x}}_{n}\cdot\dot{\bm{x}}_{m},\bm{x}_{n}\cdot\dot{\bm{x}}_{m},t)\]
+が考えられる。これは空間回転に対して完全に不変であり、\(G=0\)とした空間回転対称性の条件式を満たす。\\
+位置ベクトルと速度ベクトルの内積
+\[\bm{x}_{n}\cdot\bm{x}_{m},\hspace{10mm}\dot{\bm{x}}_{n}\cdot\dot{\bm{x}}_{m},\hspace{10mm}\bm{x}_{n}\cdot\dot{\bm{x}}_{m}\]
+が回転不変量であることは、\(2\)つのベクトル\(\bm{A},\bm{B}\)に対して
+\[
+\bm{A}\cdot\bm{B}=\sum_{i}A_{i}B_{i}\longrightarrow\sum_{i}\left(\sum_{j}R_{ij}A_{j}\right)\left(\sum_{k}R_{ik}B_{k}\right)=\sum\delta_{jk}A_{j}B_{k}=\bm{A}\cdot\bm{B}
+\]
+から分かる。具体的には、\(1\)質点系における中心力ポテンシャル\(U(r)\)を用いた
+\[L(\bm{x},\dot{\bm{x}})=\frac{1}{2}m\dot{\bm{x}}^{2}-U(r)\]
+がその例である。\\
+\\
+例2.\\
+部分的に空間回転対称性をもった例として、\(3\)次元調和振動子系
+\[L(\bm{x},\dot{\bm{x}})=\frac{1}{2}m\dot{\bm{x}}^{2}-\frac{1}{2}(k_{1}{x_{1}}^{2}+k_{2}{x_{2}}^{2}+k_{3}{x_{3}}^{2})\]
+において、
+\begin{align*}
+&1.~すべてのk_{i}が等しい場合、完全な回転対称性をもつ。\\
+&2.~k_{i}のうち2つのみが等しいとき、他と異なるk_{i}のi軸まわりの回転対称性のみをもつ。\\
+&3.~k_{i}がすべて異なるとき、空間回転対称性を全く持たない。
+\end{align*}
+\(1\)の場合、
+\[L=\frac{1}{2}m\dot{\bm{x}}^{2}-\frac{k}{2}({x_{1}}^{2}+{x_{2}}^{2}+{x_{3}}^{2})=\frac{1}{2}m\dot{\bm{x}}^{2}-\frac{k}{2}\bm{x}^{2}\]
+となり、回転不変量のみからなるので明らかである。\\
+\(2\)の場合\((k_{1}=k_{2}=k)\)、
+\[L=\frac{m}{2}({\dot{x}_{1}}^{2}+{\dot{x}_{2}}^{2})-\frac{k}{2}({x_{1}}^{2}+{x_{2}}^{2})+\frac{m}{2}{\dot{x}_{3}}^{2}-\frac{k_{3}}{2}{x_{3}}^{2}\]
+第\(3\)軸まわりの回転を考えると、\(x_{1}\to\sum R_{j1}x_{1}\)、\(x_{2}\to\sum R_{j2}x_{2}\)、\(x_{3}\to x_{3}\)であり、\(\widetilde{\bm{x}}=(x_{1},x_{2})\)の回転不変量\(\widetilde{\bm{x}}^{2},\widetilde{\dot{\bm{x}}}^{2}\)のみからなるので\(3\)軸まわりの回転対称性をもつ。\\
+\\
+一般に、ある\(2\)つの軸周りの空間回転対称性があるとき、必ず完全な空間対称性をもつ。これは第\(3\)軸周りの回転を含む任意の空間回転を、\(2\)つの軸周りの回転で表すことができるからである。\\
+\\
+例3.\\
+空間回転対称性の条件式で非自明に\(G\ne0\)の例として、\(3\)次元空間の\(1\)質点系で
+\[L(\bm{x},\dot{\bm{x}})=\frac{1}{2}m{\dot{\bm{x}}}^{2}-K\arctan\left(\frac{x_{2}}{x_{1}}\right)\]
+が挙げられる。このLagrangianは第\(3\)軸周りの空間回転
+\[R_{3}(\phi)=\left(\begin{array}{ccc}
+\cos\phi & -\sin\phi & 0\\
+\sin\phi & \cos\phi & 0\\
+0 & 0 & 1\end{array}\right)\]
+に対してのみ、空間回転対称性の条件式を満たす。\\
+実際、極座標系\((r,\theta,\varphi)\)の角度\(\varphi\)に対して、\(\varphi\to\varphi+\phi\)の回転を考えると、\(\dot{\bm{x}}^{2}\)は回転不変量であり、
+\[L(R_{3}\bm{x},R_{3}\dot{\bm{x}})=\frac{1}{2}m\dot{\bm{x}}^{2}-K(\varphi+\phi)=L(\bm{x},\dot{\bm{x}})-K\phi\]
+であり、条件式において\(\displaystyle G(\bm{x},t;R_{3})=-K\phi t\)として成り立つことが分かる。\\
+\\
+\begin{itembox}[l]{Galilei不変性}
+質点系がGalilei不変性をもつとは、任意の\(\bm{V}\)に対して、Lagrangianが次の条件を満たすことである。
+\[L(\bm{x}_{n}(t)-\bm{V}t,\dot{\bm{x}}_{n}(t)-\bm{V},t)=L(\bm{x}_{n}(t),\dot{\bm{x}}_{n}(t),t)+\frac{d}{dt}G(\bm{x}_{n},t;\bm{V})\]
+また、Lagrangianがこの条件を満たすならE-L方程式の任意の解\(\bm{x}(t)\)に対してGalilei変換を行った\(\bm{x}(t)-\bm{V}t\)もまた解である。
+\end{itembox}
+位置ベクトル\(\bm{x}\)と\(t\)の座標系\(K:(\bm{x},t)\)に対して、Galilei変換は速度\(\bm{V}\)で動く座標系\(K^{\prime}:(\bm{x}^{\prime},t^{\prime})\)に移る変換
+\[\bm{x}\to\bm{x}^{\prime}=\bm{x}-\bm{V}t\]
+\[t\to t^{\prime}=t\]
+である。Galilei不変性とはGalilei変換でつながった二つの座標系の間で物理が変わらないことである。\\
+\\
+今\(\bm{x}_{n}\)がE-L方程式を満たすとする。
+\[\frac{d}{dt}\frac{\partial L(\bm{x}_{n},\dot{\bm{x}}_{n},t)}{\partial\dot{\bm{x}}_{m}}=\frac{\partial L(\bm{x}_{n},\dot{\bm{x}}_{n},t)}{\partial\bm{x}_{m}}\]
+\(\bm{x}_{n}\to\bm{x}_{n}-\bm{V}t\)、\(\dot{\bm{x}}_{n}\to\dot{\bm{x}}_{n}-\bm{V}\)と変換すると
+\[\frac{d}{dt}\frac{\partial L(\bm{x}_{n}-\bm{V}t,\dot{\bm{x}}_{n}-\bm{V},t)}{\partial\dot{\bm{x}}_{m}}=\frac{\partial L(\bm{x}_{n}-\bm{V}t,\dot{\bm{x}}_{n}-\bm{V},t)}{\partial\bm{x}_{m}}\]
+ここで
+\[\frac{\partial}{\partial\dot{\bm{x}}}=\frac{\partial}{\partial(\dot{\bm{x}}-\bm{V})},\hspace{10mm}\frac{\partial}{\partial\bm{x}}=\frac{\partial}{\partial(\bm{x}-\bm{V}t)}\]
+が成り立つので
+\[\frac{d}{dt}\frac{\partial L(\bm{x}_{n}-\bm{V}t,\dot{\bm{x}}_{n}-\bm{V},t)}{\partial(\dot{\bm{x}}_{m}-\bm{V})}=\frac{\partial L(\bm{x}_{n}-\bm{V}t,\dot{\bm{x}}_{n}-\bm{V},t)}{\partial(\bm{x}_{m}-\bm{V}t)}\]
+これより任意の解\(\bm{x}_{n}\)に対して、\(\bm{x}_{n}-\bm{V}t\)もその解であることが分かる。\\
+\\
+例1.\\
+時間並進・空間並進・空間回転の対称性をもつ\(1\)質点系のLagrangianを考える。この場合、これまでの考察
+\begin{align*}
+&・時間に陽に依存しない(時間並進)\\
+&・位置ベクトルに陽に依存しない(空間並進)\\
+&・回転不変量のみからなる(空間回転)
+\end{align*}
+により、Lagrangianが\(\dot{\bm{x}}(t)^{2}\)のみの関数
+\[L=L(\dot{\bm{x}}^{2})\]
+であれば、\(3\)つの対称性を満たす。\\
+\\
+例2.\\
+時間並進・空間並進・空間回転・Galilei変換の対称性をもつ\(1\)質点系のLagrangianを考える。前の\(3\)の対称性の条件に加えて、さらにGalilei不変性を課す。\\
+その条件は、任意の\(\bm{V}\)に対して
+\[L((\dot{\bm{x}}-\bm{V})^{2})=L(\dot{\bm{x}}^{2})+\frac{d}{dt}G(\bm{x},t;\bm{V})\]
+を満たす\(G(\bm{x},t;\bm{V})\)が存在することである。\\
+まず\(|\bm{V}|\)が\(|\dot{\bm{x}}|\)に対して十分小さい場合を考える。このとき、左辺を\(\bm{V}\)についてTaylor展開\begin{align*}
+f(x)&\simeq f(x_{0})+\frac{f^{\prime}(x_{0})}{1!}(x-x_{0})+\frac{f^{(2)}(x_{0})}{2!}(x-x_{0})^{2}+\cdots\\
+&\xrightarrow{h\equiv x-x_{0}}f(x_{0}+h)\simeq f(x_{0})+\frac{f^{\prime}(x_{0})}{1!}h+\frac{f^{(2)}(x_{0})}{2!}h^{2}+\cdots
+\end{align*}
+すると
+\begin{align*}
+L((\dot{\bm{x}}-\bm{V})^{2})&=L(\dot{\bm{x}}^{2}-2\bm{V}\cdot\dot{\bm{x}}+\bm{V}^{2})\\
+&=L(\dot{\bm{x}}^{2})+\frac{d L(\dot{\bm{x}}^{2})}{d(\dot{\bm{x}}^{2})}(-2\bm{V}\cdot\dot{\bm{x}}+\bm{V}^{2})+\frac{d^{2}L(\dot{\bm{x}}^{2})}{d(\dot{\bm{x}}^{2})^{2}}(-2\bm{V}\cdot\dot{\bm{x}}+\bm{V}^{2})^{2}+\cdots\\
+&=L(\dot{\bm{x}}^{2})-2\bm{V}\cdot\dot{\bm{x}}\frac{d L(\dot{\bm{x}}^{2})}{d(\dot{\bm{x}}^{2})}+O\left(\bm{V}^{2}\right)
+\end{align*}
+したがって
+\[\frac{d}{dt}G(\bm{x},t;\bm{V})=-2\bm{V}\cdot\dot{\bm{x}}\frac{dL(\dot{\bm{x}}^{2})}{d(\dot{\bm{x}}^{2})}+O\left(V^{2}\right)\]
+この左辺は
+\[\frac{d}{dt}G(\bm{x},t;\bm{V})=\frac{\partial G(\bm{x},t;\bm{V})}{\partial\bm{x}}\frac{\partial\bm{x}}{\partial t}+\frac{\partial G(\bm{x},t;\bm{V})}{\partial t}\]
+と\(\dot{\bm{x}}\)について高々\(1\)次であるから、右辺の\(\displaystyle\frac{dL(\dot{\bm{x}}^{2})}{d(\dot{\bm{x}}^{2})}\)は定数でなければならないことが分かる。\\
+この定数を\(m/2\)と置くと、Lagrangianは
+\[\frac{dL(\dot{\bm{x}}^{2})}{d(\dot{\bm{x}}^{2})}=\frac{m}{2}\hspace{5mm}\Longrightarrow\hspace{5mm}L(\dot{\bm{x}}^{2})=\frac{1}{2}m\dot{\bm{x}}^{2}\]
+全微分項Gを
+\[G(\bm{x},t;\bm{V})=-m\bm{V}\cdot\bm{x}+O\left(V^{2}\right)\]
+とすれば、\(4\)つの対称性の条件を満たす。\\
+ここまで\(\bm{V}\)が微小な場合の議論であったが、得られた\(L(\dot{\bm{x}})\)は一般の\(\bm{V}\)に対しても条件を満たす。実際、
+\begin{align*}
+L((\dot{\bm{x}}-\bm{V})^{2})-L(\dot{\bm{x}}^{2})&=\frac{m}{2}(-2\bm{V}\cdot\dot{\bm{x}}+\bm{V}^{2})=\frac{d}{dt}\left[m\left(-\bm{V}\cdot\bm{x}+\frac{1}{2}\bm{V}^{2}t\right)\right]\\
+&=\frac{d}{dt}G(\bm{x},t;\bm{V})
+\end{align*}
+と\(G\)は\(\bm{x},t,\bm{V}\)にのみ依存するような形で書ける。\\
+\\
+結局、\(4\)つの対称性を課した\(1\)質点系では、外力の働かない自由質点のLagrangianが得られた。このLagrangianから得られるE-L方程式は\(m\ddot{\bm{x}}=0\)であり、等速直線運動を表す。\\
+\\
+例3.\\
+時間並進・空間並進・空間回転・Galilei変換の対称性をもつ\(2\)質点系のLagrangianを考える。\\
+位置ベクトル\(\bm{x}_{1}(t)\)と\(\bm{x}_{2}(t)\)の\(2\)質点系で、\(4\)つの対称性をもつLagrangianの例として
+\[L(\bm{x}_{1},\bm{x}_{2},\dot{\bm{x}}_{1},\dot{\bm{x}}_{2})=\frac{1}{2}m_{1}\dot{\bm{x}}_{1}^{2}+\frac{1}{2}m_{2}\dot{\bm{x}}_{2}^{2}-U(|\bm{x}_{1}-\bm{x}_{2}|)\]
+が挙げられる。ここでポテンシャル\(U\)の例としてクーロンポテンシャル
+\[U(|\bm{x}_{1}-\bm{x}_{2}|)=\frac{1}{4\pi\varepsilon_{0}}\frac{Q_{1}Q_{2}}{|\bm{x}_{1}-\bm{x}_{2}|}\]
+がある。\(|\bm{x}_{1}-\bm{x}_{2}|\)は空間並進、空間回転、Galilei変換のすべてに対して不変である。\\
+このLagrangianは時間に陽に依存しないから時間並進対称性をもつのは明らかである。前半の\(2\)項について、位置ベクトルに陽に依存せず、回転不変量だけからなるので空間並進対称性・空間回転対称性をもつことも分かる。またGalilei変換した差分は
+\begin{align*}
+\frac{1}{2}m_{1}\dot{\bm{x}}_{1}^{2}+\frac{1}{2}m_{2}\dot{\bm{x}}_{2}^{2}-\frac{1}{2}m_{1}(\dot{\bm{x}}_{1}-\bm{V})^{2}-\frac{1}{2}m_{2}(\dot{\bm{x}}_{2}-\bm{V})^{2}&=m_{1}\left(\dot{\bm{x}}_{1}\cdot\bm{V}-\frac{1}{2}\bm{V}^{2}\right)+m_{2}\left(\dot{\bm{x}}_{2}\cdot\bm{V}-\frac{1}{2}\bm{V}^{2}\right)\\
+&=\frac{d}{dt}\left\{m_{1}\left(\bm{x}_{1}\cdot\bm{V}-\frac{1}{2}\bm{V}^{2}t\right)+m_{2}\left(\bm{x}_{2}\cdot\bm{V}-\frac{1}{2}\bm{V}^{2}t\right)\right\}\\
+&=\frac{d}{dt}G(\bm{x}_{1},\bm{x}_{2},t;\bm{V})
+\end{align*}
+より、Galilei不変である。\\
+\\
+\(m_{2}\to\infty\)の極限を考えると、作用が無限大にならないためには\(\dot{\bm{x}}_{2}=0\)が要求される。すなわち、質点\(2\)は静止していなければならないが、この位置を\(x_{2}(t)=0\)ととると残った質点\(1\)のLagrangianは
+\[L(\bm{x},\dot{\bm{x}})=\frac{1}{2}m\dot{\bm{x}}^{2}-U(|\bm{x}|)\]
+となる。ポテンシャル項をもった\(1\)質点系のLagrangianは、より高い対称性をもった\(2\)質点系において片方の質量を無限大にした極限と考えることができる。なお、これはGalilei不変性を失っている。\\
+
+\begin{itembox}[l]{Lorentz不変性}
+Lorentz変換に対して不変な\(1\)質点系のLagrangianは
+\[L=-mc^{2}\sqrt{1-\frac{\dot{\bm{x}}(t)^{2}}{c^{2}}}\]
+で与えられる。
+\end{itembox}
+座標系\(K:(\bm{x},t)\)に対して速度\(\bm{V}=(V,0,0)\)で等速直線運動をする座標系\(K^{\prime}:(\bm{x}^{\prime},t^{\prime})\)を考える。\\
+この\(2\)つの座標系間のLorentz変換は次式で与えられる。
+\begin{align*}
+&x_{1}^{\prime}=\gamma(x_{1}-Vt)\\
+&x_{2}^{\prime}=x_{2}\\
+&x_{3}^{\prime}=x_{3}\\
+&t^{\prime}=\gamma\left(t-\frac{V}{c^{2}}x_{1}\right)
+\end{align*}
+ただし、\(\displaystyle \gamma=\frac{1}{\sqrt{1-V^{2}/c^{2}}}\)である。\\
+\(2\)つの座標系での位置ベクトル\(\bm{x},\bm{x}^{\prime}\)に対して、以下の作用
+\[\int_{t_{1}}^{t_{2}}\sqrt{1-\frac{1}{c^{2}}\left(\frac{d\bm{x}}{dt}\right)^{2}}dt=\int_{t_{1}^{\prime}}^{t_{2}^{\prime}}\sqrt{1-\frac{1}{c^{2}}\left(\frac{d\bm{x}^{\prime}}{dt^{\prime}}\right)^{2}}dt^{\prime}\]
+が同じであることを示す。
+\begin{align*}
+(左辺)=\int_{t_{1}^{\prime}}^{t_{2}^{\prime}}\sqrt{1-\frac{1}{c^{2}}\left(\frac{d\bm{x}^{\prime}}{dt^{\prime}}\right)^{2}}dt^{\prime}&=\int_{t_{1}}^{t_{2}}\sqrt{1-\frac{1}{c^{2}}\left(\frac{d\bm{x}^{\prime}}{dt^{\prime}}\right)^{2}}\frac{dt^{\prime}}{dt}dt\\
+&=\int_{t_{1}}^{t_{2}}\sqrt{\left(\frac{dt^{\prime}}{dt}\right)^{2}-\frac{1}{c^{2}}\left(\frac{dt^{\prime}}{dt}\frac{d\bm{x}^{\prime}}{dt^{\prime}}\right)^{2}}dt\\
+&=\int_{t_{1}}^{t_{2}}\sqrt{\left(\frac{dt^{\prime}}{dt}\right)^{2}-\frac{1}{c^{2}}\left(\frac{d\bm{x}^{\prime}}{dt}\right)^{2}}dt
+\end{align*}
+ここで
+\[\frac{dt^{\prime}}{dt}=\gamma\left(1-\frac{V}{c^{2}}\dot{x}_{1}\right)\]
+\[\frac{dx_{1}^{\prime}}{dt}=\gamma(\dot{x}_{1}-V),\hspace{5mm}\frac{dx_{2}^{\prime}}{dt}=\dot{x}_{2},\hspace{5mm}\frac{dx_{3}^{\prime}}{dt}=\dot{x}_{3}\]
+より
+\begin{align*}
+\int_{t_{1}}^{t_{2}}\sqrt{\left(\frac{dt^{\prime}}{dt}\right)^{2}-\frac{1}{c^{2}}\left(\frac{d\bm{x}^{\prime}}{dt}\right)^{2}}dt&=\int_{t_{1}}^{t_{2}}\sqrt{\gamma^{2}\left(1-\frac{V}{c^{2}}\dot{x}_{1}\right)^{2}-\frac{1}{c^{2}}\left\{\gamma^{2}(\dot{x}_{1}-V)^{2}+\dot{x}_{2}^{2}+\dot{x}_{3}^{2}\right\}}dt\\
+&=\int_{t_{1}}^{t_{2}}\sqrt{\gamma^{2}+\frac{\gamma^{2}V^{2}}{c^{4}}\dot{x}_{1}^{2}-\frac{2\gamma^{2}V}{c^{2}}\dot{x}_{1}-\frac{1}{c^{2}}\left(\gamma^{2}\dot{x}_{1}^{2}+\gamma^{2}V^{2}-2V\gamma^{2}\dot{x}_{1}+\dot{x}_{2}^{2}+\dot{x}_{3}^{2}\right)}dt\\
+&=\int_{t_{1}}^{t_{2}}\sqrt{\left(\gamma^{2}-\frac{\gamma^{2}V^{2}}{c^{2}}\right)-\left(\frac{2\gamma^{2}V}{c^{2}}-\frac{2\gamma^{2}V}{c^{2}}\right)\dot{x}_{1}-\frac{1}{c^{2}}\left\{\left(-\frac{\gamma^{2}V^{2}}{c^{2}}+\gamma^{2}\right)\dot{x}_{1}^{2}+\dot{x}_{2}^{2}+\dot{x}_{3}^{2}\right\}}dt\\
+&=\int_{t_{1}}^{t_{2}}\sqrt{1-\frac{1}{c^{2}}\left(\dot{x}_{1}^{2}+\dot{x}_{2}^{2}+\dot{x}_{3}^{2}\right)}dt=\int_{t_{1}}^{t_{2}}\sqrt{1-\frac{1}{c^{2}}\left(\frac{d\bm{x}}{dt}\right)^{2}}dt
+\end{align*}
+以上よりLagrangian
+\[L=-mc^{2}\sqrt{1-\left(\frac{d\bm{x}}{dt}\right)^{2}}\]
+はLorentz変換に対して不変である。\(|\bm{x}|\)が光速度\(c\)に比べて十分に小さいとき、
+\[\left(\frac{\dot{\bm{x}}(t)}{c}\right)^{2}<<1,\hspace{10mm}\sqrt{1+\varepsilon}\simeq1+\frac{1}{2}\varepsilon+O(\varepsilon^{2})\]
+\[L=-mc^{2}\left\{1-\frac{1}{2}\frac{\dot{\bm{x}}^{2}}{c^{2}}+O\left(\left(\frac{\dot{\bm{x}}}{c}\right)^{2}\right)\right\}\simeq-mc^{2}+\frac{1}{2}m\dot{\bm{x}}(t)^{2}\]
+と近似され、静止質量項\(-mc^{2}\)を除いてGalilei不変性をもつLagrangianと一致する。\\
+\\
+\begin{itembox}[l]{gauge不変性}
+gauge変換に対して不変なLagrangianは
+\[L(\bm{x},\dot{\bm{x}})=\frac{1}{2}m\dot{\bm{x}}(t)^{2}+q\bm{A}(\bm{x}(t),t)\cdot\dot{\bm{x}}(t)-q\phi(\bm{x}(t),t)\]
+で与えられる。ただし、\(\bm{A}(\bm{x},t)\)はベクトルポテンシャルで、\(\phi(\bm{x},t)\)はスカラーポテンシャルである。
+\end{itembox}
+電場\(\bm{E}(\bm{x},t)\)と磁場\(\bm{B}(\bm{x},t)\)はMaxwell方程式で
+\[\bm{\nabla}\times\bm{E}+\frac{\partial\bm{B}}{\partial t}=0,\hspace{10mm}\bm{\nabla}\cdot\bm{B}=0\]
+を満たす。磁場\(\bm{B}\)は任意のベクトル\(\bm{A}\)に対して\(\bm{\nabla}\cdot(\bm{\nabla}\times\bm{A})=0\)が成り立つので
+\[\bm{B}=\bm{\nabla}\times\bm{A}\]
+と表せられる。これを適用すると
+\[\bm{\nabla}\times\bm{E}+\frac{\partial\bm{B}}{\partial t}=0\hspace{5mm}\Longrightarrow\hspace{5mm}\bm{\nabla}\times\left(\bm{E}+\frac{\partial\bm{A}}{\partial t}\right)=0\]
+任意のスカラーポテンシャル\(\phi\)に対して\(\bm{\nabla}\times(-\bm{\nabla}\phi)=0\)が成り立つので
+\[-\bm{\nabla}\phi=\bm{E}+\frac{\partial\bm{A}}{\partial t}\hspace{5mm}\Longrightarrow\hspace{5mm}\bm{E}=-\bm{\nabla}\phi-\frac{\partial\bm{A}}{\partial t}\]
+以上より電場と磁場の\(i\)成分は
+\begin{align*}
+&E_{i}(\bm{x},t)=-\frac{\partial\phi(\bm{x},t)}{\partial x_{i}}-\frac{\partial A_{i}(\bm{x},t)}{\partial t}\\
+&B_{i}(\bm{x},t)=\varepsilon_{ijk}\frac{\partial A_{k}(\bm{x},t)}{\partial x_{j}}
+\end{align*}
+である。\(\varepsilon_{ijk}\)はレビ・チビタの記号と呼ばれ、
+\[\varepsilon_{ijk}=\begin{cases}
+1 & :(i,j,k)が(1,2,3)の偶置換\\
+-1 & :(i,j,k)が(1,2,3)の奇置換\\
+0 & :それ以外\end{cases}\]
+で定義される\(3\)階完全反対称テンソルである。\\
+与えられた\(\bm{E},\bm{B}\)に対して、それらを表示する\(\phi,\bm{B}\)は一意的でない。実際任意関数\(\Lambda(\bm{x},t)\)で
+\begin{align*}
+&\phi(\bm{x},t)\longrightarrow\phi(\bm{x},t)-\frac{\partial}{\partial t}\Lambda(\bm{x},t)\\
+&\bm{A}(\bm{x},t)\longrightarrow\bm{A}(\bm{x},t)+\bm{\nabla}\Lambda(\bm{x},t)
+\end{align*}
+としても\(\bm{E}\)と\(\bm{B}\)は変わらない。これを関数\(\Lambda(\bm{x},t)\)によるgauge変換と呼ぶ。\\
+Lagrangian
+\[L(\bm{x},\dot{\bm{x}})=\frac{1}{2}m\dot{\bm{x}}^{2}+q\bm{A}\cdot\dot{\bm{x}}-q\phi\]
+にgauge変換を行うと
+\begin{align*}
+L&=L+q\bm{\nabla}\Lambda\cdot\dot{\bm{x}}+q\frac{\partial}{\partial t}\Lambda\\
+&=L+q\left(\frac{\partial\Lambda}{\partial\bm{x}}\frac{\partial\bm{x}}{\partial t}+\frac{\partial\Lambda}{\partial t}\frac{\partial t}{\partial t}\right)=L+q\frac{d\Lambda}{dt}
+\end{align*}
+となり、Lagrangianの変化分は\(\Lambda(\bm{x}(t),t)\)の時間についての全微分項となっており、ゲージ変換に対して不変であることが分かった。\\
+\\
+このgauge不変性をもつLagrangianからE-L方程式を求める。\\
+\[\frac{d}{dt}\left(\frac{\partial L}{\partial\dot{x}_{i}}\right)-\frac{\partial L}{\partial x_{i}}=0\]
+各項は
+\begin{align*}
+&\frac{\partial L}{\partial x_{i}}=q\frac{\partial A_{j}(\bm{x},t)}{\partial x_{i}}\dot{x}_{j}-q\frac{\partial\phi(\bm{x},t)}{\partial x_{i}}\\
+&\frac{\partial L}{\partial\dot{x}_{i}}=m\dot{x}_{i}+qA_{i}(\bm{x},t)\\
+&\frac{d}{dt}\left(\frac{\partial L}{\partial\dot{x}_{i}}\right)=m\ddot{x}_{i}+q\left(\frac{\partial A_{i}(\bm{x},t)}{\partial x_{j}}\frac{\partial x_{j}}{\partial t}+\frac{\partial A_{i}(\bm{x},t)}{\partial t}\right)
+\end{align*}
+であるから、E-L方程式は
+\begin{align*}
+m\ddot{x}_{i}&=q\left(\frac{\partial A_{j}(\bm{x},t)}{\partial x_{i}}\dot{x}_{j}-\frac{\partial\phi(\bm{x},t)}{\partial x_{i}}\right)-q\left(\frac{\partial A_{i}(\bm{x},t)}{\partial x_{j}}\dot{x}_{j}+\frac{\partial A_{i}(\bm{x},t)}{\partial t}\right)\\
+&=q\left(\frac{\partial A_{j}(\bm{x},t)}{\partial x_{i}}\dot{x}_{j}-\frac{\partial A_{i}(\bm{x},t)}{\partial x_{j}}\dot{x}_{j}\right)-q\left(\frac{\partial\phi(\bm{x},t)}{\partial x_{i}}+\frac{\partial A_{i}(\bm{x},t)}{\partial t}\right)\\
+&=q\left(\varepsilon_{ijk}\dot{x}_{j}B_{k}+E_{i}\right)
+\end{align*}
+ただし
+\[\frac{\partial A_{j}(\bm{x},t)}{\partial x_{i}}-\frac{\partial A_{i}(\bm{x},t)}{\partial x_{j}}=\varepsilon_{ijk}B_{k}(\bm{x},t)\]
+を用いた。ベクトル表示すると
+\[m\ddot{\bm{x}}=q\left(\dot{\bm{x}}\times\bm{B}+\bm{E}\right)\]
+と電磁場での運動方程式が得られる。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
