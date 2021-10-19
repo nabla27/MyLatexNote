@@ -1,0 +1,221 @@
+%\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+\usepackage{ascmac}
+\usepackage{bm}
+\usepackage{url}
+\newtheorem{df}{Def}[section]
+\newtheorem{thm}{Thm}[section]
+\newtheorem{lem}{補題}[section]
+\newtheorem{co}{系}[section]
+\newtheorem{pro}{問}[section]
+\newtheorem{ans}{解}[section]
+\newtheorem{pf}{proof}[section]
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+\hypersetup{% hyperrefオプションリスト
+setpagesize=false,
+ bookmarksnumbered=true,%
+ bookmarksopen=true,%
+ colorlinks=true,%
+ linkcolor=blue,
+ citecolor=red,
+}
+\title{解析力学4 　Noetherの定理}
+
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\noindent
+\section{Noetherの定理}
+\noindent
+\begin{itembox}[l]{Neotherの定理}
+    Lagrangian\(L(q,\dot{q},t)\)が微小変換
+    \[q_{i}(t)\longrightarrow q_{i}(t)+\sum_{A}F_{i}^{A}(q,\dot{q})\varepsilon_{A}\]
+    \[\dot{q}_{i}\longrightarrow \dot{q}_{i}(t)+\sum_{A}\frac{d}{dt}F_{i}^{A}(q,\dot{q})\varepsilon_{A}\]
+    のもとで、その変化分\(\delta L\)が時間についての全微分項
+    \[\delta L=\sum_{A}\frac{d}{dt}Y^{A}(q,\dot{q},t)\varepsilon_{A}\]
+    となるならば、
+    \[Q^{A}=\sum_{i}\frac{\partial L(q,\dot{q},t)}{\partial\dot{q}_{i}}F_{i}^{A}(q,\dot{q})-Y^{A}(q,\dot{q},t)\]
+    で与えられる\(Q^{A}\)は保存量である。
+\end{itembox}
+index~Aは変換の種類を表し、\(\varepsilon_{A}\)はA番目の変換の大きさを与える微小定数である。\\
+定理の導出を行う。微小変換のもとで、Lagrangianの変化分\(\delta L\)は多変数関数のテイラー展開
+\[
+    L(q+d_{1},\dot{q}+d_{2},t)=L(q,\dot{q},t)+
+    \left(d_{1}\frac{\partial}{\partial q}+d_{2}\frac{\partial}{\partial \dot{q}}\right)L(q,\dot{q},t)+
+    \frac{1}{2}\left(d_{1}\frac{\partial}{\partial q}+d_{2}\frac{\partial}{\partial\dot{q}}\right)^{2}L(q,\dot{q},t)+\cdots
+\]
+を利用して、1次の微小量までとると、
+\[
+    \delta L=\left(\sum_{A}F_{i}^{A}(q,\dot{q})\varepsilon_{A}\right)\frac{\partial L(q,\dot{q},t)}{\partial q_{i}}+
+    \left(\sum_{A}\frac{d}{dt}F_{i}^{A}(q,\dot{q})\varepsilon_{A}\right)\frac{\partial L(q,\dot{q},t)}{\partial\dot{q}_{i}}
+\]
+ここでE-L方程式より
+\[
+    \frac{\partial L(q,\dot{q},t)}{\partial q_{i}}=\frac{d}{dt}\left(\frac{\partial L(q,\dot{q},t)}{\partial\dot{q}_{i}}\right)
+\]
+であるから
+\[
+    \delta L=\left(\sum_{A}F_{i}^{A}(q,\dot{q})\varepsilon_{A}\right)\frac{d}{dt}\left(\frac{\partial L(q,\dot{q},t)}
+    {\partial\dot{q}_{i}}\right)+\left(\sum_{A}\frac{d}{dt}F_{i}^{A}(q,\dot{q})\varepsilon_{A}\right)
+    \frac{\partial L(q,\dot{q},t)}{\partial\dot{q}_{i}}
+\]  
+積の微分法則より
+\[
+    \delta L=\sum_{A}\left[\frac{d}{dt}\left(\frac{\partial L(q,\dot{q},t)}{\partial\dot{q}_{i}}F_{i}^{A}(q,\dot{q})\right)\right]\varepsilon_{A}
+\]
+これが時間についての全微分項となるならば、
+\begin{align*}
+    &\sum_{A}\left[\frac{d}{dt}\left(\frac{\partial L(q,\dot{q},t)}{\partial\dot{q}_{i}}F_{i}^{A}\right)\right]\varepsilon_{A}
+    =\sum_{A}\frac{d}{dt}Y^{A}(q,\dot{q},t)\varepsilon_{A}\\
+    \Longrightarrow&\sum_{A}\left[\frac{d}{dt}\left(\frac{\partial L}{\partial\dot{q}_{i}}F_{i}^{A}-Y^{A}\right)\right]=0
+\end{align*}
+各Aは独立であるから、各Aに対して
+\[
+    \frac{d}{dt}\left(\frac{\partial L(q,\dot{q},t)}{\partial\dot{q}_{i}}F_{i}^{A}-Y^{A}\right)=0  
+\]
+すなわち、
+\[
+    Q^{A}=\sum_{i}\frac{\partial L}{\partial\dot{q}_{i}}F_{i}^{A}-Y^{A}
+\]
+は時間に依らず一定で、保存量となる。
+\[
+    \frac{d}{dt}Q^{A}=0
+\]
+\\
+\begin{itembox}[l]{時間並進対称性とエネルギー保存則}
+    系が時間並進対称性をもつとき、エネルギー
+    \[
+        E=\frac{\partial L}{\partial\dot{q}_{i}}-L(q,\dot{q})
+    \]
+    は保存される。
+\end{itembox}
+Noetherの定理からこれを導く。\\
+時間並進対称性をもつ(陽な時間依存性をもたない)Lagrangianを考える。微小時間\(\varepsilon_{0}\)だけ\(t\to t+\varepsilon_{0}\)
+変換すると、\(q\)と\(\dot{q}\)は
+\[q_{i}(t)\longrightarrow q_{i}(t+\varepsilon_{0})\simeq q_{i}(t)+\dot{q}_{i}(t)\varepsilon_{0}\]
+\[\dot{q}_{i}(t)\longrightarrow\dot{q}_{i}(t+\varepsilon_{0})\simeq\dot{q}_{i}(t)+\ddot{q}_{i}\varepsilon_{0}\]
+となる。このとき、Lagrangianの変化分\(\delta L\)は
+\[\delta L=\frac{\partial L}{\partial q_{i}}\dot{q}_{i}\varepsilon_{0}+
+\frac{\partial L}{\partial\dot{q}_{i}}\ddot{q}_{i}\varepsilon_{0}=\frac{d}{dt}L(q,\dot{q})\varepsilon_{0}\]
+Noetherの定理より、\(F^{A}\to\dot{q}_{i},Y^{A}\to L\)が対応して保存量
+\[E=\frac{\partial L(q,\dot{q})}{\partial\dot{q}_{i}}\dot{q}_{i}-L(q,\dot{q})\]
+を得る。\\
+\\
+今、Lagrangianが
+\[L(q,\dot{q})=T(q,\dot{q})-U(q)\]
+で与えられている\(N\)自由度系を考える。\(U(q)\)はポテンシャルエネルギーで、運動項\(T(q,\dot{q})\)は
+\[T(q,\dot{q})=\frac{1}{2}\sum_{i,j=1}^{N}m_{ij}(q)\dot{q}_{i}\dot{q}_{j}\]
+と\(q\)の任意関数\(m_{ij}(q)\)を用いて表される。ここで
+\begin{align*}
+    \sum_{i=1}^{N}\frac{\partial T}{\partial\dot{q}_{i}}\dot{q}_{i}&=\sum_{k=1}^{N}\left[\frac{\partial}{\partial\dot{q}_{k}}
+    \left(\frac{1}{2}\sum_{i,j=1}^{N}m_{ij}\dot{q}_{i}\dot{q}_{j}\right)\dot{q}_{k}\right]\\
+    &=\left(\frac{1}{2}\sum_{\substack{i=1 \\ i\neq1}}^{N}m_{i1}\dot{q}_{i}q_{1}+\frac{1}{2}\sum_{\substack{j=1 \\ j\neq1}}^{N}
+    m_{1j}\dot{q}_{1}\dot{q}_{j}+m_{11}\dot{q}_{1}\dot{q}_{1}\right)
+    +\left(\frac{1}{2}\sum_{\substack{i=1 \\ i\neq2}}^{N}m_{i2}\dot{q}_{i}q_{2}+\frac{1}{2}\sum_{\substack{j=1 \\ j\neq2}}^{N}
+    m_{2j}\dot{q}_{2}\dot{q}_{j}+m_{22}\dot{q}_{2}\dot{q}_{2}\right)+\cdots\\
+    &=\sum_{i,j=1}^{N}m_{ij}\dot{q}_{i}\dot{q}_{j}=2T
+\end{align*}
+であるから
+\[
+    E=\sum_{i=1}^{N}\frac{\partial L}{\partial\dot{q}_{i}}\dot{q}_{i}-L(q,\dot{q})
+    =\sum_{i=1}^{N}\frac{\partial T}{\partial\dot{q}_{i}}\dot{q}_{i}-(T-U)
+    =T(q,\dot{q})+U(q)
+\]
+以上より、この系のエネルギー\(E\)はLagrangianのポテンシャル項\(U\)の符号を逆にしたもので与えられる。\\
+\begin{itembox}[l]{空間並進対称性と運動量保存則}
+    ある\(N\)質点系が空間並進対称性をもつとき、運動量
+    \[\bm{P}=\sum_{n=1}^{N}\frac{\partial L}{\partial\dot{\bm{x}}_{n}}\]
+    は保存される。
+\end{itembox}
+Noetherの定理からこれを導く。今Lagrangianが空間並進\\
+\[\bm{x}_{n}(t)\longrightarrow\bm{x}_{n}+\bm{\varepsilon},\hspace{5mm}
+\dot{\bm{x}}_{n}(t)\longrightarrow\dot{\bm{x}}_{n}(t)\]
+に対して厳密に不変であるとする。つまり、\(\delta L\to0\)である。\\
+Noetherの定理より、質点のインデックス\(n\)と座標成分\(i\)、空間並進の方向\(j\)を用いて
+\[q_{i}\to(\bm{x}_{n})_{i},\hspace{5mm}\varepsilon_{A}\to\varepsilon_{j},\hspace{5mm}Y^{A}=0\]
+が対応して微小変換\(F_{(n,i)}^{j}\)は
+\[F_{(n,i)}^{j}=\delta_{ij}=\begin{cases}
+    1 & (i=j)\\
+    0 & (i\neq j)\\
+\end{cases}\]
+となる。以上より保存量
+\[P_{j}=\sum_{n=1}^{N}\sum_{i=1}^{3}\frac{\partial L}{\partial(\dot{\bm{x}}_{n})_{i}}F_{(n,i)}^{j}
+=\sum_{n=1}^{N}\frac{\partial L}{\partial(\dot{\bm{x}}_{n})_{j}},\hspace{10mm}\bm{P}
+=\sum_{n=1}^{N}\frac{\partial L}{\partial\dot{\dot{\bm{x}}}_{n}}\]
+を得る。\\
+\\
+質点系において空間並進の対称性に付随した保存量を運動量と呼ぶ。\\
+質点\(n\)の運動量\(\bm{p}_{n}\)を
+\[\bm{p}_{n}\equiv\frac{\partial L}{\partial\dot{\bm{x}}{n}}\]
+と定義すると、全運動量は
+\[\bm{P}=\sum_{n=1}^{N}\bm{p}_{n}\]
+で与えられる。例として、空間並進対称性をもつLagrangian
+\[L=\sum_{n=1}^{N}\frac{1}{2}m_{n}\dot{\bm{x}}_{n}^{2}-U(\bm{x}_{1}-\bm{x}_{N},\bm{x}_{2}-\bm{N},\cdots)\]
+の場合、運動量は
+\[\bm{p}_{n}=m_{n}\dot{\bm{x}}_{n},\hspace{10mm}\bm{P}=\sum_{n=1}^{N}m_{n}\dot{\bm{x}}_{n}\]
+とニュートン力学で学んだものと一致する。\\
+\\
+力学変数\(q_{i}\)をもった一般の系において、\(q_{i}\)に対応した\underline{一般化運動量}\(p_{i}\)を
+\[p_{i}\equiv\frac{\partial L(q,\dot{q},t)}{\partial\dot{q}_{i}}\]
+で定義する。この系のエネルギーは
+\[E=p_{i}\dot{q}_{i}-L(q,\dot{q})\]
+で表される。\\
+一般化運動量は一般には保存されないが、系のLagrangianがある力学変数\(q_{k}\)に依らない場合\((\dot{q}_{k}には依存してもよい)\)、
+\(q_{k}\)に対応した一般化運動量\(p_{k}=\partial L/\partial\dot{q}_{k}\)は保存する。\\
+それはLagrangianが\(q_{k}\to q_{k}+\varepsilon,~~\dot{q}_{k}\to\dot{q}_{k}\)の変換で不変となり、\(p_{k}\)がNoetherの定理
+の対応する保存量であることから分かる。直接的には
+\[\frac{dp_{k}}{dt}=\frac{d}{dt}\left(\frac{\partial L}{\partial\dot{q}_{k}}\right)=\frac{\partial L}{\partial q_{k}}=0\]
+より導かれる。この\(q_{k}\)のようにLagrangianが依存しない力学変数を循環座標と呼ぶ。\\
+
+\newpage
+\begin{itembox}[l]{空間回転対称性と角運動量保存則}
+    系が空間回転対称性をもつとき、角運動量
+    \[\bm{M}=\bm{x}\times\bm{p}\]
+    は保存される。
+\end{itembox}
+Noetherの定理よりこれを導く。微小ベクトル\(\delta\bm{\varphi}\)により定められる微小空間回転
+\[\bm{x}\longrightarrow\bm{x}+\delta\bm{\varphi}\times\bm{x}\]
+\[\dot{\bm{x}}\longrightarrow\dot{\bm{x}}+\delta\bm{\varphi}\times\dot{\bm{x}}\]
+を考える。1質点系のLagrangianがこの微小空間回転で厳密に不変であるとする。\\
+Noetherの定理より、座標成分\(i\)と回転方向\(j(=1,2,3)\)を用いて
+\[q_{i}\to x_{i},\hspace{5mm}\varepsilon_{A}\to\delta\varphi_{j},\hspace{5mm}Y^{A}\to0,
+\hspace{5mm}F_{i}^{j}=\varepsilon_{ijk}x_{k}\]
+と対応する。これより
+\begin{align*}
+    Q^{A}&=\frac{\partial L(q,\dot{q},t)}{\partial\dot{q}_{i}}F_{i}^{A}(q,\dot{q})-Y^{A}(q,\dot{q},t)\\
+    &=\frac{\partial L}{\partial\dot{x}_{i}}\varepsilon_{ijk}x_{k}=\varepsilon_{ijk}x_{k}p_{i}=\varepsilon_{jki}x_{k}p_{i}
+\end{align*}
+ベクトルで表すと保存量
+\[\bm{M}=\bm{x}\times\bm{p}\]
+を得る。\\
+\\
+\section{Noetherの定理に依らない保存量の導出}
+\noindent
+\textbf{エネルギー保存}
+\[\frac{d}{dt}L(q,\dot{q})=\frac{\partial L(q,\dot{q})}{\partial q_{i}}\dot{q}_{i}+
+\frac{\partial L(q,\dot{q})}{\partial\dot{q}_{i}}\ddot{q}_{i}
+=\left(\frac{d}{dt}\frac{\partial L(q,\dot{q})}{\partial\dot{q}_{i}}\right)\dot{q}_{i}
++\frac{\partial L(q,\dot{q})}{\partial\dot{q}_{i}}\ddot{q}_{i}
+=\frac{d}{dt}\left(\frac{\partial L(q,\dot{q})}{\partial\dot{q}_{i}}\dot{q}_{i}\right)\]
+\textbf{運動量保存}
+\[0=\delta L=\sum_{n=1}^{N}\frac{\partial L}{\partial\bm{x}_{n}}\cdot\bm{\varepsilon}
+=\frac{d}{dt}\sum_{n=1}^{N}\frac{\partial L}{\partial\dot{\bm{x}}_{n}}\cdot\bm{\varepsilon}\]
+\textbf{角運動量保存}
+\[0=\delta L=\frac{\partial L}{\partial\bm{x}}\cdot(\delta\bm{\varphi}\times\bm{x})
++\frac{\partial L}{\partial\dot{\bm{x}}}\cdot(\delta\bm{\varphi}\times\dot{\bm{x}})
+=\delta\bm{\varphi}\cdot\left(\bm{x}\times\frac{\partial L}{\partial\bm{x}}+\dot{\bm{x}}\times\frac{\partial L}{\partial\dot{\bm{x}}}\right)
+=\delta\bm{\varphi}\cdot\frac{d}{dt}\left(\bm{x}\times\frac{\partial L}{\partial\dot{\bm{x}}}\right)\]
+
+
+
+
+
+
+
+
+\end{document}
