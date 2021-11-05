@@ -6,6 +6,8 @@
 \usepackage{ascmac}
 \usepackage{bm}
 \usepackage{url}
+\usepackage{ulem}
+\usepackage[top=20truemm,bottom=20truemm,left=25truemm,right=25truemm]{geometry}
 \newtheorem{df}{Def}[section]
 \newtheorem{thm}{Thm}[section]
 \newtheorem{lem}{補題}[section]
@@ -84,12 +86,15 @@ setpagesize=false,
 \end{itembox}
 熱力学第一法則より明らか。\\
 \hypertarget{熱力学第二法則}{}
+\hypertarget{Clausiusの原理}{}
 \begin{itembox}[l]{\textbf{Prin. Clausius(クラジウス)の原理}}
 熱が高温から低温へ移る現象はそれ以外に何の変化も残らないならば不可逆である。
 \end{itembox}
+\hypertarget{Thomsonの原理}{}
 \begin{itembox}[l]{\textbf{Prin. Thomson(トムソン)の原理}}
 仕事が熱に変わる現象は、それ以外に何の変化も残らないならば不可逆である。
 \end{itembox}
+\hypertarget{Plankの原理}{}
 \begin{itembox}[l]{\textbf{Prin. Planck(プランク)の原理}}
 摩擦により熱が発生する現象は不可逆である。
 \end{itembox}
@@ -134,13 +139,13 @@ Thomsonの原理が正しくないとして、熱源\(L\)から熱量\(Q_{L}\)�
 \end{itembox}
 Carnotサイクルの熱機関本体\(R\)には様々な選択肢があるが、例えば、気体の入ったピストン付きシリンダーが分かりやすい。サイクルは次のような準静的等温過程と準静的断熱過程を交互に繰り返す。\\
 \\
-\((i)\)~\(R\)を高温熱浴\(H\)に接触させることにより、\(R\)を膨張させてゆっくりと外部系\(e\)に対して仕事をさせる。\(H\)は熱浴であるから、この間\(R\)の温度は一定値\(T_{H}\)に保たれる。すなわち、これは\underline{準静的等温膨張過程}である。そして、\(R\)が適当な大きさの体積\(V_{1}\)にまで膨張したところで、次のステップに移る。\\
+\((i)\)~\(R\)を高温熱浴\(H\)に接触させることにより、\(R\)を膨張させてゆっくりと外部系\(e\)に対して仕事をさせる。\(H\)は熱浴であるから、この間\(R\)の温度は一定値\(\theta_{H}\)に保たれる。すなわち、これは\underline{準静的等温膨張過程}である。そして、\(R\)が適当な大きさの体積\(V_{1}\)にまで膨張したところで、次のステップに移る。\\
 \\
-\((ii)\)~\(R\)を\(H\)から離し、\(e\)に対してはそのままゆっくりと仕事をさせ続ける。この間、\(R\)は\(H,L,e\)のいずれとも断熱されているから、これは\underline{準静的断熱膨張過程}であり、\(R\)は冷えてゆく。\(R\)の温度がちょうど\(L\)の温度\(T_{L}\)まで下がったところで次のステップに移る。\\
+\((ii)\)~\(R\)を\(H\)から離し、\(e\)に対してはそのままゆっくりと仕事をさせ続ける。この間、\(R\)は\(H,L,e\)のいずれとも断熱されているから、これは\underline{準静的断熱膨張過程}であり、\(R\)は冷えてゆく。\(R\)の温度がちょうど\(L\)の温度\(\theta_{L}\)まで下がったところで次のステップに移る。\\
 \\
-\((iii)\)~\(R\)を低温熱浴\(L\)に接触させつつ、\(e\)にゆっくりと仕事をさせることにより、\(R\)を圧縮する。この間\(R\)の温度は一定値\(T_{L}\)に保たれているので、これは\underline{準静的等温圧縮過程}である。そして、\(R\)が適当な大きさの体積\(V_{3}\)まで圧縮されたところで、次のステップに移る。\\
+\((iii)\)~\(R\)を低温熱浴\(L\)に接触させつつ、\(e\)にゆっくりと仕事をさせることにより、\(R\)を圧縮する。この間\(R\)の温度は一定値\(\theta_{L}\)に保たれているので、これは\underline{準静的等温圧縮過程}である。そして、\(R\)が適当な大きさの体積\(V_{3}\)まで圧縮されたところで、次のステップに移る。\\
 \\
-\((iv)\)\(R\)を\(L\)から離し、\(e\)にはそのままゆっくりと圧縮の仕事をさせ続ける。この間、\(R\)は\(H,L,e\)のいｄずれとも断熱されているから、これは\underline{準静的断熱圧縮過程}であり、\(R\)は熱くなってゆく。\(R\)の温度がちょうど\(H\)の温度\(T_{H}\)まで上がったところでステップ\((i)\)に戻る。\\
+\((iv)\)\(R\)を\(L\)から離し、\(e\)にはそのままゆっくりと圧縮の仕事をさせ続ける。この間、\(R\)は\(H,L,e\)のいｄずれとも断熱されているから、これは\underline{準静的断熱圧縮過程}であり、\(R\)は熱くなってゆく。\(R\)の温度がちょうど\(H\)の温度\(\theta_{H}\)まで上がったところでステップ\((i)\)に戻る。\\
 \\
 より一般的なCarnotサイクルの定義として、二つの熱源\(H,T\)から熱\(Q_{1}(>0),Q_{2}(<0)\)を受け取り、外界に\(A=Q_{1}+Q_{2}\)の仕事をする機関を指すことがある。これが可逆ならば、上のCarnotサイクルの
 定義と一致する(準静的過程は可逆的)。\\
@@ -161,7 +166,7 @@ Carnotサイクルの熱機関本体\(R\)には様々な選択肢があるが、
 \end{itembox}
 \hypertarget{Carnotの原理}{}
 \begin{itembox}[l]{\textbf{Prin. Carnotの原理}}
-熱源\(H,L\)の間に働く可逆熱機関の効率\(\eta\)は、\(H,L\)の温度\(T_{H},T_{L}\)だけで定まり、作業物質のいかんなどによらない。また同じ熱源の間に働く任意の不可逆熱機関の効率\(\eta^{\prime}\)は\(\eta\)よりも小さい。
+熱源\(H,L\)の間に働く可逆熱機関の効率\(\eta\)は、\(H,L\)の温度\(\theta_{H},\theta_{L}\)だけで定まり、作業物質のいかんなどによらない。また同じ熱源の間に働く任意の不可逆熱機関の効率\(\eta^{\prime}\)は\(\eta\)よりも小さい。
 \end{itembox}
 \((証明1)\)\\
 一つの可逆機関\(C\)は効率\(\eta\)で、高熱源\(H\)からもらう熱量を\(Q_{H}\)、低熱源\(L\)に与える熱量を\(Q_{L}\)とし、仕事\(W=Q_{H}-Q_{L}\)を外部にする。もう一つの不可逆熱機関\(C^{\prime}\)も同様に\(\eta^{\prime},Q_{H}^{\prime},Q_{L}^{\prime},W^{\prime}=Q_{H}^{\prime}-Q_{L}^{\prime}\)とする。\\
@@ -186,6 +191,272 @@ Carnotサイクルの熱機関本体\(R\)には様々な選択肢があるが、
 が言える。つまり、このとき
 \[\eta^{\prime}=\eta\]
 である。これより\underline{決められた温度の\(2\)つの熱源の間ではたらく可逆機関の効率は等しい。}\\
+
+\section{第二回 10/13}\hypertarget{list2}
+\noindent
+\hypertarget{絶対温度}{}
+\begin{itembox}[l]{\textbf{Def. 絶対温度}}
+    熱源\(H(\theta_{H})\)と\(L(\theta_{L})\)の絶対温度の\(T_{H},T_{L}\)の比は、この間にはたらく可逆Carnotサイクルの効率を\(\eta(\theta_{H},\theta_{L})\)として
+    \begin{equation*}
+        \frac{T_{L}}{T_{H}}=\frac{|Q_{2}|}{Q_{1}}=1-\eta(\theta_{H},\theta_{L})
+    \end{equation*}
+    で定義される。
+\end{itembox}
+上のように絶対温度の比は定義されているので、絶対温度目盛を定める為には、ある温度定点の温度数値を定めればよい。これは2019年に改正されるまではSIにおける熱力学的温度の
+単位ケルビン\((K)\)は「水の三重点の熱力学的温度の\(1/273.16\)」と定義されてきた。しかし、水の三重点温度は分子を構成する同位体の種類により変動し、複数の同位体が混在
+する場合はその組成比に依存するという曖昧さがあった。また、計測に用いるガラス製のセルを用いた水の三重点の実現には、ガラスに含まれる成分の溶出など物質固有の性質に基づく
+定義では限界があった。これにより、ボルツマン定数\(k\)の値を用いて熱力学的温度\(T\)が決定されるようになった。
+これらの詳細は(\url{https://unit.aist.go.jp/nmij/public/report/SI_9th/pdf/5_SI_%E3%82%B1%E3%83%AB%E3%83%93%E3%83%B3.pdf})を参照。\\
+上記の絶対温度の比の定義が可能であるためには、
+\begin{equation*}
+    1-\eta(\theta_{H},\theta_{L})=f(\theta_{H},\theta_{L})=\frac{g(\theta_{H})}{g(\theta_{L})}
+\end{equation*}
+という関数形をもつことが必要である。\\
+これを示すために熱源\(R_{1},R_{2},R_{3}\)とその間に働くCarnotサイクル\(C_{12},C_{23},C_{13}\)を考える。熱源\(R_{1}\)から放出される熱量と吸収する熱量を
+\(Q_{1},Q_{1}^{\prime}\)、熱源\(R_{2}\)から放出される熱量と吸収する熱量をともに\(Q_{2}\)、\(R_{3}\)が放出する熱量と吸収する熱量をそれぞれ
+\(Q_{3},Q_{1}^{\prime}\)と定める。それぞれの\(Q\)値は正である。これにより各Carnotサイクルがなす仕事は
+\begin{equation*}
+    W_{12}=Q_{1}-Q_{2},\hspace{5mm}W_{23}=Q_{2}-Q_{3},\hspace{5mm}W_{13}=Q_{1}^{\prime}-Q_{3}
+\end{equation*}
+で与えられる。今、サイクル\(C_{13}\)は冷却機として運転させる。そうすると全サイクルのなす仕事は
+\begin{equation*}
+    W_{all}=W_{12}+W_{23}-W_{13}=Q_{1}-Q_{1}^{\prime}
+\end{equation*}
+である。もしこれが正\((W_{all}>0)\)ならば、\(Q_{1}-Q_{1}^{\prime}>0\)であり、\(R_{1}\)だけを冷やして正味の仕事が得られたことになる。
+これは\hyperlink{Thomsonの原理}{Thomsonの原理}「仕事が熱に変わる現象は、それ以外に何の変化も残らないならば不可逆である」に反する。
+また同様に\(W_{all}<0\)ならば、すべてのサイクルを逆に運転させて同じことが言え、やはりThomsonの原理に反する。ゆえに\(Q_{1}=Q_{1}^{\prime}\)である。以上より
+\begin{equation*}
+    f(\theta_{1},\theta_{3})=\frac{Q_{3}}{Q_{1}^{\prime}}=\frac{Q_{3}}{Q_{1}}=\frac{Q_{2}}{Q_{1}}\frac{Q_{1}}{Q_{2}}=f(\theta_{1},\theta_{2})f(\theta_{2},\theta_{3})
+\end{equation*}
+すなわち、
+\begin{equation*}
+    f(\theta_{1},\theta_{2})=\frac{f(\theta_{1},\theta_{3})}{f(\theta_{2},\theta_{3})}=\frac{g(\theta_{1})}{g(\theta_{2})}
+\end{equation*}
+が示された。\\
+\begin{itembox}[l]{\textbf{Thm. Clausiusの不等式}}
+    系が、いくつかの外部系\(e_{i}\)と力学的仕事をやりとりしながら、次々に熱接触するサイクル過程において、外部系がすべて熱浴であれば、\(e_{i}\)から系に流れこんだ
+    熱\(Q_{i}\)は、\(e_{i}\)の温度を\(T_{i}\)として次の不等式を満たす。
+    \begin{equation*}
+        \sum_{i}\frac{Q_{i}}{T_{i}}\leq0
+    \end{equation*}
+    これを\underline{Clausius(クラウジウス)の不等式}と呼ぶ。特に各サイクルが可逆である場合に等号が成り立つ。
+\end{itembox}
+これは、サイクル過程における熱の出入りに制限があることを示している。ということは、仕事の出入りにも何か根本的な制限があることになる。それはエネルギー保存則より、サイクル過程では
+着目系に流れ込んだ熱\(Q_{i}\)の総量が外部系にした仕事の総量になるからである。このClausiusの不等式は次のように導かれる。\\
+\\
+・一つの補助熱源\(R_{0}(温度T_{0}[K])\)と\(n\)個の熱源\(R_{1},\cdots R_{n}\)を考える。\\
+・これらの間にCarnotサイクル\(C_{1},\cdots C_{n}\)を働かせる。\\
+・各サイクルは\(R_{0}\)から熱量\(Q_{i}^{\prime}\)をとり、\(R_{i}\)に熱量\(Q_{i}\)を与えるようにする。\\
+すると\hyperlink{絶対温度}{絶対温度比の定義}より\(Q_{i}^{\prime}\)は
+\begin{equation*}
+    Q_{i}^{\prime}=Q_{i}\frac{T_{0}}{T_{i}}
+\end{equation*}
+\(R_{i}\)は熱浴で温度変化がないと考えると、\(n\)個のサイクル全体では
+\begin{equation*}
+    Q_{all}=\sum_{i}Q_{i}^{\prime}=T_{0}\sum_{i}\frac{Q_{i}}{T_{i}}
+\end{equation*}
+だけの熱量を受け取る。1サイクルで内部エネルギーの変化はゼロなので、これが全体の仕事に変換される。ここで\hyperlink{Thomsonの原理}{Thomsonの原理}
+「仕事が熱に変わる現象は、それ以外に何の変化も残らなければ不可逆である」から、\(Q_{all}\leq0\)でなければならない。ゆえに
+\begin{equation*}
+    \sum_{i}\frac{Q_{i}}{T_{i}}\leq0
+\end{equation*}
+である。さらに全サイクルを逆に運転させると同様にして
+\begin{equation*}
+    \sum_{i}\frac{-Q_{i}}{T_{i}}\geq0
+\end{equation*}
+つまり、等号が成り立つのは全サイクル過程が可逆的である場合のみである。\\
+一般化として、外部系の温度が、熱をやりとりする最中に変わってしまったとしても、連続的な温度をもつ無数の熱源と熱交換すると考え、常に平衡状態であるとみなせる。
+Clausiusの不等式の積分形として、温度\(T_{i}\)の熱源から\(d^{\prime}Q\)の熱を受け取りながら、1サイクルするとき
+\begin{equation*}
+    \oint\frac{d^{\prime}Q}{T^{\prime}}=0
+\end{equation*}
+が成り立つ。
+\hypertarget{エントロピー}{}
+\begin{itembox}[l]{\textbf{Def. エントロピー}}
+    着目系のある熱平衡状態\(\alpha_{0}\)を基準状態とし、他の任意の熱平衡状態\(\alpha\)におけるその系のエントロピー\(S(\alpha)\)を
+    \begin{equation*}
+        S(\alpha)=\int_{\alpha_{0}}^{\alpha}\frac{d^{\prime}Q}{T}
+    \end{equation*}
+    で定義する。\(\alpha_{0}\)から\(\alpha\)への過程は準静的過程とする。
+\end{itembox}
+この定義からエントロピーは状態量であることが分かる。
+熱平衡状態\(\alpha_{0}\)から熱平衡状態\(\alpha\)を経由する可逆サイクル過程を考える。2つの熱平衡状態を結ぶ2つの準静的過程を\(\Gamma_{1},\Gamma_{2}\)とすると
+\hyperlink{Clausiusの不等式}{Clausiusの不等式}の積分形より
+\begin{equation*}
+    \int_{\alpha_{0},\Gamma_{1}}^{\alpha}\frac{d^{\prime}Q}{T}+\int_{\alpha,\Gamma_{2}}^{\alpha_{0}}\frac{d^{\prime}Q}{T}=0
+\end{equation*}
+が成り立つ。したがって
+\begin{equation*}
+    \int_{\alpha_{0},\Gamma_{1}}^{\alpha}\frac{d^{\prime}Q}{T}=\int_{\alpha_{0},\Gamma_{2}}^{\alpha}\frac{d^{\prime}Q}{T}
+\end{equation*}
+つまり、経路に依らず、始点と終点\(\alpha_{0},\alpha\)のみに依存する。今、\(\alpha_{0}\)は固定されているので\(S\)は\(\alpha\)で決まる状態量であることが分かる。\\
+エントロピーは微分形で
+\begin{equation*}
+    dS=\frac{d^{\prime}Q}{T}
+\end{equation*}
+で与えられる。\\
+\hypertarget{内部エネルギーの全微分形}{}
+\begin{itembox}[l]{\textbf{Thm. 内部エネルギーの全微分形}}
+    \begin{equation*}
+        dU=TdS-pdV
+    \end{equation*}
+\end{itembox}
+気体にエネルギーが蓄えられる、つまり仕事をされると\(dV<0\)となることに注意して、\hyperlink{熱力学第一法則}{熱力学第一法則}\((dU=d^{\prime}Q+d^{\prime}W)\)に
+エントロピーの微分形と\(d^{\prime}W=-pdV\)を代入すると得られる。\\
+\hypertarget{Legendre変換}{}
+\begin{itembox}[l]{\textbf{Def. Legendre変換}}
+    関数\(f(x)\)のLegendre変換\(g(p)\)はいくつかの流儀より次のように定義される。
+    \begin{equation*}
+        g(p)\equiv\sup_{x}[px-f(x)]
+    \end{equation*}
+    \begin{equation*}
+        g(p)\equiv xp-f(x)~~~\mathrm{at}~~~x~~~\mathrm{such~that}~~~f^{\prime}(x)=p~~~(p_{\mathrm{inf}}<p<p_{\mathrm{sup}})
+    \end{equation*}
+    \begin{equation*}
+        g(p)\equiv f(x)-xp~~~\mathrm{at}~~~x~~~\mathrm{such~that}~~~f^{\prime}(x)=p~~~(p_{\mathrm{inf}}<p<p_{\mathrm{sup}})
+    \end{equation*}
+\end{itembox}
+定義の条件を満たすような\(x\)を\(p\)で表し、それを代入することで得られる。\\
+例.\\
+\((0,+\infty)\)で定義される関数\(f(x)=x^{2}+1\)を考える。定義を満たす\(x\)の値は
+\begin{equation*}
+    f^{\prime}(x)=2x=p\hspace{5mm}\Longrightarrow\hspace{5mm}x=\frac{p}{2}
+\end{equation*}
+であるから、Legendre変換\(g(p)\)は
+\begin{equation*}
+    g(p)=x(p)p-f(x(p))=\frac{p^{2}}{2}-\left(\frac{p^2}{4}+1\right)=\frac{p^2}{4}-1
+\end{equation*}
+となる。\\
+\hypertarget{Helmholtz自由エネルギー}{}
+\begin{itembox}[l]{\textbf{Thm. Helmholtz自由エネルギー}}
+    Helmholtz自由エネルギー\(F(T,V)\)は
+    \begin{equation*}
+        F(T,V)\equiv U(S,V)-TS
+    \end{equation*}
+    で定義され、その全微分形は
+    \begin{equation*}
+        dF(T,V)=-SdT-pdV
+    \end{equation*}
+\end{itembox}
+\(U(S,V)\)から\(F(T,V)\)のLegendre変換を考える。定義より
+\begin{equation*}
+    F(T,V)=U(S,V)-TS
+\end{equation*}
+が挙げられる。全微分形では
+\begin{equation*}
+    dF(T,V)=dU-SdT-TdS
+\end{equation*}
+ここで\hyperlink{内部エネルギーの全微分形}{内部エネルギーの全微分形}を代入すると
+\begin{equation*}
+    dF(T,V)=TdS-pdV-SdT-TdS=-SdT-pdV
+\end{equation*}
+を得る。\\
+\hypertarget{エンタルピー}{}
+\begin{itembox}[l]{\textbf{Thm. エンタルピー}}
+    エンタルピー\(H(S,p)\)は
+    \begin{equation*}
+        H(S,p)\equiv U(S,V)+pV
+    \end{equation*}
+    で定義され、その全微分形は
+    \begin{equation*}
+        dH(S,p)=TdS+Vdp
+    \end{equation*}
+\end{itembox}
+\(U(S,V)\)から\(H(S,p)\)のLegendre変換を考える。定義より
+\begin{equation*}
+    H(S,p)=U(S,V)+pV
+\end{equation*}
+が挙げられる。全微分形では
+\begin{equation*}
+    dH(S,p)=dU+Vdp+pdV
+\end{equation*}
+ここで\hyperlink{内部エネルギーの全微分形}{内部エネルギーの全微分形}を代入すると
+\begin{equation*}
+    dH(S,p)=TdS-pdV+Vdp+pdV=TdS+Vdp
+\end{equation*}
+を得る。\\
+\hypertarget{Gibbs自由エネルギー}{}
+\begin{itembox}[l]{\textbf{Thm. Gibbs自由エネルギー}}
+    Gibbs自由エネルギー\(G(T,p)\)は
+    \begin{equation*}
+        G(T,p)\equiv F(T,V)+pV
+    \end{equation*}
+    で定義され、その全微分形は
+    \begin{equation*}
+        dG(T,p)=-SdT+Vdp
+    \end{equation*}
+\end{itembox}
+\(F(T,V)\)から\(G(T,p)\)のLegendre変換を考える。定義より
+\begin{equation*}
+    G(T,p)=F(T,V)+pV
+\end{equation*}
+が挙げられる。全微分形では
+\begin{equation*}
+    dG(T,p)=dF+Vdp+pdV
+\end{equation*}
+ここで\hyperlink{内部エネルギーの全微分形}{内部エネルギーの全微分形}を代入すると
+\begin{equation*}
+    dG(T,p)=-SdT-pdV+Vdp+pdV=-SdT+Vdp
+\end{equation*}
+を得る。\\
+\hypertarget{定積熱容量}{}
+\begin{itembox}[l]{\textbf{Def. 定積熱容量}}
+    着目系に\(d^{\prime}Q\)の熱量を体積一定のもと、準静的過程によって与えるとき、系の温度が\(dT\)だけ上がったとすれば、
+    単位温度上昇させるために必要な熱量は
+    \begin{equation*}
+        C_{V}\equiv\left(\frac{d^{\prime}Q}{dT}\right)_{V}
+    \end{equation*}
+    で与えられ、これを\underline{定積熱容量}と呼ぶ。
+\end{itembox}
+\hypertarget{定圧熱容量}{}
+\begin{itembox}[l]{\textbf{Def. 定圧熱容量}}
+    着目系に\(d^{\prime}Q\)の熱量を圧力一定のもと、準静的過程によって与えるとき、系の温度が\(dT\)だけ上がったとすれば、
+    単位温度上昇させるために必要な熱量は
+    \begin{equation*}
+        C_{V}\equiv\left(\frac{d^{\prime}Q}{dT}\right)_{V}
+    \end{equation*}
+    で与えられ、これを\underline{定圧熱容量}と呼ぶ。
+\end{itembox}
+\begin{itembox}[l]{\textbf{Thm}.}
+    \begin{equation*}
+        C_{V}=\left(\frac{d^{\prime}Q}{dT}\right)_{V}=\left(\frac{\partial U}{\partial T}\right)_{V}=T\left(\frac{\partial S}{\partial T}\right)_{V}
+    \end{equation*}
+    \begin{equation*}
+        C_{p}=\left(\frac{d^{\prime}Q}{dT}\right)_{p}=\left(\frac{\partial U}{\partial T}\right)_{p}+p\left(\frac{\partial V}{\partial T}\right)_{p}
+        =T\left(\frac{\partial S}{\partial T}\right)_{p}
+    \end{equation*}
+\end{itembox}
+定積である場合は
+\begin{equation*}
+    dU=d^{\prime}Q-Vdp-pdV=d^{\prime}Q,\hspace{10mm}dU=TdS-pdV=TdS
+\end{equation*}
+であるから、これを\(C_{V}\)の定義式に代入することにより、定積熱容量についての上式を得る。\\
+定圧である場合には\hyperlink{エントロピー}{エントロピーの定義式}から
+\begin{equation*}
+    d^{\prime}Q=TdS
+\end{equation*}
+また、\hyperlink{熱力学第一法則}{熱力学第一法則}から
+\begin{equation*}
+    dU=d^{\prime}Q-Vdp-pdV=dU-pdV\hspace{5mm}\Longrightarrow\hspace{5mm}d^{\prime}Q=dU+pdV
+\end{equation*}
+であるから、これを\(C_{p}\)の定義式に代入することにより、定圧熱容量についての上式を得る。\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
