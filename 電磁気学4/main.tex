@@ -1,0 +1,218 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{url}
+\newtheorem{df}{Def}[section]
+\newtheorem{thm}{Thm}[section]
+\newtheorem{lem}{補題}[section]
+\newtheorem{co}{系}[section]
+\newtheorem{pro}{問}[section]
+\newtheorem{ans}{解}[section]
+\newtheorem{pf}{proof}[section]
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+\hypersetup{% hyperrefオプションリスト
+setpagesize=false,
+ bookmarksnumbered=true,%
+ bookmarksopen=true,%
+ colorlinks=true,%
+ linkcolor=blue,
+ citecolor=red,
+}
+\title{電磁気学4章}
+
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\noindent
+
+\section{ファラデーの電磁誘導の法則}
+
+\noindent
+\begin{pro}~\\
+    レンツの法則を説明せよ。またそれをノイマンが表現した数式を表せ。
+\end{pro}
+
+\begin{pro}~\\
+    微分形におけるファラデーの誘導法則を導出せよ。
+\end{pro}
+
+\begin{pro}~\\
+    半径\(a\)の円形コイルの中心軸上の、中心Oから距離\(x_{1}\)の点\(P_{1}\)から、距離\(x_{2}\)の点\(P_{2}\)まで、点磁荷\(q_{m}\)を近づけるとき、コイルに発生する起電力を
+    求めよ。また、円形コイルの電気抵抗を\(R\)とし、流れる電流\(I\)を求めよ。さらに、\(x_{1}\)から\(x_{2}\)まで磁荷を移動させる間にコイルに流れる全電荷量\(Q\)を求めよ。\\
+    ただし、コイルの中心軸と、点磁荷、コイルの端点を結ぶ直線の成す角を\(\theta\)とする。
+\end{pro}
+
+\begin{pro}ベータトロン\\
+    ベータトロンで、ドーナツ管の中で電子が半径\(r\)の円運動を保っているとする。この電子の接線方向と法線方向について、それぞれ運動方程式を立てろ。
+\end{pro}
+
+\begin{pro}ベータトロン\\
+    ベータトロンで、電子が一定の半径の円軌道上を回転し続けるときの円周上の磁束密度\(B(r,t)\)を求めよ。ただし、\(t=0\)で\(B=0,\Phi=0\)とする。
+\end{pro}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\setcounter{section}{0}
+
+\section{電磁気学4章の解答}
+
+\begin{ans}~\\
+    コイルに発生する起電力\(\phi^{\mathrm{e.m.}}\)は、そのコイルを貫く磁束の時間変化の割合に比例する。この起電力によって、コイル内に発生する電流の方向は磁束の
+    変化をさまたげる方向である。
+    \begin{equation*}
+        \phi^{\mathrm{e.m.}}=-k\frac{d\Phi}{dt}
+    \end{equation*}
+    起電力\(\phi^{\mathrm{e.m}}\)をボルト\(\mathrm{[V]}\)、磁束\(\Phi\)をウェーバー\(\mathrm{[Wb]}\)の単位で測るとき、比例定数\(k\)は1となる。
+\end{ans}
+
+\begin{ans}~\\
+    \begin{equation*}
+        \phi^{\mathrm{e.m.}}=-\frac{d\Phi}{dt}
+    \end{equation*}
+    から始める。\\
+    コイル\(C_{1}\)鉛直上にコイル\(C_{2}\)があるとする。コイル\(C_{2}\)の起電力\(\phi^{\mathrm{e.m.}}\)はコイル内にできた電場\(\bm{E}\)に起因するとして
+    \begin{equation*}
+        \phi^{\mathrm{e.m.}}=\int_{C_{2}}\bm{E}(\bm{r},t)\cdot d\bm{r}
+    \end{equation*}
+    コイル\(C_{2}\)を貫く磁束は、コイル\(C_{2}\)によって囲まれる任意の曲面\(S_{2}\)で
+    \begin{equation*}
+        \Phi=\int_{S_{2}}\bm{B}(\bm{r},t)\cdot\bm{n}(\bm{r})dS
+    \end{equation*}
+    これより最初の式のレンツの法則は
+    \begin{equation*}
+        \int_{C_{2}}\bm{E}(\bm{r},t)\cdot d\bm{r}=-\frac{d}{dt}\int_{S_{2}}\bm{B}(\bm{r},t)\cdot\bm{n}(\bm{r})dS
+    \end{equation*}
+    と表せられる。\\
+    磁束の変化にともなって、コイル\(C_{2}\)内だけでなく、空間内に電場が発生するとする。それがコイル\(C_{2}\)内の点電荷\(e\)に\(q\bm{E}\)の力を与え、電流が発生する
+    と考える。そうすると前式は
+    \begin{equation*}
+        \int_{C}\bm{E}(\bm{r},t)\cdot d\bm{r}=-\frac{d}{dt}\int_{S}\bm{B}(\bm{r},t)\cdot\bm{n}(\bm{r})dS
+    \end{equation*}
+    と書き換えらる。これはコイル\(C_{2}\)の存在を仮定せずとも、空間に電場\(\bm{E}\)、磁場\(\bm{B}\)が分布していると考えている。\\
+    閉曲面\(S\)が時間的に変化しないとすると、
+    \begin{equation*}
+        \int_{C}\bm{E}(\bm{r},t)\cdot d\bm{r} = -\int_{S}\frac{\partial\bm{B}(\bm{r},t)}{\partial t}\bm{n}(\bm{r})dS
+    \end{equation*}
+    ストークスの定理より左辺は
+    \begin{equation*}
+        \int_{C}\bm{E}(\bm{r},t)\cdot d\bm{r} = \int_{S}\mathrm{rot}\bm{E}(\bm{r},t)\cdot\bm{n}(\bm{r})dS
+    \end{equation*}
+    よって、
+    \begin{equation*}
+        \int_{S}\left(\mathrm{rot}\bm{E}(\bm{r},t)+\frac{\partial\bm{B}(\bm{r},t)}{\partial t}\right)\cdot\bm{n}(\bm{r})dS = 0
+    \end{equation*}
+    ここで曲面\(S\)を任意の点\(\bm{r}\)上の微小面\(\Delta S\)にとれば
+    \begin{equation*}
+        \left(\mathrm{rot}(\bm{r},t)+\frac{\partial B(\bm{r},t)}{\partial t}\right)\cdot\bm{n}(\bm{r})\Delta S = 0
+    \end{equation*}
+    \(\bm{n}(\bm{r})\)は任意の方向にとれるので
+    \begin{equation*}
+        \mathrm{rot}\bm{E}(\bm{r},t)+\frac{\partial B(\bm{r},t)}{\partial t} = 0
+    \end{equation*}
+\end{ans}
+
+\begin{ans}~\\
+    点磁荷\(q_{m}\)がその位置から距離\(r\)につくる磁束密度の大きさは
+    \begin{equation*}
+        B(r)=\frac{1}{4\pi}\frac{q_{m}}{r^2}
+    \end{equation*}
+    で与えられる。\\
+    コイルを含む、点磁荷を中心とする半径\(r\)の球面を考える。このうち、コイルに囲まれる球面の面積は\\
+    \(dS = rd\theta\cdot r\sin\theta d\varphi\)であるから
+    \begin{equation*}
+        S = r^{2}\int_{0}^{2\pi}d\varphi\int_{0}^{\theta}\sin\theta d\theta=2\pi r^{2}(1-\cos\theta)
+    \end{equation*}
+    したがって円形コイルを貫く磁束\(\Phi\)は
+    \begin{equation*}
+        \Phi = B(r)\cdot S=\frac{1}{2}q_{m}(1-\cos\theta)
+    \end{equation*}
+    コイルに発生する起電力はレンツの法則より
+    \begin{equation*}
+        \phi^{\mathrm{e.m.}}=-\frac{d\Phi}{dt}=-\frac{q_{m}}{2}\sin\theta\frac{d\theta}{dt}
+    \end{equation*}
+    コイル内を流れる電流は
+    \begin{equation*}
+        I = \frac{\phi^{\mathrm{e.m.}}}{R} = -\frac{q_{m}}{2}\sin\theta\frac{d\theta}{dt}
+    \end{equation*}
+    点電荷が\(P_{1}\)から\(P_{2}\)まで移動する間にコイルに流れる全電荷量は
+    \begin{align*}
+        Q&=\left|\int_{t_{1}}^{t_{2}}Idt\right|=\frac{q_{m}}{2R}\left|\int_{\theta_{1}}^{\theta_{2}}\sin\theta d\theta\right|
+        =\frac{q_{m}}{2}\left|cos\theta_{2}-\cos\theta_{1}\right|\\
+        &=\frac{q_{m}}{2R}\left|\frac{x_{2}}{\sqrt{a^{2}+x_{2}^{2}}}-\frac{x_{1}}{\sqrt{a^{2}+x_{1}^{2}}}\right|
+    \end{align*}
+\end{ans}
+
+\begin{ans}ベータトロン\\
+    ドーナツ管の中心座標を\((0,0)\)とする。ベータトロンの磁束密度\(\Phi\)の時間的変化にともなって発生する誘導電場を\(E\)とする。\\
+    接線方向の運動方程式は、誘導起電力により
+    \begin{equation*}
+        \frac{d}{dt}mv(t) = -eE(r,t)
+    \end{equation*}
+    法線方向の運動方程式は、ローレンツ力により
+    \begin{equation*}
+        m\frac{v(t)^{2}}{r} = ev(t)B(r,t)
+    \end{equation*}
+    ここで、\(B(r,t)\)は一般の空間内の磁場(ベータトロンが作り出す磁場だけでなく、それによって生じた誘導電流による電場も含めた全磁場)を指す。
+\end{ans}
+
+\begin{ans}~\\
+    レンツの法則
+    \begin{equation*}
+        \int_{C}\bm{E}(\bm{r},t)\cdot d\bm{r}=-\frac{d\Phi(\bm{r},t)}{dt}
+    \end{equation*}
+    より
+    \begin{equation*}
+        2\pi rE(r,t) = -\frac{d\Phi(r,t)}{dt}
+    \end{equation*}
+    これに、電子の接線方向の運動方程式を代入すると
+    \begin{equation*}
+        \frac{2\pi r}{e}\frac{d}{dt}mv(t) = \frac{d\Phi(r,t)}{dt}
+    \end{equation*}
+    となる。法線方向の電子の運動方程式より、\(mv(t)=erB(r,t)\)であるから、半径\(r\)が一定に保たれるとしたとき、これを代入して
+    \begin{equation*}
+        2\pi r^{2}\frac{dB(r,t)}{dt} = \frac{d\Phi(r,t)}{dt}
+    \end{equation*}
+    となる。初期条件を考慮して両辺積分すると
+    \begin{equation*}
+        B(r,t) = \frac{1}{2}\frac{\Phi(r,t)}{\pi r^{2}}
+    \end{equation*}
+    の関係を得る。すなわち、電子が一定の半径の円軌道上を回転し続けるためには、その円周上の磁束密度\(B(r,t)\)が、常にそれより内側の
+    平均磁束密度\(\Phi(r,t)/\pi r^{2}\)の半分に等しくなければならない。つまり、\(B(r,t)\)の空間分布は内側で強く、外側で弱くなっている必要がある。
+\end{ans}
+
+
+
+\end{document}
