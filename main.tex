@@ -5,6 +5,7 @@
 \usepackage{amsthm}
 \usepackage{bm}
 \usepackage{url}
+\usepackage{braket}
 \newtheorem{df}{Def}[section]
 \newtheorem{thm}{Thm}[section]
 \newtheorem{lem}{補題}[section]
@@ -17,6 +18,7 @@
 \newcommand{\rot}{\mathrm{rot}~}
 \renewcommand{\div}{\mathrm{div}~}
 \newcommand{\grad}{\mathrm{grad}~}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \hypersetup{% hyperrefオプションリスト
 setpagesize=false,
  bookmarksnumbered=true,%
@@ -33,13 +35,221 @@ setpagesize=false,
 \maketitle
 \noindent
 
-\section{~}
+\section{行列表示での量子力学の体系}
 \noindent
+\begin{df}内積空間\((\)計量ベクトル空間\()\)\\
+    実数体または複素数体\(\mathbb{K}\)上の線形空間の任意の元\(x,y,z\in X\)と任意の\(\lambda\in\mathbb{K}\)
+    に対して、
+        \begin{enumerate}
+            \item \(\braket{x,x}\geq0,\hspace{10mm}特に\braket{x,x}=0~~\Longleftrightarrow~~x=0\)\\
+            \item \(\braket{x,y} = \overline{\braket{y,x}}\)\\
+            \item \(\braket{x,\lambda y + z} = \lambda\braket{x,y} + \braket{x,z}\)
+        \end{enumerate}
+        の条件を満たす、\(\braket{x,y}\)が定まるとき、\(\braket{x,y}\)を\(x\)と\(y\)の\underline{内積}
+        といい、内積をもつ線形空間を\underline{内積空間}という。
+\end{df}
 
+~\\~
+\begin{df}ノルム空間\\
+    \(\mathbb{K}\)を実数体または複素数体とし、\(\mathbb{K}\)上のベクトル空間\(V\)を考える。\\
+    このとき、任意の\(a\in K\)と任意の\(\bm{u},\bm{v}\in V\)に対して、
+    \begin{enumerate}
+        \item \(\norm{\bm{v}}=0~\Longleftrightarrow~\bm{v}=0\)\\
+        \item \(\norm{a\bm{v}}=\left|a\right|\norm{\bm{v}}\)\\
+        \item \(\norm{\bm{u}+\bm{v}}\leq\norm{\bm{u}}+\norm{\bm{v}}\)
+    \end{enumerate}
+    を満たす\(\norm{\cdot}\)が定まるとき、\(\norm{\cdot}\)の\underline{ノルム}と呼ぶ。ノルムが定義された
+    ベクトル空間\((X,\norm{\cdot})\)を\underline{ノルム空間}という。
+\end{df}
 
+\newpage
+\begin{df}距離空間\\
+    \(X\)を集合とする。任意の\(x,y,z\in X\)に対して、
+    \begin{enumerate}
+        \item \(d(x,y)\geq0\),\hspace{10mm}特に\(d(x,y)=0~~\Longleftrightarrow~~x=y\)\\
+        \item \(d(x,y)=d(y,x)\) \\
+        \item \(d(x,y)\leq d(x,z) + d(z,y)\)
+    \end{enumerate}
+    の条件を満たす、\(d(x,y)\)が定まるとき、組\(X,d\)を\underline{距離空間}という。
+\end{df}
 
+~\\~
+\begin{df}距離空間におけるコーシー列\\
+    \(\left(X,d\right)\)を距離空間とする。列\(\{\psi\}\subset X\)が\underline{コーシー列}であるとは、\\
+    任意の\(\varepsilon>0\)に対し、ある\(N\geq1\)が存在して、
+    \begin{equation}
+        n,m\geq N~\Longrightarrow~d(\psi_{n},\psi_{m})<\varepsilon
+    \end{equation}
+    となることをいう。\\
+\end{df}
+\begin{co}収束する列はコーシー列である。
+\end{co}
 
+~\\~
+\begin{df}完備\\
+    \(\left(X,d\right)\)を距離空間とする。\(X\)が\underline{完備}であるとは、\(X\)における任意のコーシー列が
+    収束列になることである。
+\end{df}
 
+~\\~
+\begin{co}任意の内積空間は距離空間である。内積空間で\(d(x,y):=\sqrt{\braket{x-y,x-y}}\)は距離関数となる。
+\end{co}
+
+\begin{co}任意の内積空間はノルム空間である。内積空間で\(\norm{x}:=\sqrt{\braket{x,x}}\)はノルムとなる。
+\end{co}
+
+\begin{co}任意のノルム空間は距離空間である。ノルム空間で\(d(x,y):=\norm{x-y}\)は距離関数となる。
+\end{co}
+
+~\\~
+\begin{df}ヒルベルト空間\\
+    内積空間\(X\)がノルムに関して完備であるとき、\(X\)を\underline{ヒルベルト空間}という。
+\end{df}
+
+\newpage
+\begin{df} 重なり積分\\
+    波動関数\(\phi(\bm{r})\)と\(\psi(\bm{r})\)の重なり積分\(\braket{\phi|\psi}\)を
+    \begin{equation}
+        \braket{\phi|\psi} \equiv \int\phi^{*}(\bm{r})\psi(\bm{r})d\bm{r}
+    \end{equation}
+    と定義する。演算子\(F\)を\(\psi(\bm{r})\)に作用させたものと\(\phi(\bm{r})\)の重なり積分を
+    \begin{equation}
+        \braket{\phi|F|\psi} \equiv \braket{\phi|F\psi}=\int\phi^{*}(\bm{r})F\psi(\bm{r})d\bm{r}
+    \end{equation}
+    の記法で表す。
+\end{df}
+
+~\\~
+\begin{df}直交規格化条件\\
+    関数\(u_{1}(\bm{r}),u_{2}(\bm{r}),\cdots\)に対して、
+    \begin{equation}
+        \braket{u_{n}|u_{m}}=\int u_{n}^{*}(\bm{r})u_{m}(\bm{r})d\bm{r}=\delta_{n,m}=
+        \begin{cases}
+            1 & (m=n) \hspace{5mm} 規格化条件\\
+            0 & (m\neq n) \hspace{5mm} 直交条件
+        \end{cases}
+    \end{equation}
+    の条件を\underline{直交規格化条件}と呼び、\(u_{1},u_{2},\cdots\)は
+    \underline{直交規格関数系}または\underline{正規直交関数系}を作るという。
+\end{df}
+
+~\\~
+\begin{df}直交関数系における完全性\\
+    任意の関数\(\psi\)が、ある直交関数系\(\{u_{n}\}\)で展開できるとき、
+    \begin{equation}
+        \psi = \sum_{n}c_{n}u_{n}
+    \end{equation}
+    直交関数系\(\{u_{n}\}\)は\underline{完全系}であるという。
+    また、完全系を固有関数としてもつ力学量を\underline{オブザーバブル}とよぶ。
+\end{df}
+
+\begin{co}\(\{1,\cos x,\cos2x,\cdots,\sin x,\sin2x,\cdots\}\)は完全系である。\\
+    よって、\(-\pi\leq x\leq\pi\)の範囲における任意の関数をこの線形結合で表せる。
+\end{co}
+
+~\\~
+\begin{thm}~\\
+    関数\(\psi\)が、直交規格関数系\(\{u_{n}\}\)の線形結合の和\(\displaystyle\psi=\sum c_{n}u_{n}\)で
+    表されるとき、展開係数\(c_{n}\)は
+    \begin{equation}
+        c_{n}=\braket{u_{n},\psi}
+    \end{equation}
+    と表される。
+\end{thm}
+\begin{pf}\(\psi=\sum_{m}c_{m}u_{m}\)の両辺に\(u_{n}^{*}\)をかけて空間積分すればよい。
+\end{pf}
+
+\newpage
+\begin{thm} 完全性の条件\\
+    関数系\(\{u_{n}(\bm{r})\}\)が完全系となる条件は
+    \begin{equation}
+        \sum_{n}u_{n}(\bm{r})u_{n}^{*}(\bm{r}^{\prime})=\delta(\bm{r}-\bm{r}^{\prime})
+    \end{equation}
+    が成り立つことである。
+\end{thm}
+\begin{pf}\(\sum_{n}c_{n}u_{n}(\bm{r})\)を展開係数の積分表示とこの条件を使って変形すると
+    \(\psi(\bm{r})\)となることを確認すればよい。
+\end{pf}
+
+~\\~
+\begin{thm}
+    波動関数\(\phi,\psi\)に演算子\(F\)をはさんだ重なり積分\(\braket{\phi|F|\psi}\)は3つの行列の積で
+    表せられる。
+    \begin{equation}
+        \braket{\phi|F|\psi}=\sum_{m=1}^{\infty}\sum_{n=1}^{\infty}d_{m}^{*}F_{m,n}~c_{n}
+    \end{equation}
+\end{thm}
+\begin{pf}\(\psi\)と\(\phi\)を完全直交関数系の線形結合和で表し、重なり積分を実行すればよい。
+\end{pf}
+
+\begin{co} 波動関数は、無限次元のベクトルで表される。
+    \begin{equation}
+        \bra{\phi}~\longrightarrow~
+        \left(
+        \begin{array}{ccc}
+            d_{1}^{*} & d_{2}^{*} & \cdots
+        \end{array}
+        \right),
+        \hspace{5mm}
+        \ket{\psi}~\longrightarrow~
+        \left(
+        \begin{array}{c}
+            c_{1} \\
+            c_{2} \\
+            \vdots
+        \end{array}
+        \right)
+    \end{equation}
+\end{co}
+
+\begin{df}~\\
+    波動関数の表現\(\ket{\psi}\)を\underline{状態ベクトル}と呼び、
+    状態ベクトルの集合\(V=\{\ket{\psi_{1}},\ket{\psi_{2}},\cdots\}\)を\underline{状態空間}と呼ぶ。
+\end{df}
+
+~\\~
+\begin{thm}状態空間はヒルベルト空間である。
+\end{thm}
+\begin{pf}
+    状態空間では内積\(\braket{\phi|\psi}\)が定義され、また、規格化条件より
+    \begin{equation}
+        \braket{\psi|\psi}=\sum_{n=1}^{\infty}\norm{c_{n}}^{2}=1
+    \end{equation}
+    であるから、状態空間は完備である。
+\end{pf}
+
+~\\~
+\begin{df}エルミート演算子\\
+    演算子\(F^{\dagger}\)および\(F\)について、
+    \begin{equation}
+        \int\psi^{*}F\phi dx = \int(F^{\dagger}\psi)^{*}\phi dx~~~または~~~
+        \int\psi^{*}F^{\dagger}\phi dx = \int(F\psi)^{*}\phi dx
+    \end{equation}
+    と変形できるとき、演算子\(F^{\dagger}\)を、\(F\)に対する\underline{エルミート共役な演算子}と呼ぶ。\\
+    特に、\(F^{\dagger}=F\)が成立するとき、この演算子\(F\)を\underline{エルミート演算子}という。
+\end{df}
+
+\newpage
+\begin{thm}~\\
+    波動関数\(\phi,\psi\)の重なり積分の行列表示
+    \begin{equation}
+        \braket{\phi|F|\psi}=\sum_{m=1}^{\infty}\sum_{n=1}^{\infty}d_{m}^{*}F_{m,n}~c_{n}
+    \end{equation}
+    において、\(F\)はエルミート行列である。
+\end{thm}
+\begin{pf}~\\
+    エルミート共役な演算子の定義式\((積分)\)に波動関数の線形和表示を代入して、
+    \(\left(F^{\dagger}\right)_{m,n}=F_{n,m}^{*}\)となることを示せばよい。
+\end{pf}
+
+\begin{co}エルミート演算子の期待値\(\braket{F}=\braket{\psi|F|\phi}\)は実数となる。
+\end{co}
+
+\begin{co}期待値が実数である物理量に対する演算子はエルミート演算子でないといけない。
+\end{co}
+
+\begin{co}ハミルトニアンがエルミート演算子であるとき、波動関数の確率は保存される。
+\end{co}
 
 
 
