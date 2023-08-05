@@ -1,0 +1,186 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+
+\documentclass{jsarticle}
+\usepackage{amsmath}
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{fancybox}
+\usepackage{ascmac}
+\usepackage[dvipdfmx]{graphicx}
+\title{力学　予習ノート2}
+
+\author{学生番号05502211}
+\date{\today}
+\begin{document}
+\maketitle
+\section{惑星の運動}
+ケプラーは、ブラーエの残した惑星のデータを解析し、3法則を導く。\\
+\begin{itembox}[l]{ケプラーの三法則}
+1)\hspace{5mm}惑星は、太陽を焦点の一つとする楕円軌道を運動する。\\
+2)\hspace{5mm}惑星軌道の面積速度は一定である。\\
+3)\hspace{5mm}惑星の公転周期は楕円軌道の長軸長の3/2乗に比例する。
+\end{itembox}
+惑星の相対運動方程式を考える。太陽の位置ベクトルを\(\bm{r}_{1}\)、惑星の位置ベクトルを\(\bm{r}_{2}\)としたとき、太陽からの惑星の相対座標は
+\[\bm{r}_{\mu}\equiv\bm{r}_{2}-\bm{r}_{1}\]
+換算質量は、\(m_{1}>>m_{2}\)であるから
+\[\mu=\frac{m_{1}m_{2}}{m_{1}+m_{2}}=\frac{m_{2}}{1+\frac{m_{2}}{m_{1}}}\sim m_{2}\]
+運動方程式は
+\begin{equation}
+\bm{F}_{12}=-G\frac{m_{1}m_{2}}{{r}_{\mu}^{2}}\frac{\bm{r}_{\mu}}{r_{\mu}}\hspace{5mm}\longrightarrow\hspace{5mm}\mu\frac{d^{2}\bm{r}_{\mu}}{dt^{2}}=-G\frac{m_{1}m_{2}}{r_{\mu}^{2}}\frac{\bm{r}_{\mu}}{r_{\mu}}
+\end{equation}
+と立てられる。中心力が働いているので動径方向の運動方程式である。\\
+\\
+次に惑星の運動を極座標系で考え、ケプラーの第一、第二法則を示す。
+\begin{equation*}
+x=r\cos\theta,\hspace{5mm}y=\sin\theta,\hspace{5mm}v_{r}=\frac{dr}{dt},\hspace{5mm}v_{\theta}=r\frac{d\theta}{dt}
+\end{equation*}
+であり、
+\begin{equation*}
+a_{r}=\frac{d^{2}r}{dt^{2}}-r\left(\frac{d\theta}{dt}\right)^{2},\hspace{5mm}
+a_{\theta}=2\frac{dr}{dt}\frac{d\theta}{dt}+r\frac{d^{2}\theta}{dt^{2}}=\frac{1}{r}\left(2r\frac{dr}{dt}\frac{d\theta}{dt}+r^{2}\frac{d^{2}\theta}{dt^2}\right)=\frac{1}{r}\frac{d}{dr}\left(r^{2}\frac{d\theta}{dt}\right)
+\end{equation*}
+であった。これを用いて動径方向と方位角方向でそれぞれ運動方程式を立てると
+\begin{align}
+&\mu\left\{\frac{d^{2}r}{dt^{2}}-r\left(\frac{d\theta}{dt}\right)^{2}\right\}=-G\frac{m_{1}m_{2}}{r^{2}}\\
+&\mu\frac{1}{r}\frac{d}{dr}\left(r^{2}\frac{d\theta}{dt}\right)=0
+\end{align}
+となる。2つ目の方程式は面積速度一定
+\begin{equation}
+\displaystyle \frac{1}{2}r^{2}\frac{d\theta}{dt}\equiv\frac{h}{2}=(一定)
+\end{equation}
+という関係式を与えるものである。これより\(\displaystyle\frac{d\theta}{dt}=\frac{h}{r^{2}}\)を(2)に代入すると
+\begin{equation}
+\mu\left\{\frac{d^{2}r}{dt^{2}}-\frac{h^{2}}{r^{3}}\right\}=-G\frac{m_{1}m_{2}}{r^{2}}
+\end{equation}
+が得られる。今、時間についての微分方程式だが\(\theta\)による微分方程式に書き換えたい。そのため、
+\begin{align*}
+&\frac{dr}{dt}=\frac{dr}{d\theta}\cdot\frac{d\theta}{dt}=\frac{h}{r^2}\cdot\frac{dr}{d\theta}\hspace{10mm}\left(\because\dot{\theta}=\frac{h}{r^2}\right)\\
+&\frac{d^{2}r}{dt^{2}}=\frac{d}{dt}\left(\frac{h}{r^2}\cdot\frac{dr}{d\theta}\right)=\frac{d}{d\theta}\left(\frac{h}{r^2}\frac{dr}{d\theta}\right)\frac{d\theta}{dt}=\frac{h}{r^2}\left[\frac{d}{d\theta}\left(\frac{h}{r^2}\cdot\frac{dr}{d\theta}\right)\right]
+\end{align*}
+と置き換えて、これを(5)式に代入してやると
+\begin{align}
+&\mu\left\{\frac{h}{r^2}\frac{d}{d\theta}\left(\frac{h}{r^2}\cdot\frac{dr}{d\theta}\right)-\frac{h^{2}}{r^{3}}\right\}=-G\frac{m_{1}m_{2}}{r^{2}}\nonumber\\
+&\Rightarrow\hspace{3mm}\frac{\mu h^{2}}{r^{2}}\left\{\frac{d}{d\theta}\left(\frac{1}{r^{2}}\frac{dr}{d\theta}\right)-\frac{1}{r}\right\}=-G\frac{m_{1}m_{2}}{r^{2}}\nonumber\\
+&\Rightarrow\hspace{3mm}\frac{d}{d\theta}\left(\frac{1}{r^{2}}\frac{dr}{d\theta}\right)-\frac{1}{r}=-G\frac{m_{1}m_{2}}{\mu h^{2}}
+\end{align}
+ここで\(r\)の逆数を\(\displaystyle u\equiv\frac{1}{r}\)と置くと、
+\[\frac{du}{d\theta}=\frac{d}{d\theta}\left(\frac{1}{r}\right)=-\frac{1}{r^{2}}\frac{dr}{d\theta}\]
+であるから(6)式は
+\begin{equation}
+\frac{d^{2}u}{d\theta^{2}}+u=G\frac{m_{1}m_{2}}{\mu h^{2}}
+\end{equation}
+と書き換えられる。さらに\(\displaystyle\frac{1}{l}\equiv G\frac{m_{1}m_{2}}{\mu h^{2}}\)と置くと
+\begin{equation}
+\frac{d^{2}u}{d\theta^{2}}+u=\frac{1}{l}
+\end{equation}
+となる。\(\displaystyle\frac{1}{l}\)は定数であり、これは強制振動と同型の微分方程式である。\\
+この微分方程式の一般解は
+\[u=A\cos(\theta+\phi)+\frac{1}{l}\]
+で与えられる。初期条件として\(\theta=0\)で\(\phi=0\)を選ぶと
+\begin{equation}
+u=A\cos\theta + \frac{1}{l}
+\end{equation}
+この初期条件は軌道の曲線が\(\theta=0\)に関して対称になり、後に分かるように楕円軌道の長軸方向がx軸になるように設定している。\\
+これを\(r\)について解くと
+\begin{equation}
+r=\frac{1}{\frac{1}{l}+A\cos\theta}=\frac{l}{1+Al\cos\theta}=\frac{l}{1+\varepsilon\cos\theta}
+\end{equation}
+となる。ただし、\(\varepsilon=Al\)と置いた。\\
+この\(r\)がどのような軌道を描くか見ていく。そのために直交座標系にして考えてみる。
+\[x=r\cos\theta,\hspace{5mm}y=r\sin\theta,\hspace{5mm}r=\sqrt{x^{2}+y^{2}}\]
+を用いて(10)式を変形してくと
+\begin{align}
+&r=\frac{l}{1+\varepsilon\cos\theta}=\frac{l}{1+\varepsilon\frac{x}{r}}\nonumber\\
+&\Rightarrow\hspace{3mm}r=l-\varepsilon x\nonumber\\
+&\Rightarrow\hspace{3mm}x^{2}+y^{2}=(l-\varepsilon x)^{2}\nonumber\\
+&\Rightarrow\hspace{3mm}(1-\varepsilon^{2})x^{2}+2l\varepsilon x+y^{2}=l^{2}
+\end{align}
+a)\hspace{3mm}\(\varepsilon=0\)のとき、
+\[x^{2}+y^{2}=l^{2}\]
+の円軌道となる。\\
+b)\hspace{3mm}\(\varepsilon=1\)のとき、\(2lx+y^{2}=l^{2}\)より
+\[x=-\frac{1}{2l}y^{2}+\frac{l}{2}\]
+の放物線軌道となる。\\
+c)\hspace{3mm}\(\varepsilon<1\land\varepsilon\neq0\)のとき、(11)の式は
+\begin{align*}
+&\left(1-\varepsilon^{2}\right)\left(x+\frac{l\varepsilon}{1-\varepsilon^{2}}\right)^{2}+y^{2}=\frac{l^{2}\varepsilon^{2}}{1-\varepsilon^{2}}+l^{2}=\frac{l^{2}}{1-\varepsilon^{2}}\\
+&\Rightarrow\hspace{3mm}\frac{\left(x+l\varepsilon/(1-\varepsilon^{2})\right)^{2}}{(l/1-\varepsilon^{2})^{2}}+\frac{y^{2}}{l^{2}/1-\varepsilon^{2}}=1
+\end{align*}
+となる。それぞれ符号\((>0)\)に注意して長軸\(2a\)、短軸\(2b\)を
+\[a=\frac{l}{1-\varepsilon^{2}}>0,\hspace{5mm}b=\frac{l}{\sqrt{1-\varepsilon^{2}}}>0\]
+ととると、これは
+\[\frac{(x+\varepsilon a)^{2}}{a^{2}}+\frac{y^{2}}{b^{2}}=1\]
+の楕円軌道となる。\\
+d)\hspace{3mm}\(\varepsilon>1\)のとき、同様に符号に注意して長軸\(2a\)、短軸\(2b\)を
+\[a=\frac{l}{\varepsilon^{2}-1}>0,\hspace{5mm}b=\frac{l}{\sqrt{\varepsilon^{2}-1}}>0\]
+ととると、これは
+\[\frac{(x-\varepsilon a)^{2}}{a^{2}}-\frac{y^{2}}{b^{2}}=1\]
+の双曲線軌道となる。このときの漸近線は
+\[\frac{x-\varepsilon a}{a}\pm\frac{y}{b}=0\]
+\\
+次にケプラーの第三法則を示す。\\
+楕円軌道の周期は面積を面積速度で割ったものである。楕円の面積は\(S=\pi ab\)であるから
+\begin{equation}
+T=\frac{S}{h/2}=\frac{2S}{h}=\frac{2\pi ab}{h}
+\end{equation}
+ここで\(h\)については
+\[\frac{1}{l}\equiv G\frac{m_{1}m_{2}}{\mu h}\hspace{3mm}\Longrightarrow\hspace{3mm}\frac{1}{h}=\sqrt{\frac{\mu}{Gm_{1}m_{2}l}}\]
+また、半長軸と半短軸について
+\[a=\frac{l}{1-\varepsilon^{2}},\hspace{5mm}b=\frac{l}{\sqrt{1-\varepsilon^{2}}}\hspace{5mm}\Longrightarrow\hspace{5mm}b=\sqrt{la}\]
+である。これらを(12)式に代入すると
+\begin{equation}
+T=2\pi\sqrt{\frac{\mu}{Gm_{1}m_{2}l}}a\sqrt{la}=2\pi\sqrt{\frac{\mu}{Gm_{1}m_{2}}}a^{\frac{3}{2}}=2\pi\sqrt{\frac{1}{G(m_{1}+m_{2})}}a^{\frac{3}{2}}
+\end{equation}
+より惑星周期\(T\)は楕円の半長軸\(a\)の\(3/2\)乗に比例する。惑星の周期は長半径のみによって決まるので、同じ長半径であれば、円運動でも楕円運動でも周期は同じであることが分かる。\\
+\\
+\newpage
+\noindent
+\([演習問題]\)\\
+(86.1)\\
+太陽と惑星\(m_{1},m_{3}\)について相対質量\(\mu\)と相対座標\(\bm{r}_{\mu}\)を用いた相対運動について運動方程式\(\mu\bm{r}_{\mu}=\bm{F}_{12}\)を考える。2次元極座標での万有引力による相対運動の運動方程式をかけ。ただし、角度方向の方程式から、面積速度\(h/2\)を求め、距離方向の運動方程式に代入し、一つの運動方程式にせよ。\\
+(86.2)\\
+上問で得られた運動方程式において\(u=\frac{1}{r}\)と置くことで強制振動の方程式と同じになることを示せ。\\
+(86.3)\\
+上問で最終的に得られた微分方程式を、\(u\)が\(\theta=0\)で極値を取る条件で解き、\(r=\frac{1}{u}\)の解\(\displaystyle r=\frac{l}{l+\varepsilon\cos\theta}\)を求めよ。\\
+(87)\\
+\(\displaystyle\frac{d^{2}u}{dt^{2}}+u=\frac{1}{l}\)という微分方程式の解\(\displaystyle r=\frac{l}{1+\varepsilon\cos\theta}\)について、直交座標をとって\(\varepsilon\)の大小により、軌道曲線を分類せよ。\\
+(88.1)*\\
+万有引力やクーロン力のような、大きさ距離に依存し、作用する質点方向を向く力、つまり中心力による運動では、面積速度\(h/2\)が一定になることを示せ。\\
+(88.2)\\
+惑星の公転周期は軌道の長半径の\(3/2\)乗に比例することを示せ。\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

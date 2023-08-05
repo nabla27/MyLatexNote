@@ -1,0 +1,181 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass{jsarticle}
+\usepackage{amsmath}
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{fancybox}
+\usepackage{ascmac}
+\usepackage[dvipdfmx]{graphicx}
+\title{力学　予習ノート8}
+\author{学生番号05502211}
+\date{}
+\begin{document}
+\maketitle
+\section{円柱座標、極座標での\(L\)方程式}
+\noindent
+\([例1]\)\\
+円環上に重力を受けながら滑らかに運動する質量\(m\)の物体を考える。ラグランジュ方程式を立て、角振動数を求めよ。\\
+\\
+運動する平面上に\(xz\)平面を考え、負の\(z\)軸から質点がなす角を\(\phi\)とする。運動エネルギー\(K\)とポテンシャルエネルギー\(V\)はそれぞれ
+\[K=\frac{1}{2}mv_{\phi}^{2}=\frac{1}{2}ma^{2}\dot{\phi}^{2},\hspace{10mm}V=-mga\cos\phi\]
+よってラグランジアンは
+\[L=\frac{1}{2}ma^{2}\dot{\phi}^{2}+mga\cos\phi\]
+であるから
+\[\frac{d}{dt}\frac{\partial L}{\partial\dot{\phi}}-\frac{\partial L}{\partial\phi}=\frac{d}{dt}\left(\frac{\partial}{\partial\dot{\phi}}\frac{1}{2}ma^{2}\dot{\phi}^{2}\right)-\frac{\partial}{\partial\phi}mga\cos\phi=\frac{d}{dt}ma^{2}\dot{\phi}+mga\sin\phi=0\]
+\[\therefore a\ddot{\phi}+g\sin\phi\hspace{5mm}\Rightarrow\ddot{\phi}=-\frac{g}{a}\sin\phi,\hspace{5mm}\omega=\sqrt{\frac{g}{a}}\]
+\\
+\([例2]\)\\
+長さ\(l\)のひもにつながれた質量\(m\)の質点について、右方向を\(y\)軸正とし、下方向を\(x\)軸正とする。この質点が\(x\)軸となす角が\(\theta\)のとき、ラグランジュ方程式を立て、運動方程式を求めよ。\\
+\\
+運動エネルギー\(K\)とポテンシャルエネルギー\(V\)はそれぞれ
+\[K=\frac{1}{2}mv_{\theta}^{2}=\frac{1}{2}ml^{2}\dot{\theta}^{2}\hspace{10mm}V=-mgl\cos\theta\]
+よってラグランジュ方程式を解くと
+\[\frac{d}{dt}\frac{\partial L}{\partial\dot{\theta}}-\frac{\partial L}{\partial\theta}=\frac{d}{dt}\left(\frac{\partial }{\partial\dot{\theta}}\frac{1}{2}ml^{2}\dot{\theta}^{2}\right)-\frac{\partial}{\partial\theta}(mgl\cos\theta)=ml^{2}\ddot{\theta}+mgl\sin\theta=0\]
+\[\therefore l\ddot{\theta}=-g\sin\theta\]
+\\
+\([例3]\)\\
+質量\(m\)の質点が自然長\(l_{0}\),ばね定数\(k\)のばねにつながれ天井からぶら下がっている。下向きに\(x\)軸正をとり、質点となす角と\(\theta\)とする。ラグランジュ方程式をたて、運動方程式を求めよ。\\
+\\
+運動エネルギー\(K\)とポテンシャルエネルギー\(V\)はそれぞれ
+\[K=\frac{1}{2}m\dot{l}^{2}+\frac{1}{2}ml^{2}\dot{\theta}^{2},\hspace{10mm}V=-mgl\cos\theta+\frac{1}{2}k(l-l_{0})^{2}\]
+であるからラグランジアンは
+\[L=K-V=\frac{1}{2}m(\dot{l}^{2}+l^{2}\dot{\theta}^{2})+mgl\cos\theta-\frac{1}{2}k(l-l_{0})^{2}\]
+であるから、まず\(\theta\)についてラグランジュ方程式を立てると
+\begin{align*}
+\frac{d}{dt}\frac{\partial L}{\partial\dot{\theta}}-\frac{\partial L}{\partial\theta}&=\frac{d}{dt}\left(\frac{\partial}{\partial\dot{\theta}}\frac{1}{2}ml^{2}\dot{\theta}^{2}\right)-\frac{\partial}{\partial\theta}(mgl\cos\theta)\\
+&=2ml\dot{l}\dot{\theta}+ml^{2}\ddot{\theta}+mgl\sin\theta=0\hspace{10mm}\therefore l\ddot{\theta}=-2\dot{l}\dot{\theta}-g\sin\theta
+\end{align*}
+\(l\)について
+\begin{align*}
+\frac{d}{dt}\frac{\partial L}{\partial\dot{l}}-\frac{\partial L}{\partial l}&=\frac{d}{dt}\left(\frac{\partial}{\partial\dot{l}}\frac{1}{2}m\dot{l}^{2}\right)-\frac{\partial}{\partial l}\left(\frac{1}{2}ml^{2}\dot{\theta}^{2}+mgl\cos\theta-\frac{1}{2}k(l-l_{0})^{2}\right)\\
+&=m\ddot{l}-ml\dot{\theta}^{2}-mg\cos\theta+k(l-l_{0})=0\hspace{10mm}\therefore m\ddot{l}=ml\dot{\theta}^{2}+mg\cos\theta-k(l-l_{0})
+\end{align*}
+\\
+\\
+\([例4]\)二重振り子\\
+質量\(m_{1}\)の質点が原点から長さ\(l_{1}\)のひもにつながれており、さらにその質点から長さ\(l_{2}\)のひもで質量\(m_{2}\)の質点がつながれている。右向き、上向きにそれぞれ\(x,z\)軸正をとり、ラグランジュ方程式を立てろ。負方向の\(z\)軸と質点\(m_{1}\)とがなす角を\(\phi_{1}\)、質点\(m_{2}\)となす角を\(\phi_{2}\)とする
+。\\
+\\
+それぞれの質点の速度\(v_{1},v_{2}\)は
+\[v_{1}=l_{1}\dot{\phi}_{1},\hspace{10mm}v_{2}=l_{1}\dot{\phi}_{1}+l_{2}\dot{\phi}_{2}\]
+各質点の\(z\)成分\(z_{1},z_{2}\)は
+\[z_{1}=-l_{1}\cos\phi_{1},\hspace{10mm}z_{2}=-l_{1}\cos\phi_{1}-l_{2}\cos\phi_{2}\]
+よって系全体での運動エネルギー\(K\)とポテンシャルエネルギー\(V\)は
+\[K=\frac{1}{2}m_{1}v_{1}^{2}+\frac{1}{2}m_{2}v_{2}^{2}=\frac{1}{2}m_{1}l_{1}^{2}\dot{\phi}_{1}^{2}+\frac{1}{2}m_{2}(l_{1}\dot{\phi}_{1}+l_{2}\dot{\phi}_{2})^{2}\]
+\[V=m_{1}gz_{1}+m_{2}gz_{2}=-m_{1}gl_{1}\cos\phi_{1}-m_{2}g(l_{1}\cos\phi_{1}+l_{2}\cos\phi_{2})\]
+したがってラグランジアン\(L=K-V\)は
+\[L=\frac{1}{2}m_{1}l_{1}^{2}\dot{\phi}_{1}^{2}+\frac{1}{2}m_{2}(l_{1}\dot{\phi}_{1}+l_{2}\dot{\phi}_{2})^{2}+m_{1}gl_{1}\cos\phi_{1}+m_{2}g(l_{1}\cos\phi_{1}+l_{2}\cos\phi_{2})\]
+\(\phi_{1}\)についてラグランジュ方程式をたてると
+\begin{align*}
+\frac{d}{dt}\frac{\partial L}{\partial\dot{\phi}_{1}}-\frac{\partial L}{\partial\phi_{1}}&=\frac{d}{dt}\frac{\partial}{\partial\dot{\phi}_{1}}\left(\frac{1}{2}m_{1}{l_{1}}^{2}{\dot{\phi}_{1}}^{2}+\frac{1}{2}m_{2}{l_{1}}^{2}{\dot{\phi}_{1}}^{2}+m_{2}l_{1}\dot{\phi}_{1}l_{2}\dot{\phi}_{2}\right)-\frac{\partial}{\partial\phi_{1}}\left(m_{1}gl_{1}\cos\phi_{1}+m_{2}gl_{1}\cos\phi_{1}\right)\\
+&=\frac{d}{dt}\left(m_{1}{l_{1}}^{2}\dot{\phi}_{1}+m_{2}{l_{1}}^{2}\dot{\phi}_{1}+m_{2}l_{1}l_{2}\dot{\phi}_{2}\right)+m_{1}gl_{1}\sin\phi_{1}+m_{2}gl_{1}\sin\phi_{1}\\
+&=\frac{d}{dt}\left\{(m_{1}+m_{2}){l_{1}}^{2}\dot{\phi}_{1}+m_{2}l_{1}l_{2}\dot{\phi}_{2}\right\}+(m_{1}+m_{2})gl_{1}\sin\phi_{1}\\
+&\simeq(m_{1}+m_{2}){l_{1}}^{2}\ddot{\phi}_{1}+m_{2}l_{1}l_{2}\ddot{\phi}_{2}+(m_{1}+m_{2})gl_{1}\phi_{1}=0\\
+&\Longrightarrow(m_{1}+m_{2})l_{1}\ddot{\phi}_{1}+m_{2}l_{2}\ddot{\phi}_{2}+(m_{1}+m_{2})g\phi_{1}=0
+\end{align*}
+\(\phi_{2}\)についてラグランジュ方程式をたてると
+\begin{align*}
+\frac{d}{dt}\frac{\partial L}{\partial\dot{\phi}_{2}}-\frac{\partial L}{\partial\phi_{2}}&=\frac{d}{dt}\frac{\partial}{\partial\dot{\phi}_{2}}\left(m_{2}l_{1}\dot{\phi}_{1}l_{2}\dot{\phi}_{2}+\frac{1}{2}m_{2}{l_{2}}^{2}{\dot{\phi}_{2}}^{2}\right)-\frac{\partial}{\partial\phi_{2}}\left(m_{2}gl_{2}\cos\phi_{2}\right)\\
+&=\frac{d}{dt}\left(m_{2}l_{1}l_{2}\dot{\phi}_{1}+m_{2}{l_{2}}^{2}\dot{\phi}_{2}\right)+m_{2}gl_{2}\sin\phi_{2}\\
+&\simeq m_{2}l_{1}l_{2}\ddot{\phi}_{1}+m_{2}{l_{2}}^{2}\ddot{\phi}_{2}+m_{2}gl_{2}\phi_{2}=0\\
+&\Longrightarrow l_{1}\ddot{\phi}_{1}+l_{2}\ddot{\phi}_{2}+g\phi_{2}=0
+\end{align*}
+\\
+\([例5]\)\\
+上記の二重振り子のラグランジュ方程式を条件\(m_{1}=m_{2}\)、\(l_{1}=l_{2}\)で解き、角振動数を求めよ。\\
+\[\begin{cases}
+(m_{1}+m_{2})l_{1}\ddot{\phi}_{1}+m_{2}l_{2}\ddot{\phi}_{2}+(m_{1}+m_{2})g\phi_{1}=0\\
+l_{1}\ddot{\phi}_{1}+l_{2}\ddot{\phi}_{2}+g\phi_{2}=0\end{cases}\hspace{2mm}\longrightarrow\hspace{2mm}\begin{cases}
+2ml\ddot{\phi}_{1}+ml\ddot{\phi}_{2}+2mg\phi_{1}=0\\
+l\ddot{\phi}_{1}+l\ddot{\phi}_{2}+g\phi_{2}=0\end{cases}\]
+解をそれぞれ\(\phi_{1}=Ae^{pt},\phi_{2}Be^{pt}\)と置いて演算子法を用いて解く。それぞれの方程式は
+\[\begin{cases}
+2Amlp^{2}e^{pt}+Bmlp^{2}e^{pt}+2Amge^{pt}=0\\
+Alp^{2}e^{pt}+Blp^{2}e^{pt}+gBe^{pt}=0\end{cases}\hspace{3mm}\longrightarrow\hspace{3mm}\begin{cases}
+2(lp^{2}+g)A+lp^{2}B=0\\
+lp^{2}A+(lp^{2}+g)B=0\end{cases}\]
+となる。連立方程式を行列形式で表すと
+\[\left(\begin{array}{cc}
+2(lp^{2}+g) & lp^{2}\\
+lp^{2} & lp^{2}+g
+\end{array}\right)\left(\begin{array}{c}
+A\\
+B
+\end{array}\right)=0\]
+\(A,B\)がともに0でない解をもつためには、一つ目の行列式が0にならなければならない。したがって
+\begin{align*}
+2(lp^{2}+g)^{2}-l^{2}p^{4}=0\hspace{3mm}&\Longrightarrow\hspace{3mm}\sqrt{2}(lp^{2}+g)=\pm lp^{2}\\
+&\Longrightarrow\hspace{3mm}(\sqrt{2}l\mp l)p^{2}=-\sqrt{2}g,\hspace{5mm}p^{2}=-\frac{\sqrt{2}g}{(\sqrt{2}\mp1)l}\\
+&\Longrightarrow\hspace{3mm}p=\pm\sqrt{\frac{\sqrt{2}g}{(\sqrt{2}\mp1)l}}i=\pm\sqrt{\frac{(2\pm\sqrt{2})g}{l}}i\\
+&\therefore\omega=\pm\sqrt{\frac{(2\pm\sqrt{2})g}{l}}
+\end{align*}
+2か所の\(\pm\)は独立であるから、計4つのどれかの振動数を持つことが分かる。\\
+\\
+\newpage
+\noindent
+\([演習問題]\)\\
+(109)*\\
+角度\(\theta\)だけ斜めに置かれた半径\(a\)の円環上をなめらかに質量\(m\)の質点が運動する。ラグランジュ方程式と角振動数を求めよ。\\
+(109-2)\\
+重力があり、鉛直に置かれたばね定数\(k\)自然長\(l_{0}\)のばねにつながれた質量\(m\)の質点を下向き正の\(x\)軸から\(\theta\)だけ傾けた。このときのラグランジュ方程式を求めよ。\\
+(110)*\\
+重力があり、鉛直に置かれた自然長\(l_{0}\)ばね定数\(k\)のばねにつながれた質量\(m\)の質点を下向き正の\(x\)軸から\(\theta\)傾けたまま、その軸を中心に回転させる。このときのラグランジュ方程式を求めよ。\\
+(111)\\
+質量\(m_{1}\)の質点が原点から長さ\(l_{1}\)のひもにつながれており、さらにその質点から長さ\(l_{2}\)のひもで質量\(m_{2}\)の質点がつながれている。右向き、上向きにそれぞれ\(x,z\)軸正をとり、ラグランジュ方程式を立てろ。負方向の\(z\)軸と質点\(m_{1}\)とがなす角を\(\phi_{1}\)、質点\(m_{2}\)となす角を\(\phi_{2}\)とする
+。\\
+(111-2)\\
+-111-で立てたラグランジュ方程式を条件\(m_{1}=m_{2}\)、\(l_{1}=l_{2}\)で解き、角振動数を求めよ。\\
+(112)*\\
+惑星運動のラグランジュ方程式を求め、それが角運動量保存則と動径の運動方程式になることを示せ。\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

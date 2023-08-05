@@ -1,0 +1,246 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+
+\documentclass{jsarticle}
+\usepackage{amsmath}
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{fancybox}
+\usepackage{ascmac}
+\usepackage[dvipdfmx]{graphicx}
+\title{力学　予習ノート　第3回}
+
+\author{学生番号05502211}
+\date{\today}
+\begin{document}
+\maketitle
+\section{剛体の回転運動についての一般論} 
+大きさがある物体(剛体)は回転可能である。密度\(\rho\)の剛体\(M\)を考える。\\
+体積\(\Delta V_{i}\)の\(N\)個の\(\Delta M_{i}\)に分割することを考える。すなわち\(\Delta M_{i}=\rho(\bm{r}_{i})\Delta V_{i}\)である。このとき、剛体の質量\(M\)は
+\begin{equation}
+\displaystyle
+M=\lim_{N\to\infty}\rho(\bm{r}_{i})\Delta V_{i}=\int\rho(\bm{r}_{i})dV
+\end{equation}
+同様に体積は
+\begin{equation}
+V=\lim_{N\to\infty}\sum_{i=1}^{N}\Delta V_{i}=\int dV
+\end{equation}
+重心について
+\begin{equation}
+\displaystyle
+M\bm{r}_{G}=\sum_{i=1}^{N}m_{i}\bm{r}_{i},\hspace{10mm}\bm{r}_{G}=\frac{\sum_{i=1}^{N}m_{i}\bm{r}_{i}}{\sum_{i=1}^{N}m_{i}}
+\end{equation}
+であったので、剛体の重心\(\bm{r}_{G}\)について
+\begin{equation}
+\displaystyle
+M\bm{r}_{G}=\lim_{N\to\infty}\sum_{i=1}^{N}\bm{r}_{i}\Delta M_{i}=\lim_{N\to\infty}\bm{r}_{i}\rho(\bm{r}_{i})\Delta V_{i}=\int\bm{r}\rho(\bm{r})dV
+\end{equation}
+となる。ある点から見た剛体の各点の位置ベクトルが\(\bm{r}_{i}\)であり、その点から見た重心の位置ベクトルが\(\bm{r}_{G}\)である。この重心から見た剛体の各点の位置ベクトルを\(\bm{r}^{\prime}_{i}\)とすると、\(\bm{r}^{\prime}=\bm{r}-\bm{r}_{G}\)であるので
+\begin{equation}
+\displaystyle
+\int\bm{r}^{\prime}\rho(\bm{r})dV=\int(\bm{r}-\bm{r}_{G})\rho(\bm{r})dV=\int\bm{r}\rho(\bm{r})dV-M\bm{r}_{G}=0
+\end{equation}
+となる。これは自明で重心位置から見たとき、その重心は原点となる。\\
+\\
+＜例＞厚み\(d\)で、底辺\(a\)高さ\(b\)の三角形の重心を求めよ。\\
+まず、この連続体の全質量は
+\[M=\int\rho dV=\rho d\int_{0}^{a}dx\int_{0}^{\frac{b}{a}x}dy=\rho d\int_{0}^{a}\frac{b}{a}xdx=\frac{b\rho d}{a}\left[\frac{x^2}{2}\right]_{0}^{a}=\frac{abd}{2}\rho\]
+次に重心のx座標について
+\begin{align*}
+Mx_{G}&=\int\rho xdV=\rho d\int_{0}^{a}xdx\int_{0}^{\frac{b}{a}x}dy\\
+&=\rho d\int_{0}^{a}\frac{b}{a}x^{2}dx=\frac{b\rho d}{a}\left[\frac{x^3}{3}\right]_{0}^{a}=\frac{a^{2}bd}{3}\rho\hspace{10mm}\therefore x_{G}=\frac{2}{3}a
+\end{align*}
+次に重心のy座標について
+\begin{align*}
+My_{G}&=\int\rho ydV=\rho d\int_{0}^{a}dx\int_{0}^{\frac{b}{a}x}ydy=\rho d\int_{0}^{a}dx\left[\frac{y^2}{2}\right]_{0}^{\frac{b}{a}x}\\
+&=\rho d\int_{0}^{a}\frac{b^2}{2a^2}x^{2}dx=\frac{b^2\rho d}
+{2a^2}\left[\frac{x^3}{3}\right]_{0}^{a}=\frac{ab^{2}d}{6}\rho\hspace{10mm}\therefore y_{G}=\frac{1}{3}b
+\end{align*}
+\\
+＜例＞一様な面密度\(\sigma\)の半径\(a\)の重心の位置を求めよ。\\
+極座標系で考える。まず、\(dS=rdrd\theta\)、\(x=r\cos\theta\)、\(y=r\sin\theta\)\\
+重心座標xについて
+\begin{align*}
+\displaystyle
+x_{G}&=\frac{Mx_{G}}{M}=\frac{\int\sigma xdS}{\int\sigma dS}=\frac{\int_{0}^{a}\int_{0}^{\pi}\sigma r\cos\theta rdrd\theta}{\int_{0}^{a}\int_{0}^{\pi}\sigma rdrd\theta}=\frac{\sigma\int_{0}^{a}r^{2}dr\int_{0}^{\pi}\cos\theta d\theta}{\sigma\int_{0}^{a}rdr\int_{0}^{\pi}d\theta}\\
+&=\frac{\frac{a^{2}}{3}\left[\sin\theta\right]_{0}^{\pi}}{\frac{a^{2}}{2}\pi}=\frac{2a}{3\pi}\times0=0
+\end{align*}
+y座標について
+\begin{align*}
+\displaystyle
+y_{G}&=\frac{My_{G}}{M}=\frac{\int\sigma ydS}{\int\sigma dS}=\frac{\int_{0}^{a}\int_{0}^{\pi}\sigma r\sin\theta rdrd\theta}{\int_{0}^{a}\int_{0}^{\pi}\sigma rdrd\theta}=\frac{\sigma\int_{0}^{a}r^{2}dr\int_{0}^{\pi}\sin\theta d\theta}{\sigma\int_{0}^{a}rdr\int_{0}^{\pi}d\theta}\\
+&=\frac{\frac{a^{3}}{3}\left[-\cos\theta\right]_{0}^{\pi}}{\frac{a^2}{2}\pi}=\frac{4a}{3\pi}
+\end{align*}
+\\
+\\
+重力について、物体は質量に比例する力を受けるので、微小体積に分割して考えられる。重力\(\bm{F}_{g}\)について
+\begin{equation}
+\displaystyle
+\bm{F}_{g}=\lim_{N\to\infty}\sum_{i=1}^{N}\Delta M_{i}\bm{g}=\left(\lim_{N\to\infty}\sum_{i=1}^{N}\rho(\bm{r}_{i})\Delta V_{i}\right)\bm{g}=\int\rho(\bm{r})dV\bm{g}=M\bm{g}
+\end{equation}
+これより剛体の運動を考えるとき、\underline{重力は重心に働く}と考えても良い。剛体の角運動量は
+\begin{equation}
+\displaystyle
+\bm{L}=\sum(\bm{r}_{i}\times\bm{p}_{i})=\lim_{N\to\infty}\sum_{i=1}^{N}\bm{r}_{i}\times\Delta M_{i}\frac{d\bm{r}_{i}}{dt}=\lim_{N\to\infty}\sum_{i=1}^{N}\bm{r}_{i}\times\rho(\bm{r}_{i})\Delta V\frac{d\bm{r}_{i}}{dt}=\int\rho(\bm{r})\bm{r}\times\frac{d\bm{r}}{dt}dV
+\end{equation}
+と書ける。\(\rho(\bm{r})\)はスカラーであることに注意する。次に重力のモーメントは
+\begin{align}
+\bm{N}_{g}&=\lim_{N\to\infty}\sum_{i=1}^{N}\bm{r}_{i}\times\Delta M_{i}\bm{g}=\int\bm{r}\rho(\bm{r})dV\times\bm{g}=\int(\bm{r}_{G}+\bm{r}^{\prime})\rho(\bm{r})dV\times\bm{g}\nonumber\\
+&=\int\bm{r}_{G}\rho(\bm{r})dV\times\bm{g}+\int\bm{r}^{\prime}\rho(\bm{r})dV\times\bm{g}=\bm{r}_{G}\left(\int\rho(\bm{r})dV\right)\times\bm{g}=\bm{r}_{G}\times M\bm{g}
+\end{align}
+となる。ここで\(\bm{r}_{G}\)は重心の位置ベクトルで\(\bm{r}^{\prime}\)は重心を原点とする剛体の各点の位置ベクトルである。第二段目の第一式は重心のモーメントと重心周りのモーメントであるが、2項目に関しては0になる。これにより\(\bm{N}_{g}=\bm{r}_{G}\times M\bm{g}\)が求まるが、これより\underline{剛体の重力のモーメントは、重心に働く}と考えてよい。ただし、全モーメントによる角運動量の変化を考える際には、重力以外の他の外力は個々で計算して和をとる必要がある。
+\begin{equation}
+\frac{d\bm{L}}{dt}=\bm{r}_{G}\times M\bm{g}+\sum_{i=1}^{N}\bm{r}_{i}\times\bm{F}_{i}
+\end{equation}
+\\
+偶力のモーメントについて少し考える。偶力とは、剛体の2点に逆向きに等しい力が働いているときのそれぞれの力である。すなわち、\(\bm{F}_{1},\bm{F}_{2}=-\bm{F}_{1}\)であり、\(\bm{F}_{1}//\bm{F}_{2}\)である。このとき、
+\[\bm{F}=\bm{F}_{1}+\bm{F}_{2}=\bm{F}_{1}-\bm{F}_{1}=0\]
+であるから、並進運動はしない。しかし、原点周りの偶力のモーメントは
+\[\bm{N}=\bm{r}_{1}\times\bm{F}_{1}+\bm{r}_{2}\times\bm{F}_{2}=(\bm{r}_{1}-\bm{r}_{2})\times\bm{F}_{1}\neq0\]
+と相対的な位置ベクトルと力の積となる。これより\underline{偶力のモーメントの大きさは原点の取り方に依らない。}\\
+\\
+\\
+次に慣性モーメントについて考えていく。\\
+まずz方向の角運動量\(L_{z}\)は
+\begin{equation}
+L_{z}=\left[\int\bm{r}\times\rho(\bm{r})\frac{d\bm{r}}{dt dV}\right]_{z}=\int\rho(\bm{r})\left(\bm{r}\times\frac{d\bm{r}}{dt}\right)_{z}dV=\int\rho(\bm{r})(xv_{y}-yv_{x})dV
+\end{equation}
+である。これを円柱座標系に直してみる。位置ベクトル\(\bm{r}\)のxy平面への射影がx軸となす角を\(\theta\)、z軸へのあしの長さを\(\xi\)とする。剛体では\(\xi\)が一定であることに注意すると、
+\begin{align*}
+&x=\xi\cos\theta,\hspace{10mm}y=\xi\sin\theta\\
+&v_{x}=\frac{dx}{dt}=\frac{d\xi}{dt}\cos\theta-\xi\frac{d\theta}{dt}\sin\theta=-\xi\frac{d\theta}{dt}\sin\theta\\
+&v_{y}=\frac{dy}{dt}=\frac{d\xi}{dt}\sin\theta+\xi\frac{d\theta}{dt}\cos\theta=\xi\frac{d\theta}{dt}\cos\theta
+\end{align*}
+であるから、角運動量\(L_{z}\)は
+\begin{align}
+L_{z}&=\int\rho(\bm{r})(xv_{y}-uv_{x})dV=\int\xi^{2}\rho(\bm{r})(\cos^{2}\theta+\sin^{2}\theta)\frac{d\theta}{dt}dV\nonumber\\
+&=\left(\int\xi^{2}\rho(\bm{r})dV\right)\frac{d\theta}{dt}=I_{z}\frac{d\theta}{dt}
+\end{align}
+と表せられる。ここで
+\begin{equation}
+I_{z}\equiv\int\xi^{2}\rho(\bm{r})dV=\int(x^2+y^2)\rho(\bm{r})dV\hspace{10mm}[L^{2}M]
+\end{equation}
+と定義した。この\(I_{z}\)が慣性モーメントと呼ばれ、回転運動での質量的役割、回転のしにくさを表す量である。これより力のモーメントは
+\begin{equation}
+N_{z}=\frac{dL_{z}}{dt}=I_{z}\frac{d^{2}\theta}{dt^2}
+\end{equation}
+で表され、剛体の回転における運動方程式が立てられる。実際にニュートンの運動方程式\(\bm{F}=m\bm{a}\)と見比べても\(I_{z}\)が回転運動での質量に対応していることが分かる。\\
+以上は回転軸が常に一定の方向を考え、\(L_{z}\)の場合に限り議論したが、一般の場合には
+\begin{align}
+\bm{L}&=\int\bm{r}\times\frac{d\bm{r}}{dt}\rho(\bm{r})dV\nonumber\\
+&=\int\bm{r}\times(\bm{\omega}\times\bm{r})\rho dV\nonumber\\
+&=\int\left[\bm{\omega}\bm{r}^{2}-\bm{r}(\bm{\omega}\cdot\bm{r})\right]\rho dV
+\end{align}
+\(\bm{r}^{2}=x^2+y^{2}+z^{2},\hspace{5mm}\bm{r}=x\bm{e}_{x}+y\bm{e}_{y}+z\bm{e}_{z},\hspace{5mm}\bm{\omega}=\omega_{x}\bm{e}_{x}+\omega_{y}\bm{e}_{y}+\omega_{z}\bm{e}_{z}\)を用いて成分ごとに計算すると
+\begin{equation}
+\left(\begin{array}{c}
+L_{x}\\
+L_{y}\\
+L_{z}
+\end{array}\right)=\left(\begin{array}{ccc}
+I_{xx} & I_{xy} & I_{xz}\\
+I_{yx} & I_{yy} & I_{yz}\\
+I_{zx} & I_{zy} & I_{zz}\end{array}\right)\left(\begin{array}{c}
+\omega_{x}\\
+\omega_{y}\\
+\omega_{z}\end{array}\right)
+\end{equation}
+ただし、
+\begin{equation}
+\begin{cases}
+\displaystyle
+I_{xx}=\int(y^2+z^2)\rho dV,\hspace{5mm}I_{xy}=-\int xy\rho dV,\hspace{5mm}I_{xz}=-\int xz\rho dV\\
+\displaystyle
+I_{yx}=I_{xy},\hspace{5mm}I_{yy}=\int(z^2+x^2)\rho dV,\hspace{5mm}I_{yz}=-\int yz\rho dV\\
+\displaystyle
+I_{zx}=I_{xz},\hspace{5mm}I_{zy}=I_{yz},\hspace{5mm}I_{zz}=\int(x^2+y^2)\rho dV
+\end{cases}
+\end{equation}
+である。この\(I_{ij}\)という\(3^{2}\)個の量の組は、\underline{慣性テンソル}と呼ばれる2階のテンソルである。さらに、\(i=j\)なる成分は\underline{慣性能率}、\(i\neq j\)なる成分は\underline{慣性乗積}と呼ばれる。ここで(14)の式の注意をしておくと、一行目から二行目の式変形では、
+\[\bm{r}^{2}=(一定),\hspace{10mm}\therefore\bm{r}\frac{d\bm{r}}{dt}=0\]
+より速度ベクトルは位置ベクトルと直交していて、適当な\(\bm{\omega}(t)\)を用いて
+\[\frac{d\bm{r}}{dt}=\bm{\omega}(t)\times\bm{r}(t)\]
+と書くことが可能であることを用いた。この\(\omega\)が角速度であることは、相対運動(回転運動)を参照。また、二行目から三行目の式変形にはベクトル解析のBAC-CAB則を用いた。\\
+回転軸が常にz軸であるとき、\(\bm{\omega}=\left(0,0,\omega_{z}=\frac{d\theta}{dt}\right)\)と取れるので、以前の議論と一致する。\\
+また、軸まわりの慣性能率を
+\begin{equation}
+I=\int(x^{2}+y^{2})\rho(\bm{r})dV\equiv Mk^2
+\end{equation}
+と置いたとき、この\(k\)を\underline{回転半径}と呼ぶ。\\
+\[k:=\sqrt{\int\xi^{2}\rho(\bm{r})dV\Big/ M}\]
+で表される通り、剛体の各部分の\underline{回転軸からの距離に質量の重みをつけた2乗平均}として解釈される。\\
+
+
+\newpage
+\noindent
+慣性モーメントについて2つ定理を挙げる。\\
+\(\left[定理1\right]\)\hspace{5mm}移動則\\
+質量\(M\)なる剛体の重心\(G\)を通る軸の周りの慣性モーメント(慣性能率)を\(I_{G}\)、その軸に平行で\(h\)だけ離れた軸まわりの慣性モーメントを\(I_{z}\)とすると、
+\begin{equation}
+I_{z}=I_{G}+Mh^{2}
+\end{equation}
+が成り立つ。\\
+\\
+\(\left[定理2\right]\)\hspace{5mm}平板合成則\\
+薄い平板状の剛体の一点Oを通り板に垂直な軸まわりの慣性モーメント(慣性能率)を\(I_{zz}\)とし、O点を通り、平板に平行で互いに直交する2軸のまわりの慣性モーメント(慣性能率)を\(I_{xx},I_{yy}\)とすれば、
+\begin{equation}
+I_{zz}=I_{xx}+I_{yy}
+\end{equation}
+が成り立つ。\\
+\\
+(証明1)\\
+\(\bm{r}=\bm{r}_{G}+\bm{r}^{\prime}\)、慣性モーメントの定義\(\hspace{5mm}\displaystyle I_{G}=\int(x^{\prime2}+y^{\prime2})\rho dV\)を用いて\(I_{z}\)について式変形をしていくと
+\begin{align*}
+I_{z}&=\int(x^{2}+y^{2})\rho(\bm{r})dV\\
+&=\int\left((x_{G}+x^{\prime})^{2}+(y_{G}+y^{\prime})^{2}\right)\rho(\bm{r})dV\\
+&=(x_{G}^{2}+y_{G}^{2})\int\rho(\bm{r})dV+2x_{G}\int x^{\prime}\rho(\bm{r})dV+2y_{G}\int y^{\prime}\rho(\bm{r})dV+\int(x^{\prime2}+y^{\prime2})\rho(\bm{r})dV\\
+&=Mh^{2}+I_{G}
+\end{align*}
+ただし、重心を原点としたときの重心座標は0であるから\(\displaystyle\int x^{\prime}\rho(\bm{r})dV=\int y^{\prime}\rho(\bm{r})dV=0\).\\
+(証明2)\\
+\(I_{zz}\)について
+\begin{align*}
+I_{zz}&=\int(x^{2}+y^{2})\rho(\bm{r})dV=\int(x^{2}+y^{2})\sigma(\bm{r})dS\\
+&=\int x^{2}\sigma(\bm{r})dS+\int y^{2}\sigma(\bm{r})dS
+\end{align*}
+体積要素から面素への変換を行った。この場合、薄い平板を仮定してるので、z方向に質点は存在しない。
+\begin{align*}
+&I_{xx}:=\int(y^{2}+z^{2})\rho (\bm{r})dV\hspace{5mm}\longrightarrow\hspace{5mm}\int y^{2}\sigma(\bm{r}) dS\\
+&I_{yy}:=\int(z^{2}+x^{2})\rho (\bm{r})dV\hspace{5mm}\longrightarrow\hspace{5mm}\int x^{2}\sigma(\bm{r}) dS
+\end{align*}
+となるので、結局\(I_{zz}=I_{xx}+I_{yy}\).\\
+\\
+\newpage
+\noindent
+\([演習問題]\)\\
+(91)*\\
+一様な面密度\(\sigma\)で半径\(a\)の\(1/4\)円(\(x>0,y>0\))の重心の位置を求めよ。\\
+(91-2)*\\
+厚み\(d\)密度\(\rho\)で一辺\(a\)の正三角形の板について重心を計算せよ。\\
+(92)*\\
+一様な密度\(\rho\)の半径\(a\)の半球の質量を極座標で求めよ。さらにその重心の高さ\(z_{G}\)を求めよ。\\
+(93.1)\\
+慣性モーメントの重心からの移動則を証明せよ。\\
+(93.2)\\
+慣性モーメントの平板の合成則を証明せよ。\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,141 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass{jsarticle}
+\usepackage{amsmath}
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{fancybox}
+\usepackage{ascmac}
+\usepackage[dvipdfmx]{graphicx}
+\title{力学　予習ノート9}
+\author{学生番号05502211}
+\date{}
+\begin{document}
+\maketitle
+\section{一般化座標}
+\noindent
+1質点の運動は、一般には3次元空間に展開され、自由度が3である。\(N\)個の質点系では\(3N\)個の運動の自由度を持つことになる。よって\(N\)個の質点系の運動を記述するには、\(3N\)個の座標成分が登場することになるが、このとき座標系の選び方(デカルト、極座標、円柱座標...)にはよらない\(3N\)個の座標変数で運動が記述できれば、一般性があり有用性が増す。このように導入されたのが\underline{一般化座標}である。\\
+運動が時間に直接依存する場合や、座標系が時間とともに動く場合、座標の間の関係は時間\(t\)も含むから
+\begin{equation}
+\left\{q_{i}\right\};\hspace{1mm}(q_{1},q_{2},q_{3}),(q_{4},q_{5},q_{6}),\cdots,(q_{3N-2},q_{3N-1},q_{3N}),t
+\end{equation}
+となる。上記の\(\left\{q_{i}\right\}\)で表示される\(3N\)次元空間(\underline{代表空間})を想定すると、運動状態はその中の1点(\underline{代表点})と\(3N\)個の速度によって決定されることになる。例えば、1質点の一般化座標として極座標を選べば、\(q_{1}=r_{1},q_{2}=\theta_{1},q_{3}=\phi_{1}\)である。\\
+この一般化座標を用いたラグランジュ方程式を導いていく。\\
+まず、一般化座標\(\left\{q_{i}\right\}\)を用いた場合の運動エネルギー\(K\)を用いて運動量を(2)のように定義する。\\
+\[
+K=\frac{1}{2}\sum_{i=1}^{3N}m_{i}{\dot{q}_{i}}^{2}=\frac{1}{2}\sum_{i=1}^{3N}\frac{1}{m_{i}}{p_{i}}^{2}
+\]
+\begin{equation}
+p_{i}\equiv\frac{\partial K}{\partial\dot{q}_{i}}=\sum_{i=1}^{3N}m_{i}\dot{q}_{i}
+\end{equation}
+これを\underline{\(q_{i}\)に共役な一般化された運動量}と呼び、\((q_{i},p_{i})\)の組を\underline{正準共役変数}と呼ぶ。この正準共役変数を座標とする\(3N\)次元の空間、すなわち\underline{位相空間}を想定すると、その中で代表点が描く軌道が、力学系の運動状態の時間変化を表すことになる。例えば、1個の質点の運動に一般化座標として極座標を選ぶと
+\[K=\frac{1}{2}\sum_{i=1}^{3}m_{i}{v_{i}}^{2}=\frac{1}{2}m\left\{{\dot{r}}^{2}+(r\dot{\theta})^{2}+(r\dot{\phi}\sin\theta)^{2}\right\}\]
+であるので、それぞれの一般座標に共役な一般化運動量は
+\[p_{r}=\frac{\partial K}{\partial\dot{r}},\hspace{10mm}p_{\theta}=\frac{\partial K}{\partial\dot{\theta}}=mr^{2}\dot{\theta},\hspace{10mm}p_{\phi}=\frac{\partial K}{\partial\dot{\phi}}=mr^{2}\dot{\phi}\sin^{2}\theta\]
+である。次に一般化座標によって定義される一般化力について考える。\(N\)体の自由度\(f\)の系において、ダランベールの原理は
+\[\delta W=\sum_{i=1}^{N}(\bm{F}_{i}-m_{i}{\ddot{r}})\cdot\delta\bm{r}_{i}=\sum_{i=1}^{N}\bm{F}_{i}\cdot\delta\bm{r}_{i}-\sum_{i=1}^{N}m_{i}\ddot{r}_{i}\cdot\delta\bm{r}_{i}=0\]
+と書かれるので、仮想変位について(1)より
+\begin{equation}
+\delta\bm{r}_{i}=\sum_{k=1}^{f}\frac{\partial\bm{r}_{i}}{\partial q_{k}}\delta q_{k},\hspace{10mm}\delta x_{i}=\sum_{k=1}^{f}\frac{\partial x_{i}}{\partial q_{k}}\delta q_{k},\hspace{10mm}\cdots
+\end{equation}
+を用いると、第一項目は
+\begin{align*}
+\sum_{i=1}^{N}\bm{F}_{i}\cdot\delta\bm{r}_{i}&=\sum_{i=1}^{N}\bm{F}_{i}\cdot\left(\sum_{k=1}^{f}\frac{\partial\bm{r}_{i}}{\partial q_{k}}\delta q_{k}\right)\\
+&=\sum_{k=1}^{f}\left(\sum_{i=1}^{N}\bm{F}_{i}\cdot\frac{\partial\bm{r}_{i}}{\partial q_{k}}\right)\delta q_{k}
+\end{align*}
+と表せられる。今外力とは関係のない第二項目を無視すると
+\begin{equation}
+\delta W\longleftrightarrow\sum_{k=1}^{f}\left(\sum_{i=1}^{N}\bm{F}_{i}\cdot\frac{\partial\bm{r}_{i}}{\partial q_{k}}\right)\delta q_{k}
+\end{equation}
+であり、力の定義として括弧内()がふさわしいように思える。そうして座標\(k\)に対する\underline{一般化力}を次のように定義する。\\
+\begin{equation}
+Q_{k}\equiv\sum_{i=1}^{N}\bm{F}_{i}\cdot\frac{\partial\bm{r}_{i}}{\partial q_{k}}
+\end{equation}
+一方第二項目について
+\begin{align}
+\sum_{i=1}^{N}m_{i}\frac{d^{2}\bm{r}_{i}}{dt^{2}}\cdot\delta\bm{r}_{i}&=\sum_{i=1}^{N}m_{i}\frac{d^{2}\bm{r}_{i}}{dt^{2}}\cdot\left(\sum_{k=1}^{f}\frac{\partial\bm{r}_{i}}{\partial q_{k}}\delta q_{k}\right)\nonumber\\
+&=\sum_{i=1}^{N}\sum_{k=1}^{f}m_{i}\frac{d^{2}\bm{r}_{i}}{dt^{2}}\cdot\frac{\partial\bm{r}_{i}}{\partial q_{k}}\delta q_{k}\nonumber\\
+&=\sum_{i=1}^{N}\sum_{k=1}^{f}\left[\frac{d}{dt}\left(m_{i}\frac{d\bm{r}_{i}}{dt}\cdot\frac{\partial\bm{r}_{i}}{\partial q_{k}}\right)-m_{i}\frac{d\bm{r}_{i}}{dt}\cdot\frac{d}{dt}\left(\frac{\partial\bm{r}_{i}}{\partial q_{k}}\right)\right]\delta q_{k}
+\end{align}
+と書ける。ただし最終行については積の微分法\(f^{\prime\prime}g=(f^{\prime}g)^{\prime}-f^{\prime}g^{\prime}\)を用いた。
+\\ここで\(\displaystyle\frac{d\bm{r}_{i}}{dt}=\sum_{j=1}^{f}\frac{\partial\bm{r}_{i}}{\partial q_{j}}\dot{q}_{j}+\frac{\partial\bm{r}_{i}}{\partial t}\)の両辺を\(\dot{q}_{k}(1\leq k \leq f)\)で微分して
+\[(左辺)=\frac{\partial}{\partial\dot{q}_{k}}\left(\frac{d\bm{r}_{i}}{dt}\right)=\frac{\partial\dot{\bm{r}}_{i}}{\partial\dot{q}_{k}},\hspace{10mm}(右辺)=\frac{\partial}{\partial\dot{q}_{k}}\sum_{j=1}^{f}\frac{\partial\bm{r}_{i}}{\partial q_{j}}\dot{q}_{j}+\frac{\partial}{\partial\dot{q}_{k}}\frac{\partial\bm{r}_{i}}{\partial t}=\frac{\partial\bm{r}_{i}}{\partial q_{k}}+0\]
+つまり
+\begin{equation}
+\frac{\partial\dot{\bm{r}}_{i}}{\partial\dot{q}_{k}}=\frac{\partial\bm{r}_{i}}{\partial q_{k}}
+\end{equation}
+である。これを(6)の\([\hspace{1mm}]\)内の第一項目に適用し、第二項目について\(t\)と\(q_{k}\)の微分の順序交換を行うと
+\begin{align*}
+\sum_{i=1}^{N}m_{i}\frac{d^{2}\bm{r}_{i}}{dt^{2}}\cdot\delta\bm{r}_{i}&=\sum_{i=1}^{N}\sum_{k=1}^{f}\left[\frac{d}{dt}\left(m_{i}\dot{\bm{r}}_{i}\cdot\frac{\partial\bm{r}_{i}}{\partial\dot{q}_{k}}\right)-m_{i}\ddot{\bm{r}}_{i}\cdot\frac{\partial\dot{\bm{r}}_{i}}{\partial q_{k}}\right]\delta q_{k}\\
+&=\sum_{i=1}^{N}\sum_{k=1}^{f}\left[\frac{d}{dt}\frac{\partial}{\partial\dot{q}_{k}}\left(\frac{1}{2}m_{i}{\dot{\bm{r}}_{i}}^{2}\right)-\frac{\partial}{\partial q_{k}}\left(\frac{1}{2}m_{i}
+{\dot{\bm{r}}_{i}}^{2}\right)\right]\delta q_{k}\\
+&=\sum_{k=1}^{f}\left[\frac{d}{dt}\frac{\partial}{\partial\dot{q}_{k}}\sum_{i=1}^{N}\left(\frac{1}{2}m_{i}{\dot{\bm{r}}_{i}}^{2}\right)-\frac{\partial}{\partial q_{k}}\sum_{i=1}^{N}\left(\frac{1}{2}m_{i}{\dot{\bm{r}}_{i}}^{2}\right)\right]\delta q_{k}\\
+&=\sum_{k=1}^{f}\left(\frac{d}{dt}\frac{\partial K}{\partial\dot{q}_{k}}-\frac{\partial K}{\partial q_{k}}\right)\delta q_{k}
+\end{align*}
+以上で導いたダランベールの原理の第一項と第二項を用いて
+\begin{align*}
+\delta W&=\sum_{k=1}^{f}Q_{k}\delta q_{k}-\sum_{k=1}^{f}\left(\frac{d}{dt}\frac{\partial K}{\partial\dot{q}_{k}}-\frac{\partial K}{\partial q_{k}}\right)\delta q_{k}=0\\
+&\Longrightarrow\sum_{k=1}^{f}\left(\frac{d}{dt}\frac{\partial K}{\partial\dot{q}_{k}}-\frac{\partial K}{\partial q_{k}}-Q_{k}\right)\delta q_{k}=0\\
+&\Longrightarrow\frac{d}{dt}\frac{\partial K}{\partial\dot{q}_{k}}-\frac{\partial K}{\partial q_{k}}-Q_{k}=0
+\end{align*}
+一般化力\(Q_{k}\)について、保存力を考えると
+\[Q_{k}\equiv\sum_{i=1}^{N}\bm{F}_{i}\cdot\frac{\partial\bm{r}_{i}}{\partial q_{k}}=\sum_{i=1}^{N}\left(-\bm{\nabla}_{i}V\cdot\frac{\partial\bm{r}_{i}}{\partial q_{k}}\right)=-\sum_{i=1}^{N}\left(\frac{\partial V}{\partial x_{i}}\frac{\partial x_{i}}{\partial q_{k}}+\frac{\partial V}{\partial y_{i}}\frac{\partial y_{i}}{\partial q_{k}}+\frac{\partial V}{\partial z_{i}}\frac{\partial z_{i}}{\partial q_{k}}\right)=-\frac{\partial V}{\partial q_{k}}\]
+であるから
+\[\frac{d}{dt}\frac{\partial K}{\partial\dot{q}_{k}}-\frac{\partial K}{\partial q_{k}}+\frac{\partial V}{\partial q_{k}}=\frac{d}{dt}\frac{\partial L}{\partial\dot{q}_{k}}-\frac{\partial L}{\partial q_{k}}=0\]
+これにより一般化座標によるラグランジュ方程式が得られた。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

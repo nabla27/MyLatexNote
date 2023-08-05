@@ -1,0 +1,261 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass{jsarticle}
+\usepackage{amsmath}
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{fancybox}
+\usepackage{ascmac}
+\usepackage[dvipdfmx]{graphicx}
+\title{力学　予習ノート6}
+\author{学生番号05502211}
+\date{}
+\begin{document}
+\maketitle
+\section{ラグランジュ方程式}
+\noindent
+〇ダランベールの原理\\
+今\(N\)個の質点系の\(i\)番目の質点に作用するすべての力を\(\bm{F}_{i}\)とする。各質点が静力学的状態であればもちろん
+\[\bm{F}_{i}=0\]
+であるが動力学的状態であれば
+\[\bm{F}_{i}=m_{i}\ddot{\bm{r}}_{i}\]
+と運動方程式が立てれられる。これは移行することで
+\begin{equation}
+\bm{F}_{i}+(-m_{i}\ddot{\bm{r}}_{i})=0
+\end{equation}
+と変形できる。\\
+これは、\(-m_{i}\ddot{\bm{r}}_{i}\)を質点に作用する一つの力(慣性力)と考えると、動的力学状態を静的力学状態とみなすことができる。このようにして\underline{動的力学状態は、作用するすべての力と慣性力とがつり合った状態であるとみなすと、}\\
+\underline{静力学系を考えることができる。}これを\underline{ダランベールの原理}と呼ぶ。\\
+\\
+〇仮想仕事の原理\\
+仮想仕事の原理とは、束縛力が仕事をしない体系で質点系が静止するための必要十分条件は
+\begin{equation}
+\delta W=\sum_{i}\bm{F}_{i}\cdot\delta\bm{r}_{i}=0
+\end{equation}
+であるというもの。\(\delta\bm{r}_{i}\)は仮想変位で\(\bm{F}_{i}\)を変化させないような無限小の変位である。(微小変位d\(\bm{r}\)との違いは束縛条件さえ守れば運動方程式に従わなくてもよいこと)\\
+以上は静的力学における仮想仕事を考えたが、ダランベールの原理により動的力学状態でも慣性力を考えると静力学系として考えることができる。このようにして(2)式を動的力学で置き換えると
+\begin{equation}
+\delta W=\sum_{i}(\bm{F}_{i}-m_{i}\ddot{\bm{r}}_{i})\cdot\delta\bm{r}_{i}=0
+\end{equation}
+質点に拘束力が作用する場合にも、仮定より拘束力は\(\delta\bm{r}\)に直交し、(3)が成り立つ。\\
+\\
+\([例1]\)\\
+半径が\(a\)の直立した円環上に束縛された質点\(m\)を考える。つり合いの位置はどこになるか。\\
+\\
+円周上の仮想変位は
+\[\delta\bm{r}=a\delta\bm{\phi}\bm{e}_{\phi}\]
+よって、重力の仮想仕事は
+\begin{align*}
+\bm{F}\cdot\delta\bm{r}&=-mg\bm{e}_{z}\cdot a\delta\phi\bm{e}_{\phi}\\
+&=-mga\cos\phi\delta\phi
+\end{align*}
+質点がつり合うための必要十分条件はこの仮想仕事が0であること(仮想仕事の原理)なので条件
+\[\cos\phi=0\]
+より\(\phi=\pm\frac{\pi}{2}\)がつり合い点となる。\\
+\\
+〇ラグランジュ方程式\\
+ダランベールの原理
+\[(\bm{F}-m\ddot{\bm{r}})\cdot\delta\bm{r}=0\]
+からラグランジュ方程式を導出する。第一項目に関して
+\[
+\bm{F}\cdot\delta\bm{r}=F_{x}\delta x+F_{y}\delta y+F_{z}\delta z=-\frac{\partial V}{\partial x}\delta x-\frac{\partial V}{\partial y}\delta y-\frac{\partial V}{\partial z}\delta z
+\]
+第二項目に関して
+\[-m\ddot{\bm{r}}\cdot\delta\bm{r}=-\frac{d}{dt}(m\dot{x})\cdot\delta x-\frac{d}{dt}(m\dot{y})\cdot\delta y-\frac{d}{dt}(m\dot{z})\cdot\delta z\]
+ここで
+\[m\dot{x}=\frac{\partial}{\partial\dot{x}}\left(\frac{1}{2}m(\dot{x}^{2}+\dot{y}^{2}+\dot{z}^{2})\right)=\frac{\partial}{\partial\dot{x}}K\]
+であるから
+\[-m\ddot{\bm{r}}\cdot\delta\bm{r}=-\frac{d}{dt}\left(\frac{\partial K}{\partial\dot{x}}\right)\delta x-\frac{d}{dt}\left(\frac{\partial K}{\partial\dot{y}}\right)\delta y-\frac{d}{dt}\left(\frac{\partial K}{\partial\dot{z}}\right)\delta z\]
+以上より
+\begin{align*}
+&(\bm{F}-m\ddot{\bm{r}})\cdot\delta\bm{r}=0\\
+&\Rightarrow-\left(\frac{d}{dt}\frac{\partial K}{\partial\dot{x}}+\frac{\partial V}{\partial x}\right)\cdot\delta x-\left(\frac{d}{dt}\frac{\partial K}{\partial\dot{y}}+\frac{\partial V}{\partial y}\right)\cdot\delta y-\left(\frac{d}{dt}\frac{\partial K}{\partial\dot{z}}+\frac{\partial V}{\partial z}\right)\cdot\delta z=0
+\end{align*}
+ラグランジアン\(L\equiv K-V\)と置くと
+\[\frac{\partial L}{\partial \dot{x}}=\frac{\partial K}{\partial\dot{x}},\hspace{10mm}\frac{\partial L}{\partial x}=-\frac{\partial V}{\partial x}\]
+などが成り立ち、上式で置き換えると
+\[\left(\frac{d}{dt}\frac{\partial L}{\partial\dot{x}}-\frac{\partial L}{\partial x}\right)\delta x+\left(\frac{d}{dt}\frac{\partial L}{\partial\dot{y}}-\frac{\partial L}{\partial y}\right)\delta y+\left(\frac{d}{dt}\frac{\partial L}{\partial\dot{z}}-\frac{\partial L}{\partial z}\right)\delta z=0\]
+となる。今\(\delta\bm{r}=(\delta x,\delta y,\delta z)\)は任意であるから結局
+\[\frac{d}{dt}\frac{\partial L}{\partial\dot{x}}-\frac{\partial L}{\partial x}=0,\hspace{10mm}\frac{d}{dt}\frac{\partial L}{\partial\dot{y}}-\frac{\partial L}{\partial y}=0,\hspace{10mm}\frac{d}{dt}\frac{\partial L}{\partial\dot{z}}-\frac{\partial L}{\partial z}=0,\hspace{10mm}\]
+が言える。これによりラグランジュ方程式が導かれた。\\
+\(\displaystyle L=K-V=\frac{1}{2}m(\dot{x}^{2}+\dot{y}^{2}+\dot{z}^{2})-V(x,y,z)\)より、例えば\(x\)成分では
+\[\frac{d}{dt}\frac{\partial L}{\partial\dot{x}}=\frac{d}{dt}m\dot{x}=m\ddot{x},\hspace{10mm}\frac{\partial L}{\partial x}=-\frac{\partial V}{\partial x}=F_{x}\]
+であり、ラグランジュ方程式に代入することでニュートンの運動方程式と一致することが確かめられる。
+\\
+\section{変分法}
+\noindent
+作用積分を
+\begin{equation}
+I[y]\equiv\int_{a}^{b}f(x,y,y^{\prime})dx
+\end{equation}
+と定義する。変分法の問題とは、この汎関数\(I\)が停留値をもつような関数\(f\)の関数形を決定するものである。汎関数\(I\)の値は関数形\(f_{i}(x,y,y^{\prime})\)に応じて変化するが、停留値をとる関数\(y(x)\)からその付近の関数形\(y(x)\)に変えた時の汎関数の変化\(\delta I\)は小さくなるはずである。以上より汎関数が停留する条件は\(\delta I=0\)といえる。\\
+実際に\(\delta I\)を計算していく。\\
+\(y(x)\)の両端\(a,b\)は固定されているとする。また\(y(x)\)の変分を\(\delta y\)とする。変分\(\delta I\)は\(f\)の全て(\(y,y^{\prime}\))の変分寄与を考慮して
+\[\delta I=\int_{a}^{b}\left(\frac{\partial f}{\partial y}\delta y+\frac{\partial f}{\partial y^{\prime}}\delta y^{\prime}\right)dx\]
+ここで変分\(\delta y\)は微小変化\(dx\)とは独立であるので、
+\[\delta\left(\frac{dy}{dx}\right)=\frac{d(y+\delta y)}{dx}-\frac{dy}{dx}=\frac{d}{dx}\delta y\]
+と変分と微分との演算順序は交換可能である。以上を考慮して計算を進めていくと
+\begin{align*}
+\delta I&=\int_{a}^{b}\left(\frac{\partial f}{\partial y}\delta y+\frac{\partial f}{\partial y^{\prime}}\delta y^{\prime}\right)dx=\int_{a}^{b}\left(\frac{\partial f}{\partial y}\delta y+\frac{\partial f}{\partial y^{\prime}}\frac{d}{dx}\delta y\right)dx\\
+&=\int_{a}^{b}\frac{\partial f}{\partial y}\delta ydx+\int_{a}^{b}\frac{\partial f}{\partial y^{\prime}}\frac{d}{dx}\delta ydx=\int_{a}^{b}\frac{\partial f}{\partial y}\delta ydx+\left[\frac{\partial f}{\partial y^{\prime}}\delta y\right]_{a}^{b}-\int_{a}^{b}\frac{d}{dt}\left(\frac{\partial f}{\partial y^{\prime}}\right)\delta ydx\\
+&=\int_{a}^{b}\frac{\partial f}{\partial y}\delta ydx-\int_{a}^{b}\frac{d}{dt}\left(\frac{\partial f}{\partial y^{\prime}}\right)\delta ydx\\
+&=-\int_{a}^{b}\left(\frac{d}{dt}\left(\frac{\partial f}{\partial y^{\prime}}\right)-\frac{\partial f}{\partial y}\right)\delta ydx
+\end{align*}
+よって
+\[\delta I=0\hspace{10mm}\Longleftrightarrow\hspace{10mm}\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)-\frac{\partial f}{\partial y}=0\]
+よりオイラー・ラグランジュ方程式を得る。今、\(\delta I=0\)であるという仮定からラグランジュ方程式を導いたが、前章のラグランジュ方程式から逆に\(\delta I=0\)が言える。このようにして\underline{
+力学系の運動は、作用と呼ばれる}\\
+\underline{汎関数を最小にするような軌道に沿って実現される(仮想変化についての変分が零になる、すなわち極値(停}\\
+\underline{留)をとる)ことを最小作用の原理または変分原理、ハミルトンの原理という。}\\
+\\
+\([例1]\)\\
+\((x,y)\)平面に2つの定点\(A,B\)があるとき、これを結ぶ曲線長を極小にせよ。\\
+\\
+2点間\(A,b\)を結ぶ曲線の長さは
+\[l=\int_{a}^{b}\sqrt{1+\left(\frac{dy}{dx}\right)^{2}}dx\]
+である。最小作用の原理より\(f=\sqrt{1+{y^{\prime}}^{2}}\)に対して
+\[\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)-\frac{\partial f}{\partial y}=0\]
+が条件である。したがって
+\begin{align*}
+&\frac{d}{dx}\left(\frac{\partial}{\partial y^{\prime}}\sqrt{1+{y^{\prime}}^{2}}\right)-\frac{\partial}{\partial y}\sqrt{1+{y^{\prime}}^{2}}=0\\
+&\Rightarrow\frac{d}{dx}\left(\frac{y^{\prime}}{\sqrt{1+{y^{\prime}}^{2}}}\right)=0,\hspace{8mm}\frac{y^{\prime}}{\sqrt{1+{y^{\prime}}^{2}}}=A\\
+&\Rightarrow {y^{\prime}}^{2}=A^{2}(1+{y^{\prime}}^{2}),\hspace{8mm}{y^{\prime}}^{2}=\frac{A^{2}}{1-A^{2}}\\
+&\Rightarrow y^{\prime}=const.\hspace{10mm}\therefore y=Cx+D
+\end{align*}\\
+\\
+〇ベルトラミの公式\\
+上の変分法では汎関数を決める関数形として、\(f(x,y,y^{\prime})\)を考えた。この関数形はもっと単純であったり、複雑になることもある。ここではこの関数形が\(f(y,y^{\prime})\)で与えられるときを考える。\\
+\(f\)の全微分は
+\[df=\frac{\partial f}{dy}dy+\frac{\partial f}{\partial y^{\prime}}dy^{\prime}\]
+両辺\(dx\)で割ると
+\[\frac{df}{dx}=\frac{\partial f}{\partial y}\frac{dy}{dx}+\frac{\partial f}{\partial y^{\prime}}\frac{d y^{\prime}}{dx}\]
+一方、ラグランジュ方程式の両辺に\(dy/dx\)を掛けたものは
+\[y^{\prime}\left(\frac{\partial f}{\partial y}-\frac{d}{dx}\frac{\partial f}{\partial y^{\prime}}\right)=\frac{\partial f}{\partial y}\frac{dy}{dx}-\frac{\partial f}{\partial y^{\prime}}\frac{d y^{\prime}}{dx}=0\]
+この二式を連立させて\(\displaystyle\frac{\partial f}{\partial y}\frac{dy}{dx}\)を消去すると
+\begin{align*}
+\frac{df}{dx}&=\frac{dy}{dx}\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}\right)+\frac{\partial f}{\partial y^{\prime}}\frac{d y^{\prime}}{dx}\\
+&=\frac{d}{dx}\left(\frac{\partial f}{\partial y^{\prime}}y^{\prime}\right)\hspace{10mm}(積の微分法)
+\end{align*}
+これより以下のベルトラミの公式を得る。
+\begin{equation}
+\frac{d}{dx}\left(f-y^{\prime}\frac{\partial f}{\partial y^{\prime}}\right)=0,\hspace{10mm}f-y^{\prime}\frac{\partial f}{\partial y^{\prime}}=const.
+\end{equation}
+\\
+\([例1]\)最速降下曲線\\
+重力を考え、定点\(A(0,0),B(x_{1},y_{1})\)を結び、\(A\)から物体を静かに滑らせる。\(B\)に達する時間を最小にする曲線を求めよ。\\
+\\
+右向きに\(x\)軸、下向きに\(y\)軸をとる。点\(x,y\)での質量\(m\)の物体の速さはエネルギー保存則より
+\[\frac{1}{2}mv^{2}=mgy\hspace{10mm}\therefore v=\sqrt{2gy}\]
+微小時間を\(dt\)、曲線の微小要素を\(ds\)とすると、
+\[ds=\sqrt{(dx)^{2}+(dy)^2}=\sqrt{1+{y^{\prime}}^{2}}dx,\]
+\[dt=\frac{ds}{v}=\frac{\sqrt{1+{y^{\prime}}^{2}}}{\sqrt{2gy}}dx\hspace{10mm}\therefore I=\int dt=\int\frac{\sqrt{1+{y^{\prime}}^{2}}}{\sqrt{2gy}}dx\]
+以降\(\displaystyle f=\frac{\sqrt{1+{y^{\prime}}^{2}}}{\sqrt{2gy}}\)として、ベルトラミの公式を適用して\(x,y\)を求める。
+\[\frac{\partial f}{\partial y^{\prime}}=\frac{1}{\sqrt{2gy}}\cdot\frac{1}{2}\frac{1}{\sqrt{1+{y^{\prime}}^{2}}}\cdot 2y^{\prime}=\frac{y^{\prime}}{\sqrt{2gy(1+{y^{\prime}}^{2})}}\]
+であるから、ベルトラミの公式の公式に代入して
+\[\frac{\sqrt{1+{y^{\prime}}^{2}}}{\sqrt{2gy}}-y^{\prime}\left(\frac{y^{\prime}}{\sqrt{2gy(1+{y^{\prime}}^{2})}}\right)=\frac{1+{y^{\prime}}^{2}-{y^{\prime}}^{2}}{\sqrt{2gy(1+{y^{\prime}}^{2})}}=\frac{1}{\sqrt{2gy(1+{y^{\prime}}^{2})}}=Const.\]
+よって、移項し、文字を置くことで
+\begin{align*}
+\frac{1}{2gy(1+{y^{\prime}}^{2})}=C^{2},&\hspace{10mm} y(1+{y^{\prime}}^{2})=\frac{1}{2gC^{2}}\equiv 2A\\
+&\Longrightarrow1+{y^{\prime}}^{2}=\frac{2A}{y},\hspace{10mm}
+y^{\prime}=\sqrt{\frac{2A-y}{y}}
+\end{align*}
+今、\(y\)について\(2A\geq y\geq0\)が条件であり、初期条件\(\theta=0でy=0\)を考えることで\(y=A(1-\cos\theta)\)と置くことができる。これを代入して、半角公式\(\cos^{2}\frac{\theta}{2}=\frac{1+\cos\theta}{2},\sin^{2}\frac{\theta}{2}=\frac{1-\cos\theta}{2}\)を用いることで
+\begin{align*}
+y^{\prime}=\sqrt{\frac{2A-y}{y}}&=\sqrt{\frac{2A-A(1-\cos\theta)}{A(1-\cos\theta)}}=\sqrt{\frac{1+\cos\theta}{1-\cos\theta}}\\
+&=\sqrt{\frac{2\cos^{2}\frac{\theta}{2}}{2\sin^{2}\frac{\theta}{2}}}=\frac{\cos\frac{\theta}{2}}{\sin\frac{\theta}{2}}\hspace{10mm}\therefore dx=\frac{\sin\frac{\theta}{2}}{\cos\frac{\theta}{2}}dy
+\end{align*}
+\(y=A(1-\cos\theta),\hspace{2mm}dy=A\sin\theta d\theta=2A\cos\frac{\theta}{2}\sin\frac{\theta}{2}\)を用いて両辺積分して\(x\)を求めると
+\begin{align*}
+dx=\frac{\sin\frac{\theta}{2}}{\cos\frac{\theta}{2}}dy&=\frac{\sin\frac{\theta}{2}}{\cos\frac{\theta}{2}}\cdot2A\cos\frac{\theta}{2}\sin\frac{\theta}{2}d\theta\\
+&=2A\sin^{2}\frac{\theta}{2}=A(1-\cos\theta)d\theta
+\end{align*}
+\[\therefore x=\int dx=A\int(1-\cos\theta)d\theta=A(\theta-\sin\theta)+C_{1}\]
+先に決めた初期条件を考慮することで
+\[y=A(1-\cos\theta),\hspace{10mm}x=A(\theta-\sin\theta)\]
+を得る。これはサイクロイド曲線であり、直線上で半径\(A\)の円盤を転がしたときの円周上の一点が描く軌跡となる。\\
+半径\(a\)のサイクロイドが描く軌跡(一回転)の長さと面積を求めてみる。\\
+\[\begin{cases}
+x=a(\theta-\sin\theta)\\
+y=a(1-\cos\theta)\end{cases}\hspace{10mm}\begin{cases}
+x^{\prime}=a(1-\cos\theta)\\
+y^{\prime}=a\sin\theta\end{cases}\]
+であるから、曲線の微小要素\(ds\)は
+\begin{align*}
+ds&=\sqrt{\left(\frac{dx}{d\theta}\right)^{2}+\left(\frac{dy}{d\theta}\right)^{2}}d\theta=a\sqrt{(1-\cos\theta)^{2}+\sin^{2}\theta}d\theta=a\sqrt{2(1-\cos\theta)}d\theta\\
+&=a\sqrt{2\cdot2\sin^{2}\frac{\theta}{2}}d\theta=2a\left|\sin\frac{\theta}{2}\right|d\theta
+\end{align*}
+よって、一回転(\(0\leq\theta\leq2\pi\))の軌跡の長さは
+\[l=\int_{0}^{2\pi}2a\sin\frac{\theta}{2}d\theta=-2a\left[2\cos\frac{\theta}{2}\right]_{0}^{2\pi}=8a\]
+面積は
+\begin{align*}
+S&=\int_{0}^{2\pi a}ydx=\int_{0}^{2\pi}y\frac{dx}{d\theta}d\theta=a^{2}\int_{0}^{2\pi}(1-\cos\theta)^{2}d\theta\\
+&=a^{2}\int\left(\frac{3}{2}-2\cos\theta+\frac{1}{2}\cos2\theta\right)d\theta\hspace{10mm}\left(\because\cos^{2}\theta=\frac{1+\cos2\theta}{2}\right)\\
+&=a^{2}\int_{0}^{2\pi}\frac{3}{2}d\theta=3\pi a^{2}
+\end{align*}
+\newpage
+\noindent
+\([演習問題]\)\\
+(1)\\
+ダランベールの原理と仮想仕事の原理を式を用いて表し、それについて説明せよ。\\
+(101)\\
+半径が\(a\)の直立した円環上に束縛された質点\(m\)を考える。この質点の安定点はどこになるか。\\
+(102)\\
+ダランベールの原理からラグランジュ方程式を導出せよ。\\
+(103)\\
+ラグランジュ方程式はニュートンの運動方程式と等価であることを示せ。\\
+(2)\\
+関数形\(f(x,y,y^{\prime})\)に対して、変分法の計算を行い、ラグランジュ方程式から最小作用の原理を導出せよ。\\
+(104-1)\\
+\((x,y)\)平面の2つの定点\(A,B\)があるとき、これを結ぶ曲線長を極小にするような曲線をもとめよ。\\
+(104-2)*\\
+半径\(r\)の円柱の側面に2つの定点\(A,B\)があるとき、これを結ぶ曲線長を極小にせよ。\\
+(3)\\
+関数形\(f(y,y^{\prime})\)に対するベルトラミの公式を導出せよ。\\
+(104-3)\\
+重力を考え、定点\(A(0,0),B(x_{1},y_{1})\)を結び、\(A\)から物体を滑らせる。\(B\)に達する時間を最小にするような曲線を求めよ。\\
+(104-4)\\
+サイクロイドの軌跡の長さと面積を求めよ。\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
